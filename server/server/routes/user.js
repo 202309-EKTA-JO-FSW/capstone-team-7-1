@@ -6,7 +6,7 @@ const authToken=require('../middlewares/isAuthenticated')
 const userController = require("../controllers/userController");
 const restaurantController = require('../controllers/restaurantController');
 const dishController = require('../controllers/dishController');
-// const OrderController = require('./controllers/OrderController');
+const orderController = require('../controllers/orderController');
 const cartController = require('../controllers/cartController');
 // const FavoriteController = require('./controllers/FavoriteController');
 // const ReviewController = require('./controllers/ReviewController');
@@ -33,6 +33,12 @@ router.put('/users/:userId', authToken, userController.updateUserProfile);
 // dish crud
 router.get('/dishes', dishController.getAllDishes);
 router.get('/dishes/:dishId',dishController.getDish);
+
+// Order crud
+router.get('/users/:userId/orders', authToken, orderController.getUserOrders);
+router.post('/users/:userId/orders', authToken, orderController.createOrder);
+router.get('/orders/:orderId', authToken, orderController.getOrder);
+router.delete('/orders/:orderId', authToken, orderController.deleteOrder);
 
 
 module.exports = router;
