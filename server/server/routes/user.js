@@ -50,7 +50,7 @@ router.get('/users/:userId/favorites/dishes', authToken, favoriteController.getU
 router.post('/users/:userId/favorites/dishes', authToken, favoriteController.addFavoriteDish);
 router.delete('/users/:userId/favorites/dishes/:dishId', authToken, favoriteController.removeFavoriteDish);
 
-// Review for user
+// review for user - need check
 router.get('/restaurants/:restaurantId/reviews', reviewController.getRestaurantReviews);
 router.post('/restaurants/:restaurantId/reviews', authToken, reviewController.addReviewForRestaurant);
 router.put('/reviews/:reviewId', authToken, reviewController.updateReview);
