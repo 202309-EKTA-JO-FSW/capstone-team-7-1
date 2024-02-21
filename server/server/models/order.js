@@ -1,12 +1,9 @@
 const mongoose = require('mongoose');
 
 const orderSchema = new mongoose.Schema({
-    item: [{ 
+    item: { 
         itemID: { type: mongoose.Schema.Types.ObjectId, ref:'Cart', require: true },
-        price: {type: string, required: true},
-        quantity: { type: String, require: true, min: 1 },
-        specialRequest: { type: string }
-    }],
+    },
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
@@ -22,7 +19,7 @@ const orderSchema = new mongoose.Schema({
     },
     Status: {
         type: String,
-        enum: ['Pending', 'Accepted', 'Preparing', 'On its Way', 'Delivered'],
+        enum: ['Pending', 'Accepted', 'Preparing', 'On its Way', 'Delivered', 'Canceled'],
         default: 'Pending',
         required: true
     },
@@ -38,10 +35,13 @@ const orderSchema = new mongoose.Schema({
         type: Boolean,
         default: false,
         required: true
-    }
+    },
+    specialRequest: {
+        type: String
+    },
   
 
 
 }, { timestamps: true });
 
-module.exports = mongoose.model('Order', OrderSchema);
+module.exports = mongoose.model('Order', orderSchema);

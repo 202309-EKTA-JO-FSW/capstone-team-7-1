@@ -11,7 +11,9 @@ const favRestaurantSchema = new mongoose.Schema({
         ref: 'Restaurant',
         required: true
     }],
+
     // fav order from a specific Restaurant is an optional choice
+    // Optional 
     order: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Order',

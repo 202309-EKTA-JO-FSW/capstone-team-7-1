@@ -6,15 +6,14 @@ const cartSchema = new mongoose.Schema({
         ref: 'User',
         required: true
     },
-    order: {
+    dishID: [{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Order',
-        required: true,
-        enum: ['Current', 'Previous'],
-    },
+        ref: 'Dish',
+        required: true
+    }],
     restaurant: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Restaurant',       
+        ref: 'Restaurant'
     },
     
 }, { timestamps: true });
