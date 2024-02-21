@@ -2,12 +2,12 @@ const mongoose = require('mongoose');
 
 const orderSchema = new mongoose.Schema({
     item: [{ 
-        itemID: { type: mongoose.Schema.Types.ObjectId, require: true },
+        itemID: { type: mongoose.Schema.Types.ObjectId, ref:'Cart', require: true },
         price: {type: string, required: true},
         quantity: { type: String, require: true, min: 1 },
         specialRequest: { type: string }
     }],
-    username: {
+    user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
         required: true
