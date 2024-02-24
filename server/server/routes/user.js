@@ -15,6 +15,7 @@ const userController = require("../controllers/userController");
 // Public API Endpoints..........
 router.post("/signin", userController.signIn);
 router.post("/signup", userController.signUp);
+router.post("/signout", userController.signOut);
 
 // private API Endpoints..........
 // here i put the cart crud 
