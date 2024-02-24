@@ -7,18 +7,18 @@ const userController = require("../controllers/userController");
 // const restaurantController = require('../controllers/restaurantController');
 // const dishController = require('../controllers/dishController');
 // const orderController = require('../controllers/orderController');
-const cartController = require('../controllers/cartController');
+// const cartController = require('../controllers/cartController');
 // const favoriteController = require('./controllers/favoriteController');
 // const reviewController = require('./controllers/reviewController');
 
 
 // Public API Endpoints..........
-// router.post("/signin", userController.signIn);
-// router.post("/signup", userController.signUp);
+router.post("/signin", userController.signIn);
+router.post("/signup", userController.signUp);
 
 // private API Endpoints..........
 // here i put the cart crud 
-router.get('/cart', authToken, cartController.getUserCart);
+// router.get('/cart', cartController.getUserCart);
 // router.post('/users/:userId/cart', authToken, cartController.addItemToCart);
 // router.put('/users/:userId/cart', authToken, cartController.updateCart);
 // router.delete('/users/:userId/cart', authToken, cartController.emptyCart);

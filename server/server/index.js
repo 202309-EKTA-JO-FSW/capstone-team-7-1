@@ -5,7 +5,6 @@ require("dotenv").config();
 
 const connectToMongo = require("./db/connection");
 
-// add this line..... 
 // const userRoutes = require("./routes/user");
 
 const app = express();
@@ -18,6 +17,8 @@ app.use(cors());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
+// app.use('/user',userRoutes);
+
 app.listen(port, () => {
   console.log(`Server listening on port ${port}`);
   connectToMongo();
@@ -29,11 +30,5 @@ app.get("/test", (req, res) => {
   );
 });
 
-
-// const cartController=(req, res)=> { // http://localhost:80/cart?userId=hello
-//   let data = decodeURI(req.query.hakeema);
-//   res.json({you_sayed: data}); // { you_sayed: "hello" }
-// }
-// app.get('/cart', cartController) 
 
 module.exports = app;
