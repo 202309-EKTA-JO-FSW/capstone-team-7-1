@@ -7,7 +7,7 @@ const userController = {
       const { userName, email, password, profilePicture, gender, address, phone } = req.body;
   
       try {
-        // Check for existing user
+        // Check for existing user 
         const existingUser = await userModel.findOne({ email });
         if (existingUser) {
           return res.status(400).send('User already exists');
