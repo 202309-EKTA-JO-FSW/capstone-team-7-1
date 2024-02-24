@@ -31,4 +31,8 @@ app.get("/test", (req, res) => {
 });
 
 
+// app.get('/signout', (req, res) => {
+//   res.send('signout successfull')
+// })
+
 module.exports = app;

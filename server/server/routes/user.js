@@ -7,7 +7,7 @@ const userController = require("../controllers/userController");
 // const restaurantController = require('../controllers/restaurantController');
 // const dishController = require('../controllers/dishController');
 // const orderController = require('../controllers/orderController');
-// const cartController = require('../controllers/cartController');
+const cartController = require('../controllers/cartController');
 // const favoriteController = require('./controllers/favoriteController');
 // const reviewController = require('./controllers/reviewController');
 
@@ -19,10 +19,10 @@ router.post("/signout", userController.signOut);
 
 // private API Endpoints..........
 // here i put the cart crud 
-// router.get('/cart', cartController.getUserCart);
-// router.post('/users/:userId/cart', authToken, cartController.addItemToCart);
-// router.put('/users/:userId/cart', authToken, cartController.updateCart);
-// router.delete('/users/:userId/cart', authToken, cartController.emptyCart);
+router.get('/cart', cartController.getUserCart);
+router.post('/users/:userId/cart', cartController.addItemToCart);
+router.put('/users/:userId/cart', cartController.updateCart);
+router.delete('/users/:userId/cart',cartController.emptyCart);
 
 // here i put the restaurant crud, user can just fetch multi resturants and specfic resturant 
 // router.get('/restaurants', restaurantController.getAllRestaurants);
