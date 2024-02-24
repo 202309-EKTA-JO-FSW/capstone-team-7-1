@@ -1,5 +1,5 @@
 const express = require("express");
-const userModel = require("../models/user");
+const User = require("../models/user");
 
 const userController = {
     // Sign Up
@@ -8,13 +8,13 @@ const userController = {
   
       try {
         // Check for existing user 
-        const existingUser = await userModel.findOne({ email });
+        const existingUser = await User.findOne({ email });
         if (existingUser) {
           return res.status(400).send('User already exists');
         }
   
         // Create user directly without hashing the password (Not recommended for production)
-        const user = await userModel.create({
+        const user = await User.create({
           userName,
           email,
           password, // Password is stored as plain text (Not secure)
@@ -41,7 +41,7 @@ const userController = {
   
       try {
         // Check for user's existence and match the password directly (Not secure)
-        const user = await userModel.findOne({ email, password });
+        const user = await User.findOne({ email, password });
         if (user) {
           res.json({
             _id: user._id,

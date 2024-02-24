@@ -1,14 +1,12 @@
 const express = require("express");
-const cartItemsModel = require("../models/cart_items");
-
-const Cart = require('../models/Cart'); // Assuming your Cart model is in the models folder
+const Cart = require("../models/cart_items");
 
 // Get user's cart
 const getUserCart = async (req, res) => {
     try {
         const cart = await Cart.findOne({ userName: req.user._id }) // Assuming req.user._id is set after authentication
-                            .populate('dishID')
-                            .populate('restaurant');
+            .populate('dishID')
+            .populate('restaurant');
         if (!cart) {
             return res.status(404).send('Cart not found');
         }
