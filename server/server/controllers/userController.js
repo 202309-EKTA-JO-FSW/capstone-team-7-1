@@ -2,7 +2,7 @@ const express = require("express");
 const User = require("../models/user");
 
 const userController = {
-    // Sign Up
+    // Sign Up....
     signUp: async (req, res) => {
       const { userName, email, password, profilePicture, gender, address, phone } = req.body;
   
@@ -35,7 +35,7 @@ const userController = {
       }
     },
   
-    // Sign In
+    // Sign In....
     signIn: async (req, res) => {
       const { email, password } = req.body;
   
@@ -57,7 +57,8 @@ const userController = {
       }
     },
   
-    // Sign Out
+    // Sign Out....
+    // here i try to put signout in index.js and its work in postman otherwise its not work when i test them in controllers
     signOut: (req, res) => {
       res.send('Sign-out successful');
     },
