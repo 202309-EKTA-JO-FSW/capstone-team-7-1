@@ -13,11 +13,11 @@ const userController = {
           return res.status(400).send('User already exists');
         }
   
-        // Create user directly without hashing the password (Not recommended for production)
+       
         const user = await User.create({
           userName,
           email,
-          password, // Password is stored as plain text (Not secure)
+          password, 
           profilePicture,
           gender,
           address,
@@ -40,7 +40,7 @@ const userController = {
       const { email, password } = req.body;
   
       try {
-        // Check for user's existence and match the password directly (Not secure)
+        // Check for user's existence 
         const user = await User.findOne({ email, password });
         if (user) {
           res.json({
