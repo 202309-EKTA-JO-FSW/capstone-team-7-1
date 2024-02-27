@@ -5,11 +5,11 @@ const dishSchema = new mongoose.Schema({
         type: String,
         require: true
     },
-    restaurant: [{
+    restaurant: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Restaurant',
         required: true
-      }],
+      },
     image: {
         type: String,
     },
