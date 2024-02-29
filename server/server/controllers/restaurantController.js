@@ -6,6 +6,11 @@ const restaurantModel = require("../models/restaurant");
 const getAllRestaurants = async (req, res) => {
     try {
         const allRestaurants = await restaurantModel.find({})
+        
+        if (!allRestaurants) {
+            res.status(404).json({message: "No Restaurants Available"})
+        }
+
         res.status(200).json(allRestaurants)
     }
     catch {
