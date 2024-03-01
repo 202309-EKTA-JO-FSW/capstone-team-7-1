@@ -3,34 +3,39 @@ const mongoose = require('mongoose');
 const restaurantSchema = new mongoose.Schema({
     name: {
         type: String,
-        require: true
+        required: true
     },
-    Address: {
-        street: {type: String,require: true},
-        city: {type: String,require: true}
+    address: {
+        street: {
+            type: String,
+            require: true
+        },
+        city: {
+            type: String,
+            require: true
+        }
     },
     openingHours: {
         type: String,
-        require: true
+        required: true
     },
     closingHours: {
         type: String,
-        require: true
     },
     logo: {
         type: String,
     },
     description: {
         type: String,
-        require: true
+        required: true
     },
     phone: {
         type: Number,
-        require: true
+        required: true
     },
     cuisineType: {
-        type: [string],
-        require: true
+        type: [String],
+        required: true
     },
     rate: {
         type: Number,
@@ -39,6 +44,8 @@ const restaurantSchema = new mongoose.Schema({
     },
 
 
-}, { timestamps: true });
+}
+
+);
 
 module.exports = mongoose.model('Restaurant', restaurantSchema);

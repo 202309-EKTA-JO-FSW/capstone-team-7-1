@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const dishSchema = new mongoose.Schema({
     name: {
         type: String,
-        require: true
+        required: true
     },
     restaurant: [{
         type: mongoose.Schema.Types.ObjectId,
@@ -15,19 +15,19 @@ const dishSchema = new mongoose.Schema({
     },
     description: {
         type: String,
-        require: true
+        required: true
     },
     price: {
         type: Number,
-        require: true
+        required: true
     },
     category: {
         type: [String],
-        require: true
+        required: true
     },
     ingredients: {
         type: [String],
-        require: true
+        required: true
     }
 
 

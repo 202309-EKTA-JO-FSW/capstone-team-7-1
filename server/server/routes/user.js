@@ -8,8 +8,10 @@ const restaurantController = require('../controllers/restaurantController');
 const dishController = require('../controllers/dishController');
 const orderController = require('../controllers/orderController');
 const cartController = require('../controllers/cartController');
-const favoriteController = require('./controllers/favoriteController');
-const reviewController = require('./controllers/reviewController');
+
+const favoriteController = require('../controllers/favoriteController');
+const reviewController = require('../controllers/reviewController');
+
 
 
 // Public API Endpoints..........
@@ -25,7 +27,11 @@ router.delete('/users/:userId/cart', authToken, cartController.emptyCart);
 
 // here i put the restaurant crud, user can just fetch multi resturants and specfic resturant 
 router.get('/restaurants', restaurantController.getAllRestaurants);
-router.get('/restaurants/:restaurantId', restaurantController.getRestaurant);
+
+router.get('/restaurants/:restaurantID', restaurantController.getRestaurant);
+
+//test purposes
+router.post('/addRestaurant', restaurantController.addNewRestaurants);
 
 // profile crud , just fetch and update the profile
 router.get('/users/:userId', authToken, userController.getUserProfile);
