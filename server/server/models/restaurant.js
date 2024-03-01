@@ -8,11 +8,11 @@ const restaurantSchema = new mongoose.Schema({
     address: {
         street: {
             type: String,
-            require: true
+            required: true
         },
         city: {
             type: String,
-            require: true
+            required: true
         }
     },
     openingHours: {
