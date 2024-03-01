@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-const authToken=require('../middlewares/isAuthenticated')
+//const authToken=require('../middlewares/isAuthenticated')
 
 const userController = require("../controllers/userController");
 const restaurantController = require('../controllers/restaurantController');
@@ -41,14 +41,15 @@ router.get('/dishes', dishController.getAllDishes);
 router.get('/dishes/:dishID', dishController.getDish);
 
 // test purposes 
-
 router.post('/addDish', dishController.addNewDish);
 
-// // order crud
-// router.get('/users/:userId/orders', authToken, orderController.getUserOrders);
-// router.post('/users/:userId/orders', authToken, orderController.createOrder);
-// router.get('/orders/:orderId', authToken, orderController.getOrder);
-// router.delete('/orders/:orderId', authToken, orderController.deleteOrder);
+
+// order crud
+router.get('/users/:userID/orders',  orderController.getUserOrders);
+router.post('/users/:userID/orders', orderController.createOrder);
+
+router.get('/orders/:orderID',  orderController.getOrder);
+router.delete('/orders/:orderID', orderController.deleteOrder);
 
 
 // // favorites crud 
