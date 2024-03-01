@@ -24,9 +24,13 @@ const cartController = require('../controllers/cartController');
 // router.put('/users/:userId/cart', authToken, cartController.updateCart);
 // router.delete('/users/:userId/cart', authToken, cartController.emptyCart);
 
-// // here i put the restaurant crud, user can just fetch multi resturants and specfic resturant 
-// router.get('/restaurants', restaurantController.getAllRestaurants);
-// router.get('/restaurants/:restaurantId', restaurantController.getRestaurant);
+// here i put the restaurant crud, user can just fetch multi resturants and specfic resturant 
+router.get('/restaurants', restaurantController.getAllRestaurants);
+
+router.get('/restaurants/:restaurantID', restaurantController.getRestaurant);
+
+//test purposes
+router.post('/addRestaurant', restaurantController.addNewRestaurants);
 
 // // profile crud , just fetch and update the profile
 // router.get('/users/:userId', authToken, userController.getUserProfile);
