@@ -1,4 +1,7 @@
 const express = require("express");
+
+/////////
+const userRoutes = require("./routes/user") 
 const cors = require("cors");
 
 require("dotenv").config();
@@ -11,9 +14,13 @@ const port =
     ? process.env.NODE_LOCAL_TEST_PORT
     : process.env.NODE_LOCAL_PORT;
 
+
 app.use(cors());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+
+
+app.use('/', userRoutes) // userRoutes 
 
 app.listen(port, () => {
   console.log(`Server listening on port ${port}`);
