@@ -8,8 +8,9 @@ const restaurantController = require('../controllers/restaurantController');
 const dishController = require('../controllers/dishController');
 const orderController = require('../controllers/orderController');
 const cartController = require('../controllers/cartController');
-const favoriteController = require('./controllers/favoriteController');
-const reviewController = require('./controllers/reviewController');
+
+// const favoriteController = require('./controllers/favoriteController');
+// const reviewController = require('./controllers/reviewController');
 
 
 // // Public API Endpoints..........
@@ -33,7 +34,7 @@ const reviewController = require('./controllers/reviewController');
 
 // dish crud
 router.get('/dishes', dishController.getAllDishes);
-router.get('/dishes/:dishId', dishController.getDish);
+router.get('/dishes/:dishID', dishController.getDish);
 
 // test purposes 
 

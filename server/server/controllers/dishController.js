@@ -21,7 +21,7 @@ const getAllDishes = async (req, res) => {
 
 const addNewDish = async (req,res) => {
     try{
-        const { name, restaurant,image, description, price,category, ingredients} = req.body || {};
+        const { name, restaurant,image, description, price,category, ingredients} = req.body;
 
         if (!name || !restaurant || !description || !price || !category || !ingredients) {
 
@@ -49,19 +49,20 @@ const addNewDish = async (req,res) => {
 
 // getting a specific Dish ( get )
 const getDish = async (req, res) => {
-    const {dishID} = req.params
+    const  {dishID}  = req.params;
     try {
-        const getDishtWithID = await dishModel.findById(dishID)
+        const getDishWithID = await dishModel.findById(dishID);
         
-        if (!getDishtWithID)
-        res.status(422).json("this Dish is not Found")    
+        if (!getDishWithID)
+            return res.status(422).json(`This dish is not found: ${dishID}`);
 
-        res.status(200).json(getRestaurantWithID)
+        return res.status(200).json(getDishWithID);
     }
-    catch {
-        res.json({ error: 'unable to fetch restaurant' });
+    catch (err) {
+        return res.status(500).json({ error: err.message });
     }
 }
+
 
 
 module.exports = {
