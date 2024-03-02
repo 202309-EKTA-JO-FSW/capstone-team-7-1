@@ -1,16 +1,9 @@
 const express = require("express");
 const Cart = require("../models/cart_items");
+const mongoose = require('mongoose');
 
 
 // Get user's cart
-
-// const getUserCart = async (req, res) => {
-//     try {
-//         res.json({ message: "Route hit successfully, user object not accessed." });
-//     } catch (error) {
-//         res.status(500).send(error.message);
-//     }
-// };
 
 const getUserCart = async (req, res) => {
     const userId = req.params.userId;
@@ -27,27 +20,44 @@ const getUserCart = async (req, res) => {
     }
 };
 
-// Add item to cart
+///////////////////////////////////////////////////////////////////////***************
 const addItemToCart = async (req, res) => {
     const { dishID } = req.body;
     const { userId } = req.params;
+
+    console.log("UserID:", userId);
+    console.log("DishID:", dishID);
+
+    if (!userId || !dishID) {
+        return res.status(400).send('userId or dishID is missing or invalid');
+    }
+
+    if (!mongoose.Types.ObjectId.isValid(userId) || !mongoose.Types.ObjectId.isValid(dishID)) {
+        return res.status(400).send('Invalid userId or dishID format');
+    }
+
     try {
-        let cart = await Cart.findOne({ userName: userId });
+        let cart = await Cart.findOne({ userName: mongoose.Types.ObjectId(userId) });
         if (!cart) {
             cart = new Cart({
-                userName: userId,
-                dishID: [dishID], // Starting with the one dish
-                // Assuming restaurant is not mandatory or can be derived from the dish
+                userName: mongoose.Types.ObjectId(userId),
+                dishID: [mongoose.Types.ObjectId(dishID)],
             });
         } else {
-            cart.dishID.push(dishID);
+            cart.dishID.push(mongoose.Types.ObjectId(dishID));
         }
+
         await cart.save();
-        res.status(201).json(cart);
+        return res.status(201).json(cart);
     } catch (error) {
-        res.status(500).send(error.message);
+        console.error('Error adding item to cart:', error);
+        return res.status(500).send(error.message);
     }
 };
+
+
+
+
 
 // Update cart
 const updateCart = async (req, res) => {
@@ -56,7 +66,7 @@ const updateCart = async (req, res) => {
     try {
         const cart = await Cart.findOneAndUpdate({ userName: userId }, updateData, { new: true });
         if (!cart) {
-            return res.status(404).send('Cart not found');
+            return res.status(404).send('Cart not found hakeema');
         }
         res.json(cart);
     } catch (error) {
@@ -70,7 +80,7 @@ const emptyCart = async (req, res) => {
     try {
         const cart = await Cart.findOne({ userName: userId });
         if (!cart) {
-            return res.status(404).send('Cart not found');
+            return res.status(404).send('Cart not found mais');
         }
         cart.dishID = []; // Remove all items from the cart
         await cart.save();

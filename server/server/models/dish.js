@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const dishSchema = new mongoose.Schema({
     name: {
         type: String,
-        require: true
+        required: true
     },
     restaurant: [{
         type: mongoose.Schema.Types.ObjectId,
