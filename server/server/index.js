@@ -1,6 +1,8 @@
 const express = require("express");
 const cors = require("cors");
 
+const userRoutes = require("./routes/user") //.........
+
 require("dotenv").config();
 
 const connectToMongo = require("./db/connection");
@@ -14,6 +16,8 @@ const port =
 app.use(cors());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+
+app.use('/', userRoutes) // userRoutes ......
 
 app.listen(port, () => {
   console.log(`Server listening on port ${port}`);

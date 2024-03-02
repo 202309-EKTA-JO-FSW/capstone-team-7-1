@@ -1,10 +1,11 @@
 const express = require("express");
 const Cart = require("../models/cart_items");
 
+
 // Get user's cart
 const getUserCart = async (req, res) => {
     try {
-        const cart = await Cart.findOne({ userName: req.user._id }) // Assuming req.user._id is set after authentication
+        const cart = await Cart.findOne({ userName: req.user._id }) 
             .populate('dishID')
             .populate('restaurant');
         if (!cart) {
