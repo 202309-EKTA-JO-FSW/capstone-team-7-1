@@ -13,42 +13,42 @@ router.post("/signout",checkBlackListedToken, userController.signout);
 
 
 // Add cart routes
-router.get('/cart', userController.getUserCart);
-router.post('/users/:userId/cart', userController.addItemToCart);
-router.put('/users/:userId/cart', userController.updateCart);
-router.delete('/users/:userId/cart',userController.emptyCart);
+// router.get('/cart', cartController.getUserCart);
+// router.post('/users/:userId/cart', cartController.addItemToCart);
+// router.put('/users/:userId/cart', cartController.updateCart);
+// router.delete('/users/:userId/cart',cartController.emptyCart);
 
 // Add restaurant route // user can just fetch multi resturants and specfic resturant 
-router.get('/restaurants', userController.getAllRestaurants);
-router.get('/restaurants/:restaurantId', userController.getRestaurant);
+// router.get('/restaurants', restaurantController.getAllRestaurants);
+// router.get('/restaurants/:restaurantId', restaurantController.getRestaurant);
 
 // Add profile route // just fetch and update the profile
 router.get('/users/:userId', checkBlackListedToken, userController.getUserProfile);
 router.put('/users/:userId', checkBlackListedToken, userController.updateUserProfile);
 
 // Add dish routes
-router.get('/dishes', userController.getAllDishes);
-router.get('/dishes/:dishId',userController.getDish);
+// router.get('/dishes', dishController.getAllDishes);
+// router.get('/dishes/:dishId',dishController.getDish);
 
 // Add order routes
-router.get('/users/:userId/orders', checkBlackListedToken, userController.getUserOrders);
-router.post('/users/:userId/orders', checkBlackListedToken, userController.createOrder);
-router.get('/orders/:orderId', checkBlackListedToken, userController.getOrder);
-router.delete('/orders/:orderId', checkBlackListedToken, userController.deleteOrder);
+// router.get('/users/:userId/orders', checkBlackListedToken, orderController.getUserOrders);
+// router.post('/users/:userId/orders', checkBlackListedToken, orderController.createOrder);
+// router.get('/orders/:orderId', checkBlackListedToken, orderController.getOrder);
+// router.delete('/orders/:orderId', checkBlackListedToken, orderController.deleteOrder);
 
 
 // Add favorites routes
-router.get('/users/:userId/favorites/restaurants', checkBlackListedToken, userController.getUserFavoriteRestaurants);
-router.post('/users/:userId/favorites/restaurants', checkBlackListedToken, userController.addFavoriteRestaurant);
-router.delete('/users/:userId/favorites/restaurants/:restaurantId', checkBlackListedToken, userController.removeFavoriteRestaurant);
-router.get('/users/:userId/favorites/dishes', checkBlackListedToken, userController.getUserFavoriteDishes);
-router.post('/users/:userId/favorites/dishes', checkBlackListedToken, userController.addFavoriteDish);
-router.delete('/users/:userId/favorites/dishes/:dishId', checkBlackListedToken, userController.removeFavoriteDish);
+// router.get('/users/:userId/favorites/restaurants', checkBlackListedToken, favoriteController.getUserFavoriteRestaurants);
+// router.post('/users/:userId/favorites/restaurants', checkBlackListedToken, favoriteController.addFavoriteRestaurant);
+// router.delete('/users/:userId/favorites/restaurants/:restaurantId', checkBlackListedToken, favoriteController.removeFavoriteRestaurant);
+// router.get('/users/:userId/favorites/dishes', checkBlackListedToken, favoriteController.getUserFavoriteDishes);
+// router.post('/users/:userId/favorites/dishes', checkBlackListedToken, favoriteController.addFavoriteDish);
+// router.delete('/users/:userId/favorites/dishes/:dishId', checkBlackListedToken, favoriteController.removeFavoriteDish);
 
 // Add review routes - need check
-router.get('/restaurants/:restaurantId/reviews', userController.getRestaurantReviews);
-router.post('/restaurants/:restaurantId/reviews', checkBlackListedToken, userController.addReviewForRestaurant);
-router.put('/reviews/:reviewId', checkBlackListedToken, userController.updateReview);
-router.delete('/reviews/:reviewId', checkBlackListedToken, userController.deleteReview);
+// router.get('/restaurants/:restaurantId/reviews', reviewController.getRestaurantReviews);
+// router.post('/restaurants/:restaurantId/reviews', checkBlackListedToken, reviewController.addReviewForRestaurant);
+// router.put('/reviews/:reviewId', checkBlackListedToken, reviewController.updateReview);
+// router.delete('/reviews/:reviewId', checkBlackListedToken, reviewController.deleteReview);
 
 module.exports = router;
