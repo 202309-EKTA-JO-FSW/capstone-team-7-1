@@ -20,7 +20,7 @@ const getUserCart = async (req, res) => {
     }
 };
 
-///////////////////////////////////////////////////////////////////////***************
+//*******************************************************************//
 const addItemToCart = async (req, res) => {
     const { dishID } = req.body;
     const { userId } = req.params;
@@ -55,10 +55,7 @@ const addItemToCart = async (req, res) => {
     }
 };
 
-
-
-
-
+//*******************************************************************//
 // Update cart
 const updateCart = async (req, res) => {
     const { userId } = req.params;
