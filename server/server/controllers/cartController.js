@@ -3,13 +3,23 @@ const Cart = require("../models/cart_items");
 
 
 // Get user's cart
+
+// const getUserCart = async (req, res) => {
+//     try {
+//         res.json({ message: "Route hit successfully, user object not accessed." });
+//     } catch (error) {
+//         res.status(500).send(error.message);
+//     }
+// };
+
 const getUserCart = async (req, res) => {
+    const userId = req.params.userId;
     try {
-        const cart = await Cart.findOne({ userName: req.user._id }) 
+        const cart = await Cart.findOne({ userName: userId}) 
             .populate('dishID')
             .populate('restaurant');
         if (!cart) {
-            return res.status(404).send('Cart not found');
+            return res.status(404).send('Cart is not found');
         }
         res.json(cart);
     } catch (error) {
