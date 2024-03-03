@@ -60,7 +60,7 @@ const addItemToCart = async (req, res) => {
     }
 };
 
-//*******************************************************************
+//*******************************************************************//Done
 // Update cart
 const updateCart = async (req, res) => {
     const { userId } = req.params;
@@ -68,7 +68,7 @@ const updateCart = async (req, res) => {
     try {
         const cart = await Cart.findOneAndUpdate({ userName: userId }, updateData, { new: true });
         if (!cart) {
-            return res.status(404).send('Cart not found hakeema');
+            return res.status(404).send('Cart is not found !! ');
         }
         res.json(cart);
     } catch (error) {
@@ -83,7 +83,7 @@ const emptyCart = async (req, res) => {
     try {
         const cart = await Cart.findOne({ userName: userId });
         if (!cart) {
-            return res.status(404).send('Cart not found mais');
+            return res.status(404).send('Cart not found ');
         }
         cart.dishID = []; // Remove all items from the cart
         await cart.save();
