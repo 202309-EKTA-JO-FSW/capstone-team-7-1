@@ -5,7 +5,7 @@ const Dish = require('../models/dish');
 const Restaurant = require('../models/restaurant');
 
 //*******************************************************************//Done
-
+// Get userCart
 const getUserCart = async (req, res) => {
     const userId = req.params.userId;
 
@@ -28,6 +28,7 @@ const getUserCart = async (req, res) => {
 };
 
 //*******************************************************************//Done
+// Add items 
 const addItemToCart = async (req, res) => {
     const { dishID } = req.body;
     const { userId } = req.params;
@@ -75,8 +76,7 @@ const updateCart = async (req, res) => {
         res.status(500).send(error.message);
     }
 };
-//*******************************************************************//
-
+//*******************************************************************//Done
 // Empty cart
 const emptyCart = async (req, res) => {
     const { userId } = req.params;
@@ -85,7 +85,7 @@ const emptyCart = async (req, res) => {
         if (!cart) {
             return res.status(404).send('Cart not found ');
         }
-        cart.dishID = []; // Remove all items from the cart
+        cart.dishID = []; 
         await cart.save();
         res.send('Cart has been emptied');
     } catch (error) {
