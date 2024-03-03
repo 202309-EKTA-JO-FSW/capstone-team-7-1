@@ -76,6 +76,7 @@ const updateCart = async (req, res) => {
         res.status(500).send(error.message);
     }
 };
+
 //*******************************************************************//Done
 // Empty cart
 const emptyCart = async (req, res) => {
