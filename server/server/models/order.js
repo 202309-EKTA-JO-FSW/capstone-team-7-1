@@ -15,7 +15,7 @@ const orderSchema = new mongoose.Schema({
     },
     orderDate: {
         type: Date(),
-        require: true
+        required: true
     },
     Status: {
         type: String,
@@ -25,11 +25,11 @@ const orderSchema = new mongoose.Schema({
     },
     numberOfItems: {
         type: Number,
-        require: true
+        required: true
     },
     totalPrice: {
         type: Number,
-        require: true
+        required: true
     },
     isDelivered: {
         type: Boolean,
