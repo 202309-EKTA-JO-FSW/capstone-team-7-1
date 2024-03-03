@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const orderSchema = new mongoose.Schema({
     item: { 
-        itemID: { type: mongoose.Schema.Types.ObjectId, ref:'Cart', require: true },
+        itemID: { type: mongoose.Schema.Types.ObjectId, ref:'Cart', required: true },
     },
     user: {
         type: mongoose.Schema.Types.ObjectId,
@@ -10,8 +10,8 @@ const orderSchema = new mongoose.Schema({
         required: true
     },
     deliveryAddress: {
-        street: {type: String,require: true},
-        city: {type: String,require: true}
+        street: {type: String,required: true},
+        city: {type: String,required: true}
     },
     orderDate: {
         type: Date(),
