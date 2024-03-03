@@ -18,36 +18,36 @@ const getAllRestaurants = async (req, res) => {
     }
 }
 
-const addNewRestaurants = async (req, res) => {
-    try{
-        const { name, address, openingHours, closingHours,logo, description, phone, cuisineType, rate } = req.body || {};
+// const addNewRestaurants = async (req, res) => {
+//     try{
+//         const { name, address, openingHours, closingHours,logo, description, phone, cuisineType, rate } = req.body || {};
 
-        if (!name || !address || !openingHours || !description || !phone || !cuisineType) {
-            console.log(req.body);
+//         if (!name || !address || !openingHours || !description || !phone || !cuisineType) {
+//             console.log(req.body);
 
-            return res.status(400).json({ message: `some data is missing ${ req.body }`})
-        }
+//             return res.status(400).json({ message: `some data is missing ${ req.body }`})
+//         }
 
-        const newRestaurant = new restaurantModel({
-            name,
-            address,
-            openingHours,
-            closingHours,
-            logo,
-            description,
-            phone,
-            cuisineType,
-            rate,
-        });
+//         const newRestaurant = new restaurantModel({
+//             name,
+//             address,
+//             openingHours,
+//             closingHours,
+//             logo,
+//             description,
+//             phone,
+//             cuisineType,
+//             rate,
+//         });
 
-        await newRestaurant.save();
+//         await newRestaurant.save();
 
-        return res.status(200).json({message: "restaurant added successfully"});
-    }
-    catch(err){
-        return res.status(400).json(err.message);
-    }
-};
+//         return res.status(200).json({message: "restaurant added successfully"});
+//     }
+//     catch(err){
+//         return res.status(400).json(err.message);
+//     }
+// };
 
 // getting a specific restaurant
 const getRestaurant = async (req, res) => {

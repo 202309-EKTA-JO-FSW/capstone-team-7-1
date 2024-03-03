@@ -19,33 +19,33 @@ const getAllDishes = async (req, res) => {
     }
 }
 
-const addNewDish = async (req,res) => {
-    try{
-        const { name, restaurant,image, description, price,category, ingredients} = req.body;
+// const addNewDish = async (req,res) => {
+//     try{
+//         const { name, restaurant,image, description, price,category, ingredients} = req.body;
 
-        if (!name || !restaurant || !description || !price || !category || !ingredients) {
+//         if (!name || !restaurant || !description || !price || !category || !ingredients) {
 
-            return res.status(400).json({ message: `some data is missing ${ req.body }`})
-        }
+//             return res.status(400).json({ message: `some data is missing ${ req.body }`})
+//         }
 
-        const newDish = new dishModel({
-            name,
-            restaurant,
-            image,
-            description,
-            price,
-            category,
-            ingredients,
-        });
+//         const newDish = new dishModel({
+//             name,
+//             restaurant,
+//             image,
+//             description,
+//             price,
+//             category,
+//             ingredients,
+//         });
 
-        await newDish.save();
+//         await newDish.save();
 
-        return res.status(200).json({message: "Dish added successfully"});
-    }
-    catch(err){
-        return res.status(400).json(err.message);
-    }
-}
+//         return res.status(200).json({message: "Dish added successfully"});
+//     }
+//     catch(err){
+//         return res.status(400).json(err.message);
+//     }
+// }
 
 // getting a specific Dish ( get )
 const getDish = async (req, res) => {
