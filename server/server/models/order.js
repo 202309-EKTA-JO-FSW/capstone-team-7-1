@@ -14,7 +14,8 @@ const orderSchema = new mongoose.Schema({
         city: {type: String,required: true}
     },
     orderDate: {
-        type: Date(),
+        type: Date,
+        default: Date.now(),
         required: true
     },
     Status: {

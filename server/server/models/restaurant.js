@@ -6,6 +6,7 @@ const restaurantSchema = new mongoose.Schema({
         required: true
     },
 
+
     Address: {
         street: {type: String,required: true},
         city: {type: String,required: true}
@@ -17,7 +18,8 @@ const restaurantSchema = new mongoose.Schema({
     },
     closingHours: {
         type: String,
-      required: true
+        required: true
+
     },
     logo: {
         type: String,
@@ -39,10 +41,7 @@ const restaurantSchema = new mongoose.Schema({
         min: 0,
         max: 5,
     },
+},{ timestamps: true });
 
-
-}
-
-);
 
 module.exports = mongoose.model('Restaurant', restaurantSchema);
