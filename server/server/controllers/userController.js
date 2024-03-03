@@ -6,12 +6,12 @@ const passwordValidator = require('password-validator');
 const secretKey = process.env.ACCESS_TOKEN_SECRET;
 
 const userModel = require('../models/user');
-const restaurantsModel = require('../models/restaurant');
-const dishModel = require('../models/dish');
-const orderModel = require("../models/order");
-const reviewsModel = require('../models/review');
-const favoriteModel = require('../models/fav_restaurant');
-const cartModel = require('../models/cart_items');
+// const restaurantsModel = require('../models/restaurant');
+// const dishModel = require('../models/dish');
+// const orderModel = require("../models/order");
+// const reviewsModel = require('../models/review');
+// const favoriteModel = require('../models/fav_restaurant');
+// const cartModel = require('../models/cart_items');
 const blackListedTokensModel = require('../models/blackListedTokens');
 
 const userController= {};

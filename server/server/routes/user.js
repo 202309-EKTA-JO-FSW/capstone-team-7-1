@@ -7,8 +7,8 @@ const userController = require("../controllers/userController");
 
 
 // Add user routes
-router.post("/signin", userController.signin);
-router.post("/signup", userController.signup);
+router.post("/user/signin", userController.signin);
+router.post("/user/signup", userController.signup);
 // router.post("/signout",checkBlackListedToken, userController.signout);
 
 
