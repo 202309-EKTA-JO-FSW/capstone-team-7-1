@@ -17,7 +17,7 @@ app.use(cors());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
-app.use('/user',userRoutes); // add....
+app.use('/',userRoutes); // add....
 
 app.listen(port, () => {
   console.log(`Server listening on port ${port}`);

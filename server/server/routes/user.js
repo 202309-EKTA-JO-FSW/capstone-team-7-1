@@ -9,11 +9,11 @@ const userController = require("../controllers/userController");
 // Add user routes
 router.post("/signin", userController.signin);
 router.post("/signup", userController.signup);
-router.post("/signout",checkBlackListedToken, userController.signout);
+// router.post("/signout",checkBlackListedToken, userController.signout);
 
 
 // Add cart routes
-// router.get('/cart', cartController.getUserCart);
+// router.get('/users/:userId/cart', cartController.getUserCart);
 // router.post('/users/:userId/cart', cartController.addItemToCart);
 // router.put('/users/:userId/cart', cartController.updateCart);
 // router.delete('/users/:userId/cart',cartController.emptyCart);
@@ -23,8 +23,8 @@ router.post("/signout",checkBlackListedToken, userController.signout);
 // router.get('/restaurants/:restaurantId', restaurantController.getRestaurant);
 
 // Add profile route // just fetch and update the profile
-router.get('/users/:userId', checkBlackListedToken, userController.getUserProfile);
-router.put('/users/:userId', checkBlackListedToken, userController.updateUserProfile);
+// router.get('/users/:userId', checkBlackListedToken, userController.getUserProfile);
+// router.put('/users/:userId', checkBlackListedToken, userController.updateUserProfile);
 
 // Add dish routes
 // router.get('/dishes', dishController.getAllDishes);
