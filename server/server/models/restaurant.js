@@ -5,12 +5,9 @@ const restaurantSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-
-
     Address: {
         street: {type: String,required: true},
         city: {type: String,required: true}
-
     },
     openingHours: {
         type: String,
@@ -19,7 +16,6 @@ const restaurantSchema = new mongoose.Schema({
     closingHours: {
         type: String,
         required: true
-
     },
     logo: {
         type: String,
