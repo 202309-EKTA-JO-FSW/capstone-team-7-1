@@ -3,7 +3,6 @@ const mongoose = require('mongoose');
 const cartSchema = new mongoose.Schema({
     userName: {
         type: mongoose.Schema.Types.ObjectId,
-        type: String,
         ref: 'User',
         required: true
     },

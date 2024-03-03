@@ -14,11 +14,11 @@ const cartController = require("../controllers/cartController");
 
 
 // Add cart routes
-router.get('/cart', cartController.getUserCart);
+router.get('/users/:userId/cart', cartController.getUserCart);
 router.post('/users/:userId/cart', cartController.addItemToCart);
 
-router.put('/users/:userId/cart', cartController.updateCart);
-router.delete('/users/:userId/cart',cartController.emptyCart);
+// router.put('/users/:userId/cart', cartController.updateCart);
+// router.delete('/users/:userId/cart',cartController.emptyCart);
 
 // Add restaurant route // user can just fetch multi resturants and specfic resturant 
 // router.get('/restaurants', restaurantController.getAllRestaurants);

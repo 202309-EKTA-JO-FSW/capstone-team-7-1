@@ -3,12 +3,15 @@ const Cart = require("../models/cart_items");
 const mongoose = require('mongoose');
 
 
-// Get user's cart
 
-const getUserCart = async (req, res) => {
+
+ const getUserCart = async (req, res) => {
     const userId = req.params.userId;
+    if (!mongoose.Types.ObjectId.isValid(userId)) {
+        return res.status(400).send('Invalid userId format');
+    }
     try {
-        const cart = await Cart.findOne({ userName: userId}) 
+        const cart = await Cart.findOne({ userName: mongoose.Types.ObjectId(userId) })
             .populate('dishID')
             .populate('restaurant');
         if (!cart) {
@@ -20,13 +23,32 @@ const getUserCart = async (req, res) => {
     }
 };
 
+
+
+
+
+//1111111 Get user's cart
+
+// const getUserCart = async (req, res) => {
+//     const userId = req.params.userId;
+//     try {
+//         const cart = await Cart.findOne({ userName: userId}) 
+//             .populate('dishID')
+//             .populate('restaurant');
+//         if (!cart) {
+//             return res.status(404).send('Cart is not found');
+//         }
+//         res.json(cart);
+//     } catch (error) {
+//         res.status(500).send(error.message);
+//     }
+// };
+
 //*******************************************************************//
 const addItemToCart = async (req, res) => {
     const { dishID } = req.body;
     const { userId } = req.params;
 
-    console.log("UserID:", userId);
-    console.log("DishID:", dishID);
 
     if (!userId || !dishID) {
         return res.status(400).send('userId or dishID is missing or invalid');
