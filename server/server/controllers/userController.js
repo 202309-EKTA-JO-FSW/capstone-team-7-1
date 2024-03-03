@@ -64,18 +64,10 @@ validateCriteria
     };
 
       const accessToken = jwt.sign(content, secretKey, {expiresIn: "1h"});
-        res.status(200).json({accessToken: accessToken});
+        res.status(200).json({message: 'User created successfully',accessToken: accessToken});
         //res.redirect()
 
-         /* 
-     res.status(201).json({
-          content,
-          userName: user.userName,
-          email: user.email,
-          accessToken: accessToken, // Send the access token to the user
-          message: 'User created successfully',
-      }); 
-      */
+         
     }
     catch(err){
         res.status(400).json({message: "Invalid user data", err: err.message});
@@ -107,14 +99,7 @@ userController.signin = async (req, res) => {
         //res.redirect()
     }
 
-      /*res.status(200).json({
-          _id: user._id,
-          userName: user.userName,
-          email: user.email,
-          accessToken: accessToken,
-          message: 'User signed in successfully',
-      });*/
- 
+     
       catch(err){
         res.status(400).json(err.message);
     }

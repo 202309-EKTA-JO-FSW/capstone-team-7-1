@@ -9,7 +9,7 @@ const userController = require("../controllers/userController");
 // Add user routes
 router.post("/user/signin", userController.signin);
 router.post("/user/signup", userController.signup);
-// router.post("/signout",checkBlackListedToken, userController.signout);
+router.post("/user/signout",checkBlackListedToken, userController.signout);
 
 
 // Add cart routes
