@@ -2,16 +2,31 @@ const express = require("express");
 const router = express.Router();
 // const checkBlackListedToken = require('../middlewares/blackListedTokens');
 
+const authToken=require('../middlewares/isAuthenticated')
 
-// const userController = require("../controllers/userController");
-const cartController = require("../controllers/cartController");
+const userController = require("../controllers/userController");
+const restaurantController = require('../controllers/restaurantController');
+const dishController = require('../controllers/dishController');
+const orderController = require('../controllers/orderController');
+const cartController = require('../controllers/cartController');
+
+const favoriteController = require('../controllers/favoriteController');
+const reviewController = require('../controllers/reviewController');
 
 
-// Add user routes
-// router.post("/signin", userController.signin);
-// router.post("/signup", userController.signup);
-// router.post("/signout",checkBlackListedToken, userController.signout);
 
+// // Public API Endpoints..........
+// router.post("/signin", userController.signIn);
+// router.post("/signup", userController.signUp);
+
+
+// here i put the restaurant crud, user can just fetch multi resturants and specfic resturant 
+router.get('/restaurants', restaurantController.getAllRestaurants);
+
+router.get('/restaurants/:restaurantID', restaurantController.getRestaurant);
+
+//test purposes
+//router.post('/addRestaurant', restaurantController.addNewRestaurants);
 
 // Add cart routes
 router.get('/users/:userId/cart', cartController.getUserCart);
@@ -19,10 +34,6 @@ router.post('/users/:userId/cart', cartController.addItemToCart);
 
 router.put('/users/:userId/cart', cartController.updateCart);
 router.delete('/users/:userId/cart',cartController.emptyCart);
-
-// Add restaurant route // user can just fetch multi resturants and specfic resturant 
-// router.get('/restaurants', restaurantController.getAllRestaurants);
-// router.get('/restaurants/:restaurantId', restaurantController.getRestaurant);
 
 // Add profile route // just fetch and update the profile
 // router.get('/users/:userId', checkBlackListedToken, userController.getUserProfile);
