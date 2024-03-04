@@ -44,18 +44,17 @@ router.delete('/users/:userId/cart',cartController.emptyCart);
 router.get('/dishes', dishController.getAllDishes);
 router.get('/dishes/:dishID', dishController.getDish);
 
-// test purposes 
-
+////test purposes 
 //router.post('/addDish', dishController.addNewDish);
 
-// order crud //
+// order crud
 router.get('/users/:userID/orders',  orderController.getUserOrders);
 router.post('/users/:userID/orders', orderController.createOrder);
 
 router.get('/orders/:orderID',  orderController.getOrder);
 router.delete('/orders/:orderID', orderController.deleteOrder);
 
-// // favorites crud  //
+//favorites crud
 
 // router.get('/users/:userId/favorites/restaurants', authToken, favoriteController.getUserFavoriteRestaurants);
 // router.post('/users/:userId/favorites/restaurants', authToken, favoriteController.addFavoriteRestaurant);
@@ -64,7 +63,7 @@ router.delete('/orders/:orderID', orderController.deleteOrder);
 // router.post('/users/:userId/favorites/dishes', authToken, favoriteController.addFavoriteDish);
 // router.delete('/users/:userId/favorites/dishes/:dishId', authToken, favoriteController.removeFavoriteDish);
 
-// // review for user - need check //
+// review for user - need check
 
 // router.get('/restaurants/:restaurantId/reviews', reviewController.getRestaurantReviews);
 // router.post('/restaurants/:restaurantId/reviews', authToken, reviewController.addReviewForRestaurant);
