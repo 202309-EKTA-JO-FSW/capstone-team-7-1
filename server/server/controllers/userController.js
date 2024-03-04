@@ -118,7 +118,10 @@ userController.signout = async (req, res) => {
 };
 
 //**************************************************************************************
+
 userController.getUserProfile = async (req, res) => {
+  console.log("getUserProfile called", req.params);
+
   try {
       const { userId } = req.params;
       // Verify the authenticated user is the target user
@@ -127,6 +130,29 @@ userController.getUserProfile = async (req, res) => {
       }
 
       const user = await userModel.findById(userId, '-hashedPassword'); // Exclude the hashedPassword
+      if (!user) {
+          return res.status(404).json({ message: "User not found" });
+      }
+
+      res.json(user);
+  } catch (err) {
+      res.status(500).json({ message: "Server error", err: err.message });
+  }
+};
+
+
+
+
+userController.updateUserProfile = async (req, res) => {
+  try {
+      const { userId } = req.params;
+      // Verify the authenticated user is the target user
+      if (req.customer.id !== userId) {
+          return res.status(403).json({ message: "Unauthorized to update this profile" });
+      }
+
+      const updates = req.body;
+      const user = await userModel.findByIdAndUpdate(userId, updates, { new: true, select: '-hashedPassword' }); // Apply updates and exclude the hashedPassword
       if (!user) {
           return res.status(404).json({ message: "User not found" });
       }
