@@ -117,4 +117,33 @@ userController.signout = async (req, res) => {
   }
 };
 
+//**************************************************************************************
+userController.getUserProfile = async (req, res) => {
+  try {
+      const { userId } = req.params;
+      // Verify the authenticated user is the target user
+      if (req.customer.id !== userId) {
+          return res.status(403).json({ message: "Unauthorized to access this profile" });
+      }
+
+      const user = await userModel.findById(userId, '-hashedPassword'); // Exclude the hashedPassword
+      if (!user) {
+          return res.status(404).json({ message: "User not found" });
+      }
+
+      res.json(user);
+  } catch (err) {
+      res.status(500).json({ message: "Server error", err: err.message });
+  }
+};
+
+
+
+
+
+
+
+
+
+
   module.exports = userController;
