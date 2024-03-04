@@ -124,7 +124,6 @@ userController.getUserProfile = async (req, res) => {
 
   try {
       const { userId } = req.params;
-      // Verify the authenticated user is the target user
       if (req.customer.id !== userId) {
           return res.status(403).json({ message: "Unauthorized to access this profile" });
       }
