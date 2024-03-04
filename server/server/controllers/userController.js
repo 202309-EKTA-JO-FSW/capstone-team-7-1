@@ -137,7 +137,6 @@ userController.getUserProfile = async (req, res) => {
 userController.updateUserProfile = async (req, res) => {
   try {
       const { userId } = req.params;  
-      // Verify the authenticated user is the target user
       if (req.customer.id !== userId) {
           return res.status(403).json({ message: "Unauthorized to update this profile" });
       }
@@ -153,14 +152,6 @@ userController.updateUserProfile = async (req, res) => {
       res.status(500).json({ message: "Server error", err: err.message });
   }
 };
-
-
-
-
-
-
-
-
 
 
   module.exports = userController;
