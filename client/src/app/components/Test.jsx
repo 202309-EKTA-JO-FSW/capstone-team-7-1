@@ -12,7 +12,7 @@ const Hello = () => {
       });
   }, []);
 
-  return <div>{testResult}</div>;
+  return <div>hi {testResult}</div>;
 };
 
 export default Hello;
