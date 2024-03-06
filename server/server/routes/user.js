@@ -43,18 +43,18 @@ router.delete('/orders/:orderId', authToken, orderController.deleteOrder);
 
 
 // favorites crud 
-router.get('/users/:userId/favorites/restaurants', authToken, favoriteController.getUserFavoriteRestaurants);
-router.post('/users/:userId/favorites/restaurants', authToken, favoriteController.addFavoriteRestaurant);
-router.delete('/users/:userId/favorites/restaurants/:restaurantId', authToken, favoriteController.removeFavoriteRestaurant);
-router.get('/users/:userId/favorites/dishes', authToken, favoriteController.getUserFavoriteDishes);
-router.post('/users/:userId/favorites/dishes', authToken, favoriteController.addFavoriteDish);
-router.delete('/users/:userId/favorites/dishes/:dishId', authToken, favoriteController.removeFavoriteDish);
+router.get('/users/:userId/favorites/restaurants', favoriteController.getUserFavoriteRestaurants);
+router.post('/users/:userId/favorites/restaurants', favoriteController.addFavoriteRestaurant);
+router.delete('/users/:userId/favorites/restaurants/:restaurantId', favoriteController.removeFavoriteRestaurant);
+router.get('/users/:userId/favorites/dishes', favoriteController.getUserFavoriteDishes);
+router.post('/users/:userId/favorites/dishes', favoriteController.addFavoriteDish);
+router.delete('/users/:userId/favorites/dishes/:dishId', favoriteController.removeFavoriteDish);
 
 // review for user - need check
 router.get('/restaurants/:restaurantId/reviews', reviewController.getRestaurantReviews);
-router.post('/restaurants/:restaurantId/reviews', authToken, reviewController.addReviewForRestaurant);
-router.put('/reviews/:reviewId', authToken, reviewController.updateReview);
-router.delete('/reviews/:reviewId', authToken, reviewController.deleteReview);
+router.post('/restaurants/:restaurantId/reviews', reviewController.addReviewForRestaurant);
+router.put('/reviews/:reviewId', reviewController.updateReview);
+router.delete('/reviews/:reviewId', reviewController.deleteReview);
 
 
 module.exports = router;
