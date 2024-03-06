@@ -1,10 +1,9 @@
 const express = require("express");
 const router = express.Router();
-//const checkBlackListedToken = require('../middlewares/blackListedTokens');
+// const checkBlackListedToken = require('../middlewares/blackListedTokens');
 
-//const authToken=require('../middlewares/isAuthenticated')
 
-// const userController = require("../controllers/userController");
+const userController = require("../controllers/userController");
 // const restaurantController = require('../controllers/restaurantController');
 // const dishController = require('../controllers/dishController');
 // const orderController = require('../controllers/orderController');
