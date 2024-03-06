@@ -22,8 +22,9 @@ const reviewSchema = new mongoose.Schema({
         required: true
     },
     dateOfReview: {
-        type: Date(),
-        required: true
+        type: Date,
+        required: true,
+        default: Date.now,
     },
 
 }, { timestamps: true });
