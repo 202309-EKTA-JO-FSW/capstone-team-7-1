@@ -26,4 +26,3 @@ router.get("/orders", adminController.getAllOrders);
 router.get("/favoriteDishes", adminController.getFavoriteDishes);
 
 module.exports = router;
-
