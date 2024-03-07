@@ -20,9 +20,9 @@ const getAllRestaurants = async (req, res) => {
 
 // const addNewRestaurants = async (req, res) => {
 //     try{
-//         const { name, address, openingHours, closingHours,logo, description, phone, cuisineType, rate } = req.body || {};
+//         const { name, restaurantAddress, openingHours, closingHours,logo, description, phone, cuisineType, rate } = req.body || {};
 
-//         if (!name || !address || !openingHours || !description || !phone || !cuisineType) {
+//         if (!name || !restaurantAddress || !openingHours || !description || !phone || !cuisineType) {
 //             console.log(req.body);
 
 //             return res.status(400).json({ message: `some data is missing ${ req.body }`})
@@ -30,7 +30,7 @@ const getAllRestaurants = async (req, res) => {
 
 //         const newRestaurant = new restaurantModel({
 //             name,
-//             address,
+//             restaurantAddress,
 //             openingHours,
 //             closingHours,
 //             logo,
@@ -70,5 +70,4 @@ module.exports = {
     addNewRestaurants,
     getRestaurant
 };
-
 

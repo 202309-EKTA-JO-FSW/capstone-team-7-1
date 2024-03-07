@@ -1,14 +1,16 @@
 const express = require("express");
 
-/////////
-const userRoutes = require("./routes/user") 
+
 const cors = require("cors");
 
-const userRoutes = require("./routes/user") //.........
 
 require("dotenv").config();
 
 const connectToMongo = require("./db/connection");
+
+const adminRoute = require('./routes/admin');
+const userRoutes = require("./routes/user") //.........
+
 
 const app = express();
 const port =
@@ -21,6 +23,7 @@ app.use(cors());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
+app.use('/admin', adminRoute)
 app.use('/', userRoutes) // userRoutes ......
 
 app.listen(port, () => {
@@ -28,10 +31,10 @@ app.listen(port, () => {
   connectToMongo();
 });
 
-app.get("/test", (req, res) => {
-  res.json(
-    "Server connection to client works!!  Good Luck with your capstones :D"
-  );
-});
+// app.get("/test", (req, res) => {
+//   res.json(
+//     "Server connection to client works!!  Good Luck with your capstones :D"
+//   );
+// });
 
 module.exports = app;
