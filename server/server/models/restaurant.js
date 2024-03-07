@@ -5,7 +5,6 @@ const restaurantSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-
     Address: {
         street: {type: String,required: true},
         city: {type: String,required: true}
