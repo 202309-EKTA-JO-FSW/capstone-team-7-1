@@ -6,6 +6,7 @@ const checkBlackListedToken = require('../middlewares/blackListedTokens');
 const adminController = require("../controllers/adminController");
 
 //Add Admin Routes
+
 router.post("/signin", adminController.signin);
 router.post("/signup", adminController.signup);
 router.post("/signout", checkBlackListedToken, adminController.signout);
@@ -28,4 +29,3 @@ router.get("/Dishes",checkBlackListedToken, adminController.getAllDishes)
 // router.get("/favoriteDishes", adminController.getFavoriteDishes);
 
 module.exports = router;
-

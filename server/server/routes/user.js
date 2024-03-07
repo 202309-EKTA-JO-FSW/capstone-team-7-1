@@ -1,45 +1,59 @@
 const express = require("express");
 const router = express.Router();
 
-const authToken=require('../middlewares/isAuthenticated')
+
+//const authToken=require('../middlewares/isAuthenticated')
 
 const userController = require("../controllers/userController");
 const restaurantController = require('../controllers/restaurantController');
 const dishController = require('../controllers/dishController');
 const orderController = require('../controllers/orderController');
 const cartController = require('../controllers/cartController');
-const favoriteController = require('./controllers/favoriteController');
-const reviewController = require('./controllers/reviewController');
+const checkBlackListedToken = require('../middlewares/blackListedTokens');
 
 
-// Public API Endpoints..........
-router.post("/signin", userController.signIn);
-router.post("/signup", userController.signUp);
+const userController = require("../controllers/userController");
+const favoriteController = require('../controllers/favoriteController');
+const reviewController = require('../controllers/reviewController');
 
-// private API Endpoints..........
-// here i put the cart crud 
-router.get('/users/:userId/cart', authToken, cartController.getUserCart);
-router.post('/users/:userId/cart', authToken, cartController.addItemToCart);
-router.put('/users/:userId/cart', authToken, cartController.updateCart);
-router.delete('/users/:userId/cart', authToken, cartController.emptyCart);
 
-// here i put the restaurant crud, user can just fetch multi resturants and specfic resturant 
+// Add user routes
+router.post("/user/signin", userController.signin);
+router.post("/user/signup", userController.signup);
+router.post("/user/signout",checkBlackListedToken, userController.signout);
+
+// here i put the restaurant crud, user can just fetch multi resturants and specfic resturant  //
 router.get('/restaurants', restaurantController.getAllRestaurants);
-router.get('/restaurants/:restaurantId', restaurantController.getRestaurant);
 
-// profile crud , just fetch and update the profile
-router.get('/users/:userId', authToken, userController.getUserProfile);
-router.put('/users/:userId', authToken, userController.updateUserProfile);
+router.get('/restaurants/:restaurantID', restaurantController.getRestaurant);
+
+//test purposes
+//router.post('/addRestaurant', restaurantController.addNewRestaurants);
+
+// Add cart routes //
+router.get('/users/:userId/cart', cartController.getUserCart);
+router.post('/users/:userId/cart', cartController.addItemToCart);
+
+router.put('/users/:userId/cart', cartController.updateCart);
+router.delete('/users/:userId/cart',cartController.emptyCart);
+
+// Add profile route // just fetch and update the profile
+router.get('/users/:userId',checkBlackListedToken, userController.getUserProfile);
+router.put('/users/:userId', checkBlackListedToken, userController.updateUserProfile);
 
 // dish crud
 router.get('/dishes', dishController.getAllDishes);
-router.get('/dishes/:dishId',dishController.getDish);
+router.get('/dishes/:dishID', dishController.getDish);
 
-// order crud
-router.get('/users/:userId/orders', authToken, orderController.getUserOrders);
-router.post('/users/:userId/orders', authToken, orderController.createOrder);
-router.get('/orders/:orderId', authToken, orderController.getOrder);
-router.delete('/orders/:orderId', authToken, orderController.deleteOrder);
+// test purposes 
+//router.post('/addDish', dishController.addNewDish);
+
+// order crud //
+router.get('/users/:userID/orders',  orderController.getUserOrders);
+router.post('/users/:userID/orders', orderController.createOrder);
+
+router.get('/orders/:orderID',  orderController.getOrder);
+router.delete('/orders/:orderID', orderController.deleteOrder);
 
 
 // favorites crud 
