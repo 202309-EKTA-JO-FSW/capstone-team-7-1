@@ -10,6 +10,8 @@ require("dotenv").config();
 
 const connectToMongo = require("./db/connection");
 
+const userRoutes = require("./routes/user"); //add ....
+
 const app = express();
 const port =
   process.env.NODE_ENV === "test"

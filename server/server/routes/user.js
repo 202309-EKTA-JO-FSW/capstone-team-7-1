@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-//const checkBlackListedToken = require('../middlewares/blackListedTokens');
+
 
 //const authToken=require('../middlewares/isAuthenticated')
 
@@ -9,17 +9,19 @@ const restaurantController = require('../controllers/restaurantController');
 const dishController = require('../controllers/dishController');
 const orderController = require('../controllers/orderController');
 const cartController = require('../controllers/cartController');
+const checkBlackListedToken = require('../middlewares/blackListedTokens');
 
+
+const userController = require("../controllers/userController");
 const favoriteController = require('../controllers/favoriteController');
 const reviewController = require('../controllers/reviewController');
 
 
 
-// // Public API Endpoints..........
-// router.post("/signin", userController.signIn);
-// router.post("/signup", userController.signUp);
-// router.post("/signout",checkBlackListedToken, userController.signout);
-
+// Add user routes
+router.post("/user/signin", userController.signin);
+router.post("/user/signup", userController.signup);
+router.post("/user/signout",checkBlackListedToken, userController.signout);
 
 // here i put the restaurant crud, user can just fetch multi resturants and specfic resturant  //
 router.get('/restaurants', restaurantController.getAllRestaurants);
@@ -36,9 +38,9 @@ router.post('/users/:userId/cart', cartController.addItemToCart);
 router.put('/users/:userId/cart', cartController.updateCart);
 router.delete('/users/:userId/cart',cartController.emptyCart);
 
-// Add profile route // just fetch and update the profile //
-// router.get('/users/:userId', checkBlackListedToken, userController.getUserProfile);
-// router.put('/users/:userId', checkBlackListedToken, userController.updateUserProfile);
+// Add profile route // just fetch and update the profile
+router.get('/users/:userId',checkBlackListedToken, userController.getUserProfile);
+router.put('/users/:userId', checkBlackListedToken, userController.updateUserProfile);
 
 // dish crud
 router.get('/dishes', dishController.getAllDishes);
@@ -56,7 +58,6 @@ router.get('/orders/:orderID',  orderController.getOrder);
 router.delete('/orders/:orderID', orderController.deleteOrder);
 
 // // favorites crud  //
-
 // router.get('/users/:userId/favorites/restaurants', authToken, favoriteController.getUserFavoriteRestaurants);
 // router.post('/users/:userId/favorites/restaurants', authToken, favoriteController.addFavoriteRestaurant);
 // router.delete('/users/:userId/favorites/restaurants/:restaurantId', authToken, favoriteController.removeFavoriteRestaurant);

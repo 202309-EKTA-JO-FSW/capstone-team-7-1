@@ -4,6 +4,7 @@ const router = express.Router();
 const adminController = require("../controllers/adminController");
 
 //Add Admin Routes
+
 router.post("/signin", adminController.signin);
 router.post("/signup", adminController.signup);
 router.post("/signout", adminController.signout);

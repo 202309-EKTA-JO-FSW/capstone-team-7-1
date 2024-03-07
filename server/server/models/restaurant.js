@@ -5,6 +5,7 @@ const restaurantSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+
     Address: {
         street: {type: String,required: true},
         city: {type: String,required: true}
@@ -37,6 +38,7 @@ const restaurantSchema = new mongoose.Schema({
         min: 0,
         max: 5,
     },
+
 },{ timestamps: true });
 
 
