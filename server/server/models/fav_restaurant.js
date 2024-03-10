@@ -6,11 +6,11 @@ const favRestaurantSchema = new mongoose.Schema({
         ref: 'User',
         required: true
     },
-    restaurant: {
+    restaurant: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Restaurant',
         required: true
-    },
+    }],
 
     // fav order from a specific Restaurant is an optional choice
     // Optional 
