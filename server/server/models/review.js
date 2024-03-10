@@ -10,7 +10,7 @@ const reviewSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Restaurant',
         required: true
-      },
+    },
     comment: {
         type: String,
         required: true

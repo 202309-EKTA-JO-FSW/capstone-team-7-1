@@ -14,8 +14,7 @@ const restaurantSchema = new mongoose.Schema({
         required: true
     },
     closingHours: {
-        type: String,
-        required: true
+        type: String
     },
     logo: {
         type: String,
