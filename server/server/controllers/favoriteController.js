@@ -20,7 +20,7 @@ favoriteController.getUserFavoriteRestaurants = async (req, res) => {
 favoriteController.addFavoriteRestaurant = async (req, res) => {
     try {
         const userId = req.params.userId;
-        const restaurantId = req.body.restaurantId;
+        const restaurantId = req.body.restaurant;
 
         if( !restaurantId ){
             return res.status(400).json({message: "restaurant ID is missing"})
@@ -52,7 +52,7 @@ favoriteController.removeFavoriteRestaurant = async (req, res) => {
 favoriteController.getUserFavoriteDishes = async (req, res) => {
     try {
         const userId = req.params.userId;
-        const favorites = await favDishModel.find({ user: userId }).populate('dishes');
+        const favorites = await favDishModel.find({ userId }).populate('dishes');
         res.status(200).json(favorites);
     } 
     catch (err) {
@@ -63,7 +63,7 @@ favoriteController.getUserFavoriteDishes = async (req, res) => {
 favoriteController.addFavoriteDish = async (req, res) => {
     try {
         const userId = req.params.userId;
-        const dishId = req.body.dishId;
+        const dishId = req.body.dishes;
 
         if( !dishId ){
             return res.status(400).json({message: "dish ID is missing"})

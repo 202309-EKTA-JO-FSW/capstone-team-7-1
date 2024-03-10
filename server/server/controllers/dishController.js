@@ -11,41 +11,12 @@ const getAllDishes = async (req, res) => {
         if (!menu)
             res.status(422).json("No menu")
              
-            res.status(200).json(menu)
-
+    res.status(200).json(menu)
     }
     catch {
         res.status(422).json({error: "unable to fetch menu"})
     }
 }
-
-// const addNewDish = async (req,res) => {
-//     try{
-//         const { name, restaurant,image, description, price,category, ingredients} = req.body;
-
-//         if (!name || !restaurant || !description || !price || !category || !ingredients) {
-
-//             return res.status(400).json({ message: `some data is missing ${ req.body }`})
-//         }
-
-//         const newDish = new dishModel({
-//             name,
-//             restaurant,
-//             image,
-//             description,
-//             price,
-//             category,
-//             ingredients,
-//         });
-
-//         await newDish.save();
-
-//         return res.status(200).json({message: "Dish added successfully"});
-//     }
-//     catch(err){
-//         return res.status(400).json(err.message);
-//     }
-// }
 
 // getting a specific Dish ( get )
 const getDish = async (req, res) => {
@@ -67,6 +38,5 @@ const getDish = async (req, res) => {
 
 module.exports = {
     getAllDishes,
-    addNewDish,
     getDish
 };

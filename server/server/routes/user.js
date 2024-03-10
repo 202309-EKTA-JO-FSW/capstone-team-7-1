@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
 
-
 //const authToken=require('../middlewares/isAuthenticated')
 
 const userController = require("../controllers/userController");
@@ -12,7 +11,7 @@ const cartController = require('../controllers/cartController');
 const checkBlackListedToken = require('../middlewares/blackListedTokens');
 
 
-const userController = require("../controllers/userController");
+//const userController = require("../controllers/userController");
 const favoriteController = require('../controllers/favoriteController');
 const reviewController = require('../controllers/reviewController');
 
@@ -24,11 +23,7 @@ router.post("/user/signout",checkBlackListedToken, userController.signout);
 
 // here i put the restaurant crud, user can just fetch multi resturants and specfic resturant  //
 router.get('/restaurants', restaurantController.getAllRestaurants);
-
 router.get('/restaurants/:restaurantID', restaurantController.getRestaurant);
-
-//test purposes
-//router.post('/addRestaurant', restaurantController.addNewRestaurants);
 
 // Add cart routes //
 router.get('/users/:userId/cart', cartController.getUserCart);
@@ -45,16 +40,12 @@ router.put('/users/:userId', checkBlackListedToken, userController.updateUserPro
 router.get('/dishes', dishController.getAllDishes);
 router.get('/dishes/:dishID', dishController.getDish);
 
-// test purposes 
-//router.post('/addDish', dishController.addNewDish);
-
 // order crud //
 router.get('/users/:userID/orders',  orderController.getUserOrders);
 router.post('/users/:userID/orders', orderController.createOrder);
 
 router.get('/orders/:orderID',  orderController.getOrder);
 router.delete('/orders/:orderID', orderController.deleteOrder);
-
 
 // favorites crud 
 router.get('/users/:userId/favorites/restaurants', favoriteController.getUserFavoriteRestaurants);
