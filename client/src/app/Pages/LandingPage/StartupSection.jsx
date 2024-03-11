@@ -1,6 +1,6 @@
 import React from "react";
 import "./StartupSection.css";
-// import Button from "../../components/Common/Button";
+import Button from "../../components/Common/Button";
 
 const StartupSection = () => {
   return (
@@ -20,7 +20,7 @@ const StartupSection = () => {
             placeholder="Delivery Address"
             className="bg-[#D9D9D9]/[0.7] rounded-md w-94 h-94"
           ></input>
-          {/* <Button></Button> */}
+          <Button text="Search"></Button>
         </form>
       </div>
       <div className="md:w-48 md:h-48 w-64 h-64 m-3"></div>
