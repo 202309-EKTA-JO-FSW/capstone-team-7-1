@@ -1,4 +1,4 @@
-// File: /home/lunarun/capstone-team-7-1/client/src/app/page.js
+// File: /usr/src/app/client/src/app/page.js
 import * as entry from '../../../src/app/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 
