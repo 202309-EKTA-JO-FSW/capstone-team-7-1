@@ -1,18 +1,23 @@
 "use client";
 import React, { useEffect, useState } from "react";
+import LandingPage from "../Pages/LandingPage/FullLandingPage";
 
 const Hello = () => {
-  const [testResult, setTestResult] = useState("");
+  // const [testResult, setTestResult] = useState("");
 
-  useEffect(() => {
-    fetch("http://localhost:3001/test")
-      .then((res) => res.json())
-      .then((data) => {
-        setTestResult(data);
-      });
-  }, []);
+  // useEffect(() => {
+  //   fetch("http://localhost:3001/test")
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       setTestResult(data);
+  //     });
+  // }, []);
 
-  return <div>hi {testResult}</div>;
+  return (
+    <>
+      <LandingPage></LandingPage>
+    </>
+  );
 };
 
 export default Hello;
