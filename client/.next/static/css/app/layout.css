@@ -564,6 +564,7 @@ video {
   --tw-backdrop-saturate:  ;
   --tw-backdrop-sepia:  ;
 }
+<<<<<<< HEAD
 .absolute {
   position: absolute;
 }
@@ -656,12 +657,24 @@ video {
 .w-6 {
   width: 1.5rem;
 }
+=======
+.z-10 {
+  z-index: 10;
+}
+.flex {
+  display: flex;
+}
+.min-h-screen {
+  min-height: 100vh;
+}
+>>>>>>> main
 .w-full {
   width: 100%;
 }
 .max-w-5xl {
   max-width: 64rem;
 }
+<<<<<<< HEAD
 .max-w-72 {
   max-width: 18rem;
 }
@@ -768,11 +781,28 @@ video {
 .text-lg {
   font-size: 1.125rem;
   line-height: 1.75rem;
+=======
+.flex-col {
+  flex-direction: column;
+}
+.items-center {
+  align-items: center;
+}
+.justify-between {
+  justify-content: space-between;
+}
+.p-24 {
+  padding: 6rem;
+}
+.font-mono {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+>>>>>>> main
 }
 .text-sm {
   font-size: 0.875rem;
   line-height: 1.25rem;
 }
+<<<<<<< HEAD
 .text-xl {
   font-size: 1.25rem;
   line-height: 1.75rem;
@@ -841,6 +871,8 @@ video {
 .hover\:bg-\[\#f36839c3\]:hover {
   background-color: #f36839c3;
 }
+=======
+>>>>>>> main
 
 
 @media (min-width: 1024px) {
@@ -848,6 +880,7 @@ video {
   .lg\:flex {
     display: flex;
   }
+<<<<<<< HEAD
 
   .lg\:h-\[70vh\] {
     height: 70vh;
@@ -856,5 +889,7 @@ video {
   .lg\:flex-row {
     flex-direction: row;
   }
+=======
+>>>>>>> main
 }
 

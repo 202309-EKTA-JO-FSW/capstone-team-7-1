@@ -12,8 +12,10 @@ router.post("/signup", adminController.signup);
 router.post("/signout", checkBlackListedToken, adminController.signout);
 
 //Add Restaurant Routes
-router.post("/addRestaurant",checkBlackListedToken, adminController.addRestaurant);
-router.put("/updateRestaurant/:id",checkBlackListedToken, adminController.ubdateRestaurant);
+//router.post("/addRestaurant",checkBlackListedToken, adminController.addRestaurant);
+router.post("/addRestaurant", adminController.addRestaurant);
+//router.put("/updateRestaurant/:id",checkBlackListedToken, adminController.ubdateRestaurant);
+router.put("/updateRestaurant/:id", adminController.ubdateRestaurant);
 router.delete("/removeRestaurant/:id",checkBlackListedToken, adminController.removeRestaurant);
 
 //Add Dish Routes
@@ -22,7 +24,8 @@ router.put("/updateDish/:id",checkBlackListedToken, adminController.updateDish);
 router.delete("/removeDish/:id",checkBlackListedToken, adminController.removeDish);
 
 //View Requests
-router.get("/restaurants",checkBlackListedToken, adminController.getAllRestaurants);
+//router.get("/restaurants",checkBlackListedToken, adminController.getAllRestaurants);
+router.get("/restaurants", adminController.getAllRestaurants);
 router.get("/Dishes", checkBlackListedToken, adminController.getAllDishes)
 
 // router.get("/customers", adminController.getAllCustomers);
