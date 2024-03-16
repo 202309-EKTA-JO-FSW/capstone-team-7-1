@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Cards from "@/components/Common/Cards";
 import axios from "axios";
+import Button from "@/components/Common/Button";
 // import { headers } from "next/headers";
 
 const PopulerRestaurantSection = () => {
@@ -35,7 +36,7 @@ const PopulerRestaurantSection = () => {
   };
 
   return (
-    <section className="bg-[#FCFCFC] w-full flex flex-col items-center gap-4 p-16">
+    <section className="bg-[#FCFCFC] w-full flex flex-col items-center gap-4 px-16">
       <div className="uppercase w-full flex flex-col items-center justify-center font-semibold">
         <p className="text-[#FF6868] text-lg">EXPLORE</p>
         <p className="text-4xl text-[#180800] text-center">
@@ -52,6 +53,7 @@ const PopulerRestaurantSection = () => {
           />
         ))}
       </div>
+      <Button text="Browse Restaurants" />
     </section>
   );
 };
