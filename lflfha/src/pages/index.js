@@ -13,7 +13,7 @@ const Hello = () => {
   //     });
   // }, []);
 
-  return <main className="font-serif justify-center flex min-h-screen ">
+  return <main className="justify-center font-Inter flex min-h-screen ">
     <LandingPage/>
   </main>;
 };

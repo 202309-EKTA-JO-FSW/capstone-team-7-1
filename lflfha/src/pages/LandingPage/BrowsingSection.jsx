@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 const browsingByCategorySection = () => {
   return (
-    <section className="bg-[#FCFCFC] max-h-full w-full flex flex-col justify-center items-center gap-4 px-16 py-8">
+    <section className="bg-[#FCFCFC] max-h-full w-full flex flex-col justify-center tracking-widest items-center gap-4 px-16 py-8">
       <div className="uppercase w-full flex flex-col items-center justify-center font-semibold">
         <p className="text-[#FF6868] text-lg">OR</p>
         <p className="text-4xl text-[#180800] text-center">
