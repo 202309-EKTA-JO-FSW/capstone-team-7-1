@@ -95,6 +95,8 @@
 
 //**********************************************************************************************************
 import React, { useState } from 'react';
+import { useRouter } from 'next/router';
+
 
 const Signup = () => {
   const [formData, setFormData] = useState({
@@ -106,6 +108,8 @@ const Signup = () => {
     address: '',
     phone: '',
   });
+
+    const router = useRouter();
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -128,10 +132,15 @@ const Signup = () => {
                 }
                 const responseData = await res.json();
                 console.log(responseData);
-            }
-            catch(err){
-                console.log(err.message);
-            }
+            // }
+            // catch(err){
+            //     console.log(err.message);
+            // }
+            // Redirect to login page after successful signup
+      router.push('http://localhost:3000/Auth/Login');
+    } catch (err) {
+      console.log(err.message);
+    }
         }
 
   return (
@@ -149,15 +158,12 @@ const Signup = () => {
           <label htmlFor="password" className="block text-sm font-bold mb-2">Password</label>
           <input type="password" id="password" name="password" placeholder="password" value={formData.password} onChange={handleChange} required className="w-full px-3 py-2 border rounded" />
         </div>
+
         <div className="mb-4">         
          <label htmlFor="password" className="block text-sm font-bold mb-2">Password1</label>
           <input type="password1" id="password1" name="password1" placeholder="confirm password" value={formData.password1} onChange={handleChange} required className="w-full px-3 py-2 border rounded" />
         </div>
-        {/* <div className="mb-4">
-          <label htmlFor="password" className="block text-sm font-bold mb-2">confirmPassword</label>
-          <input type="password1" id="password1" name="password1" placeholder="confirm password" value={formData.password1} onChange={handleChange} required className="w-full px-3 py-2 border rounded" />
-        </div> */}
-
+       
         <div className="mb-4">
           <label htmlFor="gender" className="block text-sm font-bold mb-2">Gender</label>
           <select id="gender" name="gender" value={formData.gender} onChange={handleChange} required className="w-full px-3 py-2 border rounded">
