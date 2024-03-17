@@ -45,7 +45,7 @@ validateCriteria
           userName,
           email,
           hashedPassword, // Store the hashed password
-          // profilePicture,
+          profilePicture,
           gender,
           address,
           phone,
