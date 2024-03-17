@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/router';
-import { MailIcon, LockClosedIcon } from '@heroicons/react/outline';/////////////////////////
+import Image from 'next/image';
 
 
 const Login = () => {
