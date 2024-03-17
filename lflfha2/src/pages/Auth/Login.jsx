@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/router';
+import { MailIcon, LockClosedIcon } from '@heroicons/react/outline';/////////////////////////
+
 
 const Login = () => {
-  const [credentials, setCredentials] = useState({
+  const [credentials, setCredentials] = useState({ 
     email: '',
     password: '',
   });
