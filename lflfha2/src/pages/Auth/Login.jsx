@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/router';
-// import Image from 'next/image';
-
+import Image from 'next/image';
 
 const Login = () => {
   const [credentials, setCredentials] = useState({ 
