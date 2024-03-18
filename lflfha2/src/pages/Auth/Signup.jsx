@@ -19,7 +19,6 @@ const Signup = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-
   const handleSubmit = async (e) => {
             e.preventDefault();
             try{
@@ -41,7 +40,7 @@ const Signup = () => {
             //     console.log(err.message);
             // }
             // Redirect to login page after successful signup
-      router.push('http://localhost:3000/Auth/Login');
+      router.push('/');
     } catch (err) {
       console.log(err.message);
     }
