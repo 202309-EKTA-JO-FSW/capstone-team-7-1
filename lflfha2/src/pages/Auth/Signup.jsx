@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/router';
+import useAuthStore from '@/Store/authStore';
+
 
 
 const Signup = () => {
+  const signUp = useAuthStore((state) => state.signUp)
   const [formData, setFormData] = useState({
     userName: '',
     email: '',
@@ -20,35 +23,15 @@ const Signup = () => {
   };
 
   const handleSubmit = async (e) => {
-            e.preventDefault();
-            try{
-                const res = await fetch('http://localhost:3001/user/signup', {
-                  method: 'POST',
-                  headers: {
-                    "Content-Type": "application/json",
-                  },
-                  body: JSON.stringify(formData)
-                });
-                if (!res.ok) {
-                    const errorMessage = await res.text();
-                    throw new Error(errorMessage);
-                }
-                const responseData = await res.json();
-                console.log(responseData);
-            // }
-            // catch(err){
-            //     console.log(err.message);
-            // }
-            // Redirect to login page after successful signup
-      router.push('/');
-    } catch (err) {
-      console.log(err.message);
-    }
+        e.preventDefault();
+        signUp(formData)
+    
         }
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-[#FFD5C2]">
       <form onSubmit={handleSubmit} className="w-full max-w-md px-8 py-6 bg-white rounded-lg shadow-md">
+
         <div className="mb-4">
           <label htmlFor="userName" className="block text-sm font-bold mb-2">Username</label>
           <input type="text" id="userName" name="userName" placeholder="username" value={formData.userName} onChange={handleChange} required className="w-full px-3 py-2 border rounded" />
