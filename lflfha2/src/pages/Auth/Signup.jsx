@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 import useAuthStore from '@/Store/authStore';
 
-
-
 const Signup = () => {
   const signUp = useAuthStore((state) => state.signUp)
   const [formData, setFormData] = useState({

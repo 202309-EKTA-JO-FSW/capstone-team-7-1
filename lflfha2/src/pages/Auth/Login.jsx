@@ -25,12 +25,12 @@ const Login = () => {
       <div className="w-full max-w-md px-8 py-6 bg-white rounded-lg shadow-md">
         {/* Logo Image */}
               <div className="flex justify-center mb-6">
-                <img src="/LflfhaLogo.png" alt="LFLFhaLogo" className="mb-4" />
+                <img src="/LflfhaLogo.png" alt="LFLFhaLogo" className="mb-4 w-50 h-32" />
                 
               </div>
 
         {/* Form Title */}
-        {/* <h1 className="text-2xl font-bold text-center mb-6">Welcome in LFLFha account.</h1> */}
+        {/* <h1 className="text-lg text-center shadow-md">Welcome in LFLFha account</h1> */}
 
         {/* Sign-in form */}
         <form onSubmit={handleSubmit}>
