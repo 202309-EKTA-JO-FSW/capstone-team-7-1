@@ -11,7 +11,7 @@ const AboutPage = () => {
 
       <div className="flex flex-wrap justify-center items-center -mx-4">
         <div className="px-4 flex-1">
-          <div className="max-w-sm mx-auto">
+          <div className="max-w-sm mx-auto mb-20">
             <Image
               src="/foode.webp"
               alt="Founders"
@@ -23,7 +23,7 @@ const AboutPage = () => {
         </div>
         <div className="px-4 flex-1">
           <h2 className="text-3xl font-semibold mb-4">About Us</h2>
-          <p className="text-justify leading-relaxed">
+          <p className="text-justify leading-relaxed ">
             Discover Lflfha,where every click brings you closer to a culinary adventure.
             Designed with passion by the full-stack developers from Re:coded Bootcamp,
             this web application takes you on a journey through a virtual bazaar, rich

@@ -13,7 +13,7 @@ const TeamSection = () => {
     {
       name: 'Lunar Salameh',
       role: 'Full-stack Devloper',
-      image: '/team/lunar.webp',
+      image: '/team/IMG_8228.webp',
       linkedin: 'https://www.linkedin.com/in/lunarsalameh',
       github: 'https://github.com/LunarSalameh',
     },
@@ -35,10 +35,10 @@ const TeamSection = () => {
 
   return (
     <div >
-      <h2 className="text-4xl font-bold text-center mb-20">Main Team Members</h2>
+      <h2 className="text-4xl font-bold text-center mb-20 ">Main Team Members</h2>
       <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
         {teamMembers.map((member) => (
-          <div key={member.name} className="bg-gray-100 rounded-lg p-6 flex flex-col items-center text-center">
+          <div key={member.name} className="bg-gray-200 rounded-lg p-6 flex flex-col items-center text-center">
             <img
               src={member.image}
               alt={member.name}
@@ -49,9 +49,7 @@ const TeamSection = () => {
             <div className="flex justify-center gap-4">
               <a href={member.linkedin} target="_blank" rel="noopener noreferrer">
                 {/* Replace with actual LinkedIn icon */}
-                <img src="/symbols/linkedin.png" alt="LFLFhaLogo" className=" w-60 h-32" />
 
-                
                 LinkedIn
               </a>
               <a href={member.github} target="_blank" rel="noopener noreferrer">
