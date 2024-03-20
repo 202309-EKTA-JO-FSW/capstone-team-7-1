@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react';//add
 import { useRouter } from 'next/router';
-import useAuthStore from '@/Store/authStore';
+import useAuthStore from '@/Store/authStore';//add
 
 const Signup = () => {
-  const signUp = useAuthStore((state) => state.signUp)
+  const signUp = useAuthStore((state) => state.signUp)//add
   const [formData, setFormData] = useState({
     userName: '',
     email: '',
@@ -22,7 +22,7 @@ const Signup = () => {
 
   const handleSubmit = async (e) => {
         e.preventDefault();
-        signUp(formData)
+        signUp(formData)//add
     
         }
 
