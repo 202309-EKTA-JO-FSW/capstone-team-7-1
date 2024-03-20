@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { Inter } from "next/font/google";
-import useAuthStore from "@/Store/authStore";
+import useAuthStore from "@/Store/authStore";//add
 
 
 const inter = Inter({ subsets: ["latin"] });
@@ -13,6 +13,7 @@ export default function Home() {
     <main
       className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
     >
+     
   {  isAuthenticated ? <button onClick={logout}>logout</button> : null}
  </main>
   );

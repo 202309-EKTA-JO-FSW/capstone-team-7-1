@@ -75,7 +75,7 @@ console.log(err.message);
           console.log(err.message);
         }
       },
-//****************************************************************** */
+
       // getUserProfile: async () => {
       //   // console.log("logout")
       //   try {
