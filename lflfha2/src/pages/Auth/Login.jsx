@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/router';
-import useAuthStore from '@/Store/authStore';
+import useAuthStore from '@/Store/authStore';//add
 
 const Login = () => {
-  const login = useAuthStore((state) => state.login)
+  const login = useAuthStore((state) => state.login)//add
   const [credentials, setCredentials] = useState({ 
     email: '',
     password: '',
@@ -16,7 +16,7 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-  login(credentials)
+  login(credentials)//add
     
   };
   
@@ -27,7 +27,6 @@ const Login = () => {
               <div className="flex justify-center mb-1">
                 <img src="/LflfhaLogo.png" alt="LFLFhaLogo" className=" w-60 h-32" />
               </div>
-
 
         <div className="mb-4 mt-2">
     <h1 className="text-lg   text-center text-orange-700">Access Your LFLFha Account</h1>

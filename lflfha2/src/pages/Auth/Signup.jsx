@@ -30,6 +30,7 @@ const Signup = () => {
     <div className="min-h-screen flex items-center justify-center bg-[#FFD5C2]">
       <form onSubmit={handleSubmit} className="w-full max-w-md px-8 py-6 bg-white rounded-lg shadow-md">
 
+
         <div className="mb-4">
           <label htmlFor="userName" className="block text-sm font-bold mb-2">Username</label>
           <input type="text" id="userName" name="userName" placeholder="username" value={formData.userName} onChange={handleChange} required className="w-full px-3 py-2 border rounded" />

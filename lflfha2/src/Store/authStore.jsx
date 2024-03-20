@@ -21,7 +21,7 @@ const useAuthStore = create(
         }
         const responseData = await res.json();
         console.log(responseData);
-        set({
+        set({                                       
           isAuthenticated: true,
           accessToken: responseData.accessToken,
         });
@@ -41,7 +41,7 @@ console.log(err.message);
           },
           body: JSON.stringify(credentials)
         }).then((data)=>data.json());
-         console.log(responseData,"hakeeema")
+         console.log(responseData,"hakeema")
 
         set({
           isAuthenticated: true,
