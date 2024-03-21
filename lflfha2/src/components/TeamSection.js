@@ -35,10 +35,12 @@ const TeamSection = () => {
 
   return (
     <div >
-      <h2 className="bg-light-orange text-4xl font-bold text-center mb-20 ">Main Team Members</h2>
+      <h2 className="bg-light-orange text-4xl font-bold text-center mb-2 ">Meet Team Members</h2>
+      <h2 className="bg-orange decoration-orange font-bold text-center mb-20 "> 4 People</h2>
+      
       <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
         {teamMembers.map((member) => (
-          <div key={member.name} className="bg-gray-200 hover:bg-gray-300 rounded-lg p-6 flex flex-col items-center text-center">
+          <div key={member.name} className="  bg-orange-100 hover:bg-orange-300  shadow-xl rounded-lg p-6 flex flex-col items-center text-center">
             <img
               src={member.image}
               alt={member.name}

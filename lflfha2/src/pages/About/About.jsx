@@ -5,11 +5,11 @@ import TeamSection from '@/components/TeamSection';
 
 const AboutPage = () => {
   return (
-    <div className="max-w-6xl mx-auto px-4 py-8">
-      <div className="text-sm text-gray-600 mb-4">
+    <div className="max-w-6xl mx-auto px-4 py-8  ">
+      <div className="text-sm text-gray-600 mbbg-[#FFD5C2]-4">
       </div>
 
-      <div className="flex flex-wrap justify-center items-center -mx-4">
+      <div className="flex flex-wrap justify-center items-center -mx-4  ">
         <div className="px-4 flex-1">
           <div className="max-w-sm mx-auto mb-10">
             <Image
@@ -37,6 +37,7 @@ const AboutPage = () => {
       </div>
       <TeamSection/> 
     </div>
+    
   );
 };
 
