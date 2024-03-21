@@ -196,9 +196,9 @@ adminController.removeRestaurant = async (req, res) => {
 
 adminController.addDish = async (req, res) => {
     try{
-        const { name,  description, price, ingrediants, category, restaurant } = req.body;
+        const { name,  description, price, ingredients, category, restaurant } = req.body;
 
-        if( !name || !description || !price || !ingrediants || !category || !restaurant){
+        if( !name || !description || !price || !ingredients || !category || !restaurant){
             return res.status(400).json({message: "some data not entered"})
         }
 
@@ -206,7 +206,7 @@ adminController.addDish = async (req, res) => {
             name,
             description,
             price,
-            ingrediants,
+            ingredients,
             category,
             restaurant,
         });
@@ -232,7 +232,7 @@ adminController.getAllDishes = async (req, res) => {
 adminController.updateDish = async (req, res) => { 
     try{
         const { id } = req.params;
-        const { name,  description, price, ingrediants, category, restaurant } = req.body;
+        const { name,  description, price, ingredients, category, restaurant } = req.body;
 
         if(!id){
             return res.status(400).json({message: "dish id is required"});
@@ -247,9 +247,9 @@ adminController.updateDish = async (req, res) => {
         if(name) dish.name = name;
         if(description) dish.description = description;
         if(price) dish.price = price;
-        if(ingrediants){
-            const newIngrediants = dish.ingrediants.concat(ingrediants);
-            dish.ingrediants = newIngrediants;
+        if(ingredients){
+            const newIngrediants = dish.ingredients.concat(ingredients);
+            dish.ingredients = newIngrediants;
         }
         if(category){
             const newCategory = dish.category.concat(category);
@@ -280,6 +280,22 @@ adminController.removeDish = async (req, res) => {
     }
     catch(err){
         res.status(400).json(err.message);
+    }
+}
+
+adminController.findRestaurantById = async (req, res) => {
+    try{
+        const { id } = req.params;
+
+        if(!id){
+            return res.status(400).json({message: "id not found"})
+        }
+
+        const restaurant = await restaurantsModel.findById(id);
+        res.status(200).json(restaurant);
+    }
+    catch(err){
+        res.status(500).json(err.message);
     }
 }
 

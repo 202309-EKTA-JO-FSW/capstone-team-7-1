@@ -2,6 +2,16 @@ const reviewModel = require('../models/review');
 
 const reviewController = {};
 
+reviewController.getAllReviews = async (req, res) => {
+    try{
+        const reviews = await reviewModel.find({});
+        res.status(200).json(reviews);
+    }
+    catch(err){
+        res.status(500).json(err.message)
+    }
+}
+
 reviewController.getRestaurantReviews = async (req, res) => {
     try {
         const restaurantId = req.params.restaurantId;
@@ -15,16 +25,16 @@ reviewController.getRestaurantReviews = async (req, res) => {
 
 reviewController.addReviewForRestaurant = async (req, res) => {
     try {
-        const restaurantId = req.params.restaurantId;
-        const { user, comment, rating } = req.body;
+        
+        const { user, restaurant, comment, rating } = req.body;
 
-        if(!restaurantId || !user || !comment || !rating){
+        if(!restaurant || !user || !comment || !rating){
             return res.status(400).json({message: "some data is missing"});
         }
 
         await reviewModel.create({
             user,
-            item: restaurantId,
+            restaurant,
             comment,
             rating 
         });

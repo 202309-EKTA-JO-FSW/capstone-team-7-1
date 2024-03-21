@@ -56,8 +56,9 @@ router.post('/users/:userId/favorites/dishes', favoriteController.addFavoriteDis
 router.delete('/users/:userId/favorites/dishes/:dishId', favoriteController.removeFavoriteDish);
 
 // review for user - need check
+router.get('/reviews', reviewController.getAllReviews);
 router.get('/restaurants/:restaurantId/reviews', reviewController.getRestaurantReviews);
-router.post('/restaurants/:restaurantId/reviews', reviewController.addReviewForRestaurant);
+router.post('/restaurants/addReview', reviewController.addReviewForRestaurant);
 router.put('/reviews/:reviewId', reviewController.updateReview);
 router.delete('/reviews/:reviewId', reviewController.deleteReview);
 

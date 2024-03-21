@@ -16,17 +16,21 @@ router.post("/signout", checkBlackListedToken, adminController.signout);
 router.post("/addRestaurant", adminController.addRestaurant);
 //router.put("/updateRestaurant/:id",checkBlackListedToken, adminController.ubdateRestaurant);
 router.put("/updateRestaurant/:id", adminController.ubdateRestaurant);
-router.delete("/removeRestaurant/:id",checkBlackListedToken, adminController.removeRestaurant);
+//router.delete("/removeRestaurant/:id",checkBlackListedToken, adminController.removeRestaurant);
+router.delete("/removeRestaurant/:id", adminController.removeRestaurant);
 
 //Add Dish Routes
 router.post("/addDish", adminController.addDish);
-router.put("/updateDish/:id",checkBlackListedToken, adminController.updateDish);
-router.delete("/removeDish/:id",checkBlackListedToken, adminController.removeDish);
+//router.put("/updateDish/:id",checkBlackListedToken, adminController.updateDish);
+router.put("/updateDish/:id", adminController.updateDish);
+// router.delete("/removeDish/:id",checkBlackListedToken, adminController.removeDish);
+router.delete("/removeDish/:id", adminController.removeDish);
 
 //View Requests
 //router.get("/restaurants",checkBlackListedToken, adminController.getAllRestaurants);
 router.get("/restaurants", adminController.getAllRestaurants);
-router.get("/Dishes", checkBlackListedToken, adminController.getAllDishes)
+router.get("/Dishes", adminController.getAllDishes)
+router.get("/restaurants/:id", adminController.findRestaurantById)
 
 // router.get("/customers", adminController.getAllCustomers);
 // router.get("/orders", adminController.getAllOrders);
