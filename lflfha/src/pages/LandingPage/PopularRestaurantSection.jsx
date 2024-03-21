@@ -1,8 +1,8 @@
+// PopulerRestaurantSection.jsx
 import React, { useState, useEffect } from "react";
 import Cards from "@/components/Common/Cards";
 import axios from "axios";
 import Button from "@/components/Common/Button";
-// import { headers } from "next/headers";
 
 const PopulerRestaurantSection = () => {
   const [popularRestaurants, setPopularRestaurants] = useState([]);
@@ -14,7 +14,7 @@ const PopulerRestaurantSection = () => {
 
   const fetchALLRestaurant = async (name, logo, rate) => {
     try {
-      const response = await axios.get(`http://localhost:3001/restaurants/`, {
+      const response = await axios.get(`http://localhost:3001/restaurants`, {
         headers: {
           "Content-Type": "application/json",
         },
@@ -53,7 +53,7 @@ const PopulerRestaurantSection = () => {
           />
         ))}
       </div>
-      <Button text="Browse Restaurants" />
+      <Button text="Browse Restaurants" destination="/restaurants" />
     </section>
   );
 };

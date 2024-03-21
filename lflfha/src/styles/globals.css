@@ -8,10 +8,20 @@
   }
 }
 
-#StartupSection {
+#Gradient-bg {
   background-color: #FCFCFC;
   background-image: linear-gradient(
       to bottom,
+      rgba(244, 103, 57, 0.3) 10%, 
+      #FCFCFC 90%
+  );
+  background-repeat: no-repeat;
+}
+
+footer {
+  background-color: #FCFCFC;
+  background-image: linear-gradient(
+      to top,
       rgba(244, 103, 57, 0.3) 10%, 
       #FCFCFC 90%
   );
