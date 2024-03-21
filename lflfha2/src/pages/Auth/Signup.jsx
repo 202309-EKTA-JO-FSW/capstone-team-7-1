@@ -30,6 +30,9 @@ const Signup = () => {
     <div className="min-h-screen flex items-center justify-center bg-[#FFD5C2]">
       <form onSubmit={handleSubmit} className="w-full max-w-md px-8 py-6 bg-white rounded-lg shadow-md">
 
+      <div className="mb-4 mt-2">
+    <h1 className="text-lg  text-center text-orange-700"> Create Your Account</h1>
+  </div>
 
         <div className="mb-4">
           <label htmlFor="userName" className="block text-sm font-bold mb-2">Username</label>
@@ -71,6 +74,39 @@ const Signup = () => {
         <div className="flex items-center justify-between">
           <button type="submit" className="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Sign Up</button>
         </div>
+    <>
+      <p
+        className="text-lg text-primary self-center mt-2"
+        style={{
+          border: "0px solid rgb(229, 231, 235)",
+          boxSizing: "border-box",
+          margin: "0px",
+          marginTop: "0.5rem",
+          alignSelf: "center",
+          fontSize: "1.125rem",
+          lineHeight: "1.75rem",
+          color: "rgb(22 66 91/1)",
+        }}
+      >
+        <span>Already have an account? </span>
+        
+        <a
+          className="underline hover:text-secondary duration-300"
+          href="http://localhost:3000/Auth/Login"
+          style={{
+            border: "0px solid rgb(229, 231, 235)",
+            boxSizing: "border-box",
+            textDecoration: "inherit",
+            color: "inherit",
+            textDecorationLine: "underline",
+            transitionDuration: "0.3s",
+          }}
+        >
+          Sign In
+        </a>
+      </p>
+  
+    </>
       </form>
     </div>
   );

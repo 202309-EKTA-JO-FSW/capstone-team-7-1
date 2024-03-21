@@ -4,28 +4,28 @@ const TeamSection = () => {
   const teamMembers = [
     {
       name: 'Hakimah ALzaidanin ',
-      role: 'Full-stack Devloper',
+      role: 'Full-Stack Devloper',
       image: '/team/hakeema.jpeg', 
       linkedin: 'https://www.linkedin.com/in/hakimah-al-zaidanin-31917a2b6/', 
       github: 'https://github.com/hakimahalzaidanin',
     },
     {
       name: 'Lunar Salameh',
-      role: 'Full-stack Devloper',
+      role: 'Full-Stack Developer',
       image: '/team/lunar.webp',
       linkedin: 'https://www.linkedin.com/in/lunarsalameh',
       github: 'https://github.com/LunarSalameh',
     },
     {
       name: 'Abdullah Alawad',
-      role: 'Full-stack Devloper',
+      role: 'Full-Stack Developer',
       image: '/team/Abdullah.webp',
       linkedin: 'https://www.linkedin.com/in/abdullah-alawad-0989b7269/',
       github: 'https://github.com/Abdullah-Alawad',
     },
     {
       name: 'Ammar Kolko',
-      role: 'Full-stack Devloper',
+      role: 'Full-Stack Developer',
       image: '',
       linkedin: '#',
       github: '#',
