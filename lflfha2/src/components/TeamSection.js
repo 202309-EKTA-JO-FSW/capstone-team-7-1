@@ -13,7 +13,7 @@ const TeamSection = () => {
     {
       name: 'Lunar Salameh',
       role: 'Full-stack Devloper',
-      image: '/team/IMG_8228.webp',
+      image: '/team/lunar.webp',
       linkedin: 'https://www.linkedin.com/in/lunarsalameh',
       github: 'https://github.com/LunarSalameh',
     },
