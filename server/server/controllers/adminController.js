@@ -107,7 +107,7 @@ adminController.signout = async (req, res) => {
 
 adminController.addRestaurant = async (req, res) => {
     try{
-        const { name, restaurantAddress, openingHours, description, phone, cuisineType } = req.body;
+        const { name, restaurantAddress, openingHours, closingHours, logo, rate, description, phone, cuisineType } = req.body;
 
         if( !name || !restaurantAddress || !openingHours || !description || !phone || !cuisineType ){
             return res.status(400).json({message: "some data is missing"})
@@ -120,6 +120,9 @@ adminController.addRestaurant = async (req, res) => {
             description,
             phone,
             cuisineType,
+            closingHours,
+            logo,
+            rate
         });
 
         return res.status(200).json({message: "restaurant added successfully"});
