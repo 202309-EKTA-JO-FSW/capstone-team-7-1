@@ -31,7 +31,6 @@ const AboutPage = () => {
             we've created an engaging, user-friendly experience that not only
             demonstrates our technical prowess but also our dedication to
             creating memorable moments for our users.
-            {/* <span className="last-line">creating memorable moments for our users.</span> */}
 </p>
         </div>
       </div>

@@ -1,7 +1,6 @@
 import React from 'react';
 
 const TeamSection = () => {
-
   const teamMembers = [
     {
       name: 'Hakimah ALzaidanin ',
@@ -48,12 +47,13 @@ const TeamSection = () => {
             />
             <h3 className="text-lg font-bold">{member.name}</h3>
             <p className="text-sm mb-4">{member.role}</p>
-            <div className="flex justify-center gap-4">
+            <div className="flex justify-center gap-4 hover:underline">
               <a href={member.linkedin} target="_blank" rel="noopener noreferrer">
                 {/* Replace with actual LinkedIn icon */}
+                
 
-                LinkedIn
-              </a>
+                LinkedIn  
+              </a >
               <a href={member.github} target="_blank" rel="noopener noreferrer">
                 {/* Replace with actual GitHub icon */}
                 GitHub
@@ -67,3 +67,14 @@ const TeamSection = () => {
 };
 
 export default TeamSection;
+
+
+
+
+
+
+
+
+
+
+
