@@ -5,23 +5,24 @@ import { useRouter } from 'next/router'
 const RestaurantActions = () => {
   const router = useRouter()
 
-    const [formData, setFormData] = useState({
-        name: '',
-        restaurantAddress: '',
-        openingHours: '',
-        description: '',
-        phone: '',
-        cuisineType: ''
-    });
+const restaurantActions = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    restaurantAddress: "",
+    openingHours: "",
+    description: "",
+    phone: "",
+    cuisineType: "",
+  });
 
-    const [modifiedData, setModifiedData] = useState({
-      id: '',
-      name: '',
-      restaurantAddress: '',
-      openingHours: '',
-      description: '',
-      phone: '',
-      cuisineType: ''
+  const [modifiedData, setModifiedData] = useState({
+    id: "",
+    name: "",
+    restaurantAddress: "",
+    openingHours: "",
+    description: "",
+    phone: "",
+    cuisineType: "",
   });
 
   const [restaurantId, setRestaurantId] = useState('');
@@ -30,9 +31,10 @@ const RestaurantActions = () => {
         setFormData({...formData, [e.target.name]: e.target.value});
     };
 
-    const handleModifiedChange = (e) => {
-      setModifiedData({...modifiedData, [e.target.name]: e.target.value});
-    };
+
+  const handleModifiedChange = (e) => {
+    setModifiedData({ ...modifiedData, [e.target.name]: e.target.value });
+  };
 
     const handleIdChange = (e) => {
       setRestaurantId(e.target.value);
@@ -59,12 +61,15 @@ const RestaurantActions = () => {
             console.log(err.message);
         }
     }
+  };
 
-    const handleModify = async (e) => {
-      e.preventDefault();
-      try {
-        const res = await fetch(`http://localhost:3001/admin/updateRestaurant/${modifiedData.id}`, {
-          method: 'PUT',
+  const handleModify = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await fetch(
+        `http://localhost:3001/admin/updateRestaurant/${modifiedData.id}`,
+        {
+          method: "PUT",
           headers: {
             "Content-Type": "application/json",
           },
