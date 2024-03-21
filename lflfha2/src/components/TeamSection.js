@@ -35,7 +35,7 @@ const TeamSection = () => {
   return (
     <div >
       <h2 className="bg-light-orange text-4xl font-bold text-center mb-2 ">Meet Team Members</h2>
-      <h2 className="bg-orange decoration-orange font-bold text-center mb-20 "> 4 People</h2>
+      <h2 className="bg-orange decoration-orange font-bold text-center mb-20 text-orange-700 "> 4 People</h2>
       
       <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
         {teamMembers.map((member) => (

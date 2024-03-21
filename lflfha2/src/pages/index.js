@@ -14,7 +14,7 @@ export default function Home() {
       className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
     >
      
-  {  isAuthenticated ? <button onClick={logout}>logout</button> : null}
+     {  isAuthenticated ? <button className="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" onClick={logout}>logout</button> : null}
  </main>
   );
 }
