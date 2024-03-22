@@ -78,14 +78,19 @@ function AllRestaurants() {
                 ? rest
                 : rest.name.toLowerCase().includes(search.toLowerCase());
             })
+
             .map((restaurant, index) => (
+              // <Link
+              //   href={{
+              //     pathname: "/SingleRestaurant",
+              //     query: { restaurant: restaurant },
+              //   }}
+              //   key={index}
+              // >
               <Link
-                href={{
-                  pathname: "/SingleRestaurant",
-                  query: { restaurant: restaurant },
-                }}
-                key={index}
-              >
+      href={`/restaurant/${restaurant._id}`} // Using dynamic routing for restaurant details
+      key={restaurant._id}
+    >
                 <Cards
                   image={restaurant.logo}
                   title={restaurant.name}
