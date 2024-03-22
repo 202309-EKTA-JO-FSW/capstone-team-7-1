@@ -1,3 +1,4 @@
+import MapEmbed from '@/components/MapEmbed';
 import React, { useState } from 'react';
 
 const ContactPage = () => {
@@ -100,7 +101,11 @@ const ContactPage = () => {
             <h3 className="text-lg font-semibold text-orange-600 mb-2 hover:underline ">send your feedback</h3>
             <p className="text-gray-700"> please share your experience to help us enhance our services </p>
           </div>
+          <div className="flex-grow flex items-center justify-center  ">
+          <MapEmbed/>
+          </div>
       </div>
+      
     </div>
     
   );
