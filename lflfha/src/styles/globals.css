@@ -1,6 +1,44 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+
+.restaurant-header{
+  
+    /* min-height: 70vh; */
+    background-image: linear-gradient(transparent, gray 99%),url("/Header.gif");
+    background-attachment: fixed;
+    
+    /* background-image: linear-gradient(transparent, gray 90% ), url("/RestaurantsPage.jpg");
+    background-blend-mode: soft-light; */
+  
+}
+#Gradient-bg {
+  background-color: #FCFCFC;
+  background-image: linear-gradient(
+      to bottom,
+      rgba(244, 103, 57, 0.3) 10%, 
+      #FCFCFC 90%
+  );
+  background-repeat: no-repeat;
+}
+
+footer {
+  background-color: #FCFCFC;
+  background-image: linear-gradient(
+      to top,
+      rgba(244, 103, 57, 0.3) 10%, 
+      #FCFCFC 90%
+  );
+  background-repeat: no-repeat;
+}
+
 /*
 :root {
   --foreground-rgb: 0, 0, 0;
@@ -26,9 +64,4 @@ body {
     rgb(var(--background-start-rgb));
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-}
 */
