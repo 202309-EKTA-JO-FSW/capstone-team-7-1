@@ -4,6 +4,7 @@ import LandingPage from "./LandingPage/FullLandingPage";
 import AllRestaurants from "./GetAllRestaurants/AllRestaurants";
 import NavBar from "@/components/Layout/Navbar";
 import Footer from "@/components/Layout/Footer";
+
 const Hello = () => {
   // const [testResult, setTestResult] = useState("");
 
@@ -15,10 +16,10 @@ const Hello = () => {
   //     });
   // }, []);
 
-  return <main className="font-Inter">
+  return <main className="font-Inter scroll-smooth">
     <NavBar/>
-    <LandingPage />
-    {/* <AllRestaurants/> */}
+    {/* <LandingPage /> */}
+    <AllRestaurants/>
     <Footer/>
   </main>;
 };

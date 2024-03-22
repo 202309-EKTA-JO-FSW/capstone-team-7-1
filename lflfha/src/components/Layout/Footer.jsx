@@ -32,7 +32,11 @@ const Footer = () => {
           <div className="mt-8 grid grid-cols-2 gap-8 lg:mt-0 lg:grid-cols-5 lg:gap-y-16">
             <div className="col-span-2">
               <Link href={`/Home`}>
-                <img src="/Logo.png" alt="Logo" className="w-4/6"></img>
+                <img
+                  src="/Logo.png"
+                  alt="Logo"
+                  className="lg:w-4/6 md:w-1/3 sm:w-2/4 w-2/4"
+                ></img>
               </Link>
             </div>
 

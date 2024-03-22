@@ -2,7 +2,7 @@ import React from "react";
 
 const Cards = ({ image, title, rating, price, ingredients }) => {
   return (
-    <div className="w-72 h-96 bg-white rounded-2xl shadow-xl flex flex-col justify-center">
+    <div className="w-72 h-96 bg-white rounded-2xl shadow-xl flex flex-col hover:shadow-gray-500 hover:shadow-2xl hover:border-solid hover:border-2 hover:border-gray-700   justify-center">
       <img
         src={image}
         alt={title}

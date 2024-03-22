@@ -7,7 +7,11 @@ function Navbar() {
     <nav className=" border-gray-200 bg-[#FACFC1] drop-shadow-2xl shadow-white w-full">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <a href="/">
-          <img src="/Logo.png" className="h-16" alt="Flowbite Logo" />
+          <img
+            src="/Logo.png"
+            className="lg:h-16 sm:h-12 h-12 md:h-14"
+            alt="Logo"
+          />
         </a>
         <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
           {/* <a href="/Cart">
@@ -40,9 +44,9 @@ function Navbar() {
             >
               <path
                 stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
                 d="M1 1h15M1 7h15M1 13h15"
               />
             </svg>
