@@ -11,7 +11,7 @@ const AboutPage = () => {
 
       <div className="flex flex-wrap justify-center items-center -mx-4  ">
         <div className="px-4 flex-1">
-          <div className="max-w-sm mx-auto mb-10">
+          <div className="max-w-sm mx-auto mb-10 shadow-2xl">
             <Image
               src="/img/developers-team.png"
               alt="developers-team"

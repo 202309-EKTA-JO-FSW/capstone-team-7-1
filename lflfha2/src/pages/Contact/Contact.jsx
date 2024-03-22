@@ -1,4 +1,3 @@
-import MapEmbed from '@/components/MapEmbed';
 import React, { useState } from 'react';
 
 const ContactPage = () => {
@@ -20,15 +19,15 @@ const ContactPage = () => {
   return (
     <div className="flex flex-col min-h-screen">
 <div
-  className="bg-cover bg-center flex items-center justify-center text-4xl text-white font-bold mb-5"
-  style={{ backgroundImage: "url('/1.png')", height: '350px' }}>
+  className="bg-cover bg-center flex items-center justify-center text-4xl text-white font-bold mb-5 shadow-2xl shadow-black	 "
+  style={{ backgroundImage: "url('/1.png')", height: '350px'  }}>
 </div>
 
     <h6 className="text-2xl  items-center text-orange-700 flex-grow flex items-center justify-center p-8 ">SEND US A MESSAGE</h6>
 
       {/* Form container */}
       <div className="flex-grow flex items-center justify-center ">
-        <form onSubmit={handleSubmit} className="w-full max-w-lg p-10 bg-white rounded-lg shadow-md">
+        <form onSubmit={handleSubmit} className="w-full max-w-lg p-10 bg-white rounded-lg shadow-md  shadow-xl ">
       
 
           <div className="mb-4">
@@ -68,7 +67,7 @@ const ContactPage = () => {
               id="message"
               value={formData.message}
               onChange={handleChange}
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="shadow appearance-none border rounded w-full py-5 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               required
             ></textarea>
           </div>
@@ -94,15 +93,13 @@ const ContactPage = () => {
           </div>
          <div>
             <h3 className="text-lg font-semibold text-orange-600 mb-2 hover:underline ">Opening Hours</h3>
-            <p className="text-gray-700">09:00 AM - 10:00 PM<br />Every Day</p>
+            <p className="text-gray-700">09:00 AM - 12:00 PM<br />Every Day</p>
           </div>
          
          <div>
             <h3 className="text-lg font-semibold text-orange-600 mb-2 hover:underline ">send your feedback</h3>
-            <p className="text-gray-700">please share your experience to help us enhance our services  </p>
+            <p className="text-gray-700"> please share your experience to help us enhance our services </p>
           </div>
-          <MapEmbed/>
-
       </div>
     </div>
     
