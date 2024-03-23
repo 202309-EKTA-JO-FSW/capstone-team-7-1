@@ -18,7 +18,7 @@ const Hello = () => {
 
   return <main className="font-Inter scroll-smooth">
     <NavBar/>
-    {/* <LandingPage /> */}
+    <LandingPage />
     <AllRestaurants/>
     <Footer/>
   </main>;
