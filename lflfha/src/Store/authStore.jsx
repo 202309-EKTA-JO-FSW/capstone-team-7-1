@@ -49,6 +49,7 @@ console.log(err.message);
         });
 
         window.location.href= "/";
+
       } catch (err) {
         console.log(err.message);
       }
@@ -76,25 +77,27 @@ console.log(err.message);
         }
       },
 
-      // getUserProfile: async () => {
-      //   // console.log("logout")
+
+      // getUserProfile: async (formData) => {
+      //   console.log("userProfile",formData)
       //   try {
-      //     const responseData = await fetch('http://localhost:3001/user/signout', {
-      //       method: 'POST',
+      //     const responseData = await fetch('http://localhost:3001/users/:userId', {
+      //       method: 'GET',
       //       headers: {
       //         "Content-Type": "application/json",
-      //        "Authorization": `Bearer ${get().accessToken}`,
+      //       //  "Authorization": `Bearer ${get().accessToken}`,
+      //       "Authorization": `Bearer ${accessToken}`,
+
       //       },
-            
       //     })
-           
+          
       //     set({
-      //       isAuthenticated: false,
-      //       accessToken: "",
+      //       isAuthenticated: true,
+      //       accessToken: responseData.accessToken,
       //     });
   
       //   } catch (err) {
-      //     console.log(err.message);
+      //     console.log("hakeema becarful");
       //   }
       // },
 
@@ -118,13 +121,4 @@ console.log(err.message);
 export default useAuthStore;
 
 
-// import { create } from 'zustand'
-// import { createJSONStorage, persist } from "zustand/middleware";
 
-// const useAuthStore = create((set) => ({
-//   bears: 0,
-//   increasePopulation: () => set((state) => ({ bears: state.bears + 1 })),
-//   removeAllBears: () => set({ bears: 0 }),
-// }))
-
-// export default useAuthStore;

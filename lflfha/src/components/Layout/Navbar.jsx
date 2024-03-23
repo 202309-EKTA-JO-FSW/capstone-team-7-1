@@ -77,7 +77,7 @@ function Navbar() {
             </li>
             <li>
               <a
-                href="/profile"
+                href="http://localhost:3000/Profile/userId" //add 
                 className="block py-2 px-3 md:p-0 text-[#180800] rounded md:bg-transparent hover:text-[#FF6868]"
               >
                 Profile

@@ -1,6 +1,9 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
+// import useAuthStore from '@/Store/authStore';
+
 const UserProfile = () => {
+  // const getUserProfile = useAuthStore((state) => state.getUserProfile)//add...........
   const router = useRouter();
   const { userId } = router.query;
   const [userProfile, setUserProfile] = useState(null);
@@ -12,9 +15,10 @@ const UserProfile = () => {
     address: '',
     phone: '',
   });
+
 const fetchUserProfile = async () => {
   try {
-    const token = localStorage.getItem('accessToken'); // Ensure the token is retrieved correctly
+    const token = localStorage.getItem('accessToken'); 
     if (!token) {
       throw new Error('No access token found');
     }
@@ -23,9 +27,7 @@ const fetchUserProfile = async () => {
       method: 'GET',
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${get().accessToken}`,
-                  // 'Authorization': `Bearer ${localStorage.getItem('accessToken')}`,
-
+        "Authorization": `Bearer ${accessToken}`,
       },
     });
 
@@ -33,20 +35,28 @@ const fetchUserProfile = async () => {
       throw new Error(`HTTP error! status: ${res.status}`);
     }
 
-    // const data = await res.json();
-    setUserProfile(res.data);
+    const data = await res.json();
+    console.log("Fetched user profile data:", data); 
+
+    setUserProfile(data); 
+
+    // getUserProfile(userProfile)//add...
+
     setFormData({
-      userName: res.data.userName,
-      email: res.data.email,
-      gender: res.data.gender,
-      address: res.data.address,
-      phone: res.data.phone,
+      userName: data.userName,
+      email: data.email,
+      gender: data.gender,
+      address: data.address,
+      phone: data.phone,
     });
+
   } catch (err) {
-    console.error(err.message);
-    // Handle the error state in the UI, maybe by setting an error message in state and displaying it
+    console.error("Error fetching user profile:", err.message); // Log more descriptive error
   }
-}
+};
+
+
+
 
 const updateUserProfile = async () => {
       try {
@@ -96,54 +106,94 @@ const updateUserProfile = async () => {
   console.log({formData})}else{
     console.log({formData})
   }
+  
     return (
-      <div>
-        <h1>User Profile</h1>
+      <div className="max-w-4xl mx-auto p-10 bg-orange-100 shadow-md rounded-lg">
+        <h1 className="text-3xl font-bold text-gray-700 mb-6">User Profile</h1>
         {isEditing ? (
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit} className="space-y-4">
             <input
+              className="w-full p-2 border border-gray-300 rounded"
               name="userName"
+              placeholder="Username"
               value={formData.userName}
               onChange={handleChange}
             />
             <input
+              className="w-full p-2 border border-gray-300 rounded"
               name="email"
+              placeholder="Email"
               value={formData.email}
               onChange={handleChange}
             />
             <select
+              className="w-full p-2 border border-gray-300 rounded"
               name="gender"
               value={formData.gender}
               onChange={handleChange}
             >
+              <option value="">Select Gender</option>
               <option value="Male">Male</option>
               <option value="Female">Female</option>
-              {/* Add more gender options here if necessary */}
             </select>
             <input
+              className="w-full p-2 border border-gray-300 rounded"
               name="address"
+              placeholder="Address"
               value={formData.address}
               onChange={handleChange}
             />
             <input
+              className="w-full p-2 border border-gray-300 rounded"
               name="phone"
+              placeholder="Phone"
               value={formData.phone}
               onChange={handleChange}
             />
-            <button type="submit">Save Changes</button>
+            <button
+              type="submit"
+              className="w-full px-4 py-2 text-white bg-orange-500 rounded-lg hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-opacity-50"
+            >
+              Save Changes
+            </button>
           </form>
         ) : (
-          <div>
-            <p>Username: {formData.userName}</p>
-            <p>Email: {formData.email}</p>
-            <p>Gender: {formData.gender}</p>
-            <p>Address: {formData.address}</p>
-            <p>Phone: {formData.phone}</p>
-            <button onClick={() => setIsEditing(true)}>Edit Profile</button>
+          <div className="space-y-4">
+            <p className="text-lg"><strong>Username:</strong> {formData.userName}</p>
+            <p className="text-lg"><strong>Email:</strong> {formData.email}</p>
+            <p className="text-lg"><strong>Gender:</strong> {formData.gender}</p>
+            <p className="text-lg"><strong>Address:</strong> {formData.address}</p>
+            <p className="text-lg"><strong>Phone:</strong> {formData.phone}</p>
+            <button
+              onClick={() => setIsEditing(true)}
+              className="w-full px-4 py-2 text-white bg-orange-500 rounded-lg hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-opacity-50"
+            >
+              Edit Profile
+            </button>
           </div>
-         )}
+        )}
       </div>
     );
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
   };
 
 export default UserProfile;
