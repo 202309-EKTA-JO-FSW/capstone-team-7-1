@@ -4,6 +4,10 @@ import LandingPage from "./LandingPage/FullLandingPage";
 import AllRestaurants from "./GetAllRestaurants/AllRestaurants";
 import NavBar from "@/components/Layout/Navbar";
 import Footer from "@/components/Layout/Footer";
+import Image from "next/image";
+import { Inter } from "next/font/google";
+import useAuthStore from "@/Store/authStore";
+
 
 const Hello = () => {
   // const [testResult, setTestResult] = useState("");
@@ -16,8 +20,15 @@ const Hello = () => {
   //     });
   // }, []);
 
+  const logout = useAuthStore((state) => state.logout) //add
+  const isAuthenticated = useAuthStore((state) => state.isAuthenticated) //add
+  
+
   return <main className="font-Inter scroll-smooth">
     <NavBar/>
+
+    {  isAuthenticated ? <button className="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" onClick={logout}>logout</button> : null}
+
     <LandingPage />
     <AllRestaurants/>
     <Footer/>
@@ -25,3 +36,10 @@ const Hello = () => {
 };
 
 export default Hello;
+
+
+
+
+
+
+
