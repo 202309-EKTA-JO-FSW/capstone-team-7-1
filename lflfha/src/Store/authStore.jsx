@@ -78,28 +78,28 @@ console.log(err.message);
       },
 
 
-      // getUserProfile: async (formData) => {
-      //   console.log("userProfile",formData)
-      //   try {
-      //     const responseData = await fetch('http://localhost:3001/users/:userId', {
-      //       method: 'GET',
-      //       headers: {
-      //         "Content-Type": "application/json",
-      //       //  "Authorization": `Bearer ${get().accessToken}`,
-      //       "Authorization": `Bearer ${accessToken}`,
+      getUserProfile: async (formData) => {
+        console.log("userProfile",formData)
+        try {
+          const responseData = await fetch('http://localhost:3001/users/:userId', {
+            method: 'GET',
+            headers: {
+              "Content-Type": "application/json",
+            //  "Authorization": `Bearer ${get().accessToken}`,
+            "Authorization": `Bearer ${accessToken}`,
 
-      //       },
-      //     })
+            },
+          })
           
-      //     set({
-      //       isAuthenticated: true,
-      //       accessToken: responseData.accessToken,
-      //     });
+          set({
+            isAuthenticated: true,
+            accessToken: responseData.accessToken,
+          });
   
-      //   } catch (err) {
-      //     console.log("hakeema becarful");
-      //   }
-      // },
+        } catch (err) {
+          console.log("hakeema becarful");
+        }
+      },
 
 
       handleAuthenticatedRequest: async ({
