@@ -201,6 +201,7 @@ adminController.addDish = async (req, res) => {
     try{
         const { name,  description, price, ingrediants, category, restaurant,image } = req.body;
 
+
         if( !name || !description || !price || !ingrediants || !category || !restaurant){
             return res.status(400).json({message: "some data not entered"})
         }
@@ -210,6 +211,7 @@ adminController.addDish = async (req, res) => {
             description,
             price,image,
             ingrediants,
+
             category,
             restaurant,
         });
@@ -237,6 +239,7 @@ adminController.updateDish = async (req, res) => {
         const { id } = req.params;
         const { name,  description, price, ingrediants, category, restaurant,image } = req.body;
 
+
         if(!id){
             return res.status(400).json({message: "dish id is required"});
         }
@@ -254,7 +257,7 @@ adminController.updateDish = async (req, res) => {
 
         if(ingrediants){
             const newIngrediants = dish.ingrediants.concat(ingrediants);
-            dish.ingrediants = newIngrediants;
+
         }
         if(category){
             const newCategory = dish.category.concat(category);
@@ -285,6 +288,22 @@ adminController.removeDish = async (req, res) => {
     }
     catch(err){
         res.status(400).json(err.message);
+    }
+}
+
+adminController.findRestaurantById = async (req, res) => {
+    try{
+        const { id } = req.params;
+
+        if(!id){
+            return res.status(400).json({message: "id not found"})
+        }
+
+        const restaurant = await restaurantsModel.findById(id);
+        res.status(200).json(restaurant);
+    }
+    catch(err){
+        res.status(500).json(err.message);
     }
 }
 
