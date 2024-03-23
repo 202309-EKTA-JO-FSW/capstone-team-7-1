@@ -60,7 +60,7 @@ function Navbar() {
           <ul className="flex flex-col font-medium p-4 md:p-0 mt-4 border md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0  ">
             <li>
               <a
-                href="/"
+                href="/LandingPage"
                 className="block py-2 px-3 md:p-0 text-[#180800] rounded md:bg-transparent hover:text-[#FF6868]"
                 aria-current="page"
               >
@@ -69,7 +69,7 @@ function Navbar() {
             </li>
             <li>
               <a
-                href="/about"
+                href="/About/About"
                 className="block py-2 px-3 md:p-0 text-[#180800] rounded md:bg-transparent hover:text-[#FF6868]"
               >
                 About
@@ -77,7 +77,7 @@ function Navbar() {
             </li>
             <li>
               <a
-                href="/profile"
+                href="/Profile/Profile"
                 className="block py-2 px-3 md:p-0 text-[#180800] rounded md:bg-transparent hover:text-[#FF6868]"
               >
                 Profile
@@ -85,7 +85,7 @@ function Navbar() {
             </li>
             <li>
               <a
-                href="/Order"
+                href="/Order/Order"
                 className="block py-2 px-3 md:p-0 text-[#180800] rounded md:bg-transparent hover:text-[#FF6868]"
               >
                 Order
@@ -94,7 +94,7 @@ function Navbar() {
 
             <li>
               <a
-                href="/Order"
+                href="/Cart/Cart"
                 className="block py-2 px-3 md:p-0 text-[#180800] rounded md:bg-transparent hover:text-[#FF6868]"
               >
                 Cart

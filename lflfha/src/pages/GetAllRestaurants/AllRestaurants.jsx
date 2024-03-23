@@ -80,11 +80,8 @@ function AllRestaurants() {
             })
             .map((restaurant, index) => (
               <Link
-                href={{
-                  pathname: "/SingleRestaurant",
-                  query: { restaurant: restaurant },
-                }}
-                key={index}
+                href={`/SingleRestaurant/${restaurant._id}`} // Using dynamic routing for restaurant details
+                key={restaurant._id}
               >
                 <Cards
                   image={restaurant.logo}
