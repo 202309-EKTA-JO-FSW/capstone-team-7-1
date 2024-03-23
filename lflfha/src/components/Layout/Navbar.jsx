@@ -1,10 +1,40 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 
 import Link from "next/link";
 
 function Navbar() {
+  const [navbarOpen, setNavbarOpen] = useState(true);
+  const [lastScrollTop, setLastScrollTop] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollTop =
+        window.pageYOffset || document.documentElement.scrollTop;
+
+      if (currentScrollTop > lastScrollTop) {
+        // Scrolling down
+        setNavbarOpen(false);
+      } else {
+        // Scrolling up
+        setNavbarOpen(true);
+      }
+
+      setLastScrollTop(currentScrollTop <= 0 ? 0 : currentScrollTop);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [lastScrollTop]);
+
   return (
-    <nav className=" border-gray-200 bg-[#FACFC1] drop-shadow-2xl shadow-white w-full">
+    <nav
+      className={`fixed top-0 left-0 z-50 backdrop-blur-xl bg-opacity-50 w-full transition-opacity duration-550 ${
+        navbarOpen ? "opacity-100" : "opacity-0"
+      }`}
+    >
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <a href="/">
           <img
@@ -14,14 +44,6 @@ function Navbar() {
           />
         </a>
         <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
-          {/* <a href="/Cart">
-            {" "}
-            <img
-              className="h-9 w-8 mr-5 "
-              src="https://img.icons8.com/ios-glyphs/30/shopping-cart--v1.png"
-              alt="shopping-cart--v1"
-            />
-          </a>{" "} */}
           <button
             type="button"
             className="text-white bg-[#FF6868] hover:bg-[#f36839c3]  shadow-[#d04b0892] shadow-md font-bold rounded-lg text-sm px-4 py-2 text-center "

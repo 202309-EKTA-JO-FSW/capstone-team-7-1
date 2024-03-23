@@ -19,7 +19,7 @@
     background-blend-mode: soft-light; */
   
 }
-#Gradient-bg {
+#Gradient-bg,body {
   background-color: #FCFCFC;
   background-image: linear-gradient(
       to bottom,

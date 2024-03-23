@@ -46,9 +46,11 @@ const PopulerRestaurantSection = () => {
       </div>
       <div className="popular-restaurants flex flex-row flex-wrap justify-center gap-4 mt-5">
         {popularRestaurants.map((restaurant, index) => (
-          <Link href="">
+          <Link
+            href={`/SingleRestaurant/${restaurant._id}`} // Using dynamic routing for restaurant details
+            key={restaurant._id}
+          >
             <Cards
-              key={index.id}
               image={restaurant.logo}
               title={restaurant.name}
               rating={restaurant.rate}

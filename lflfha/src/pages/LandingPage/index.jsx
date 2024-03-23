@@ -10,6 +10,7 @@ const LandingPage = () => {
   return (
     <div className="z-10 items-center flex flex-col justify-center text-sm lg:flex">
       <NavBar />
+
       <StartupSection />
       <PopulerRestaurantSection />
       <BrowsingByCategorySection />

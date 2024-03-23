@@ -5,7 +5,7 @@ const StartupSection = () => {
   return (
     <section
       id="Gradient-bg"
-      className="h-full w-full flex lg:flex-row flex-col-reverse gap-4 p-10"
+      className="h-full w-full flex lg:flex-row flex-col-reverse gap-4 p-10 mt-16"
     >
       <div className="flex flex-col justify-center p-5 gap-4 ">
         <h1 className=" text-[#180800]  text-5xl uppercase font-bold">
