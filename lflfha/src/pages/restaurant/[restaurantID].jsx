@@ -1,13 +1,3 @@
-// import React from "react";
-// import { useRouter } from "next/router";
-
-// export default function SingleRestaurant() {
-//   const router = useRouter();
-//   const restaurant = router.query;
-//   return <div>SingleRestaurant</div>;
-// }
-
-
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useRouter } from 'next/router';
