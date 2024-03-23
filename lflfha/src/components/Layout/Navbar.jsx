@@ -26,7 +26,7 @@ function Navbar() {
             type="button"
             className="text-white bg-[#FF6868] hover:bg-[#f36839c3]  shadow-[#d04b0892] shadow-md font-bold rounded-lg text-sm px-4 py-2 text-center "
           >
-            Login
+            SignUp
           </button>
           <button
             data-collapse-toggle="navbar-cta"
