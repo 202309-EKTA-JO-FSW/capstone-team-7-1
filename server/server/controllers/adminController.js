@@ -253,16 +253,18 @@ adminController.updateDish = async (req, res) => {
         if(name) dish.name = name;
         if(description) dish.description = description;
         if (price) dish.price = price;
-        if(image) dish.image = image;
+        if (image) dish.image = image;
+        if (ingrediants) dish.ingrediants = ingrediants;
+        if(category) dish.category = category;
 
-        if(ingrediants){
-            const newIngrediants = dish.ingrediants.concat(ingrediants);
+        // if(ingrediants){
+        //     const newIngrediants = dish.ingrediants.concat(ingrediants);
 
-        }
-        if(category){
-            const newCategory = dish.category.concat(category);
-            dish.category = newCategory;
-        }
+        // }
+        // if(category){
+        //     const newCategory = dish.category.concat(category);
+        //     dish.category = newCategory;
+        // }
         if(restaurant) dish.restaurant = restaurant;
 
         await dish.save();
