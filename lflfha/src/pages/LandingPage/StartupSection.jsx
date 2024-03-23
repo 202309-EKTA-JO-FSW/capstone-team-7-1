@@ -5,7 +5,7 @@ const StartupSection = () => {
   return (
     <section
       id="Gradient-bg"
-      className="h-full w-full flex lg:flex-row flex-col-reverse gap-4 p-10 mt-16"
+      className="h-full min-w-5/6 flex lg:flex-row flex-col-reverse gap-4 lg:px-10 px-3 mt-32"
     >
       <div className="flex flex-col justify-center p-5 gap-4 ">
         <h1 className=" text-[#180800]  text-5xl uppercase font-bold">
@@ -25,7 +25,7 @@ const StartupSection = () => {
           <Button text="Search" />
         </form>
       </div>
-      <div className="min-h-fit w-full flex flex-col items-center justify-center">
+      <div className="min-h-fit lg:w-2/3 flex flex-col items-center justify-center">
         <figure className="relative">
           <img
             src="https://imagizer.imageshack.com/v2/1024x768q70/923/WH7mUz.png"

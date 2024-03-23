@@ -38,7 +38,7 @@ function AllRestaurants() {
       <div className="restaurant flex flex-col flex-wrap bg-[#FCFCFC]">
         {/* Header Page */}
         <div className="restaurant-header lg:min-h-[90vh] sm:min-h-[60vh] md:min-h-[70vh] min-h-[50vh] w-full flex flex-col justify-center items-center">
-          <div className=" text-shadow-lg shadow-white lg:text-8xl md:text-7xl sm:text-5xl text-4xl flex justify-center flex-col items-center text-black opacity-100 font-bold  ">
+          <div className=" text-shadow-lg shadow-white lg:text-8xl md:text-7xl sm:text-5xl text-4xl flex justify-center flex-col items-center text-[#180800] opacity-100 font-bold  ">
             Where Food Gets <div>Delievered </div>
             <div className="text-[#ea5137] text-shadow-lg shadow-black ">
               {" "}
@@ -65,7 +65,7 @@ function AllRestaurants() {
                 {search && (
                   <button
                     type="button"
-                    className="bg-[#F36839] hover:bg-[#f36839c3] text-white shadow-[#d04b0892] shadow-lg font-bold py-3 px-4 rounded-xl mx-3 my-10 "
+                    className="bg-[#F36839] hover:bg-[#f36839c3] text-[#FCFCFC] shadow-[#d04b0892] shadow-lg font-bold py-3 px-4 rounded-xl mx-3 my-10 "
                     onClick={handleClearSearch}
                   >
                     Clear

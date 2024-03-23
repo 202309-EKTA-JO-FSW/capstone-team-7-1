@@ -144,7 +144,7 @@ export default function SingleRestaurant() {
             </div>{" "}
             <button
               onClick={toggleMenu}
-              className="bg-[#F36839] hover:bg-[#f36839c3] text-white shadow-[#d04b0892] shadow-lg font-bold py-3 px-4 rounded-xl mx-3 my-10 "
+              className="bg-[#F36839] hover:bg-[#f36839c3] text-[#FCFCFC] shadow-[#d04b0892] shadow-lg font-bold py-3 px-4 rounded-xl mx-3 my-10 "
             >
               {showMenu ? "Close Menu ▲" : "Show Menu ▼"}
             </button>
@@ -169,7 +169,7 @@ export default function SingleRestaurant() {
                 )
               ).map((category, index) => (
                 <a
-                  className=" rounded-xl lg:h-[7vh] md:h-[5vh] flex flex-col justify-center items-start lg:text-3xl md:text-xl sm:text-md lg:pl-5 md:pl-3 sm:pl-2 text-gray-700 font-semibold w-full hover:bg-gray-300 hover:text-black mt-3"
+                  className=" rounded-xl lg:h-[7vh] md:h-[5vh] flex flex-col justify-center items-start lg:text-3xl md:text-xl sm:text-md lg:pl-5 md:pl-3 sm:pl-2 text-gray-700 font-semibold w-full hover:bg-gray-300 hover:text-[#180800] mt-3"
                   key={index}
                   onClick={() => toggleSection(index)}
                 >
@@ -224,7 +224,7 @@ export default function SingleRestaurant() {
                             </p>
                             <div className="mt-4">
                               <button
-                                className="bg-[#F36839] hover:bg-[#f36839c3] text-white shadow-[#d04b0892] shadow-lg font-bold py-2 px-3  rounded-xl"
+                                className="bg-[#F36839] hover:bg-[#f36839c3] text-[#FCFCFC] shadow-[#d04b0892] shadow-lg font-bold py-2 px-3  rounded-xl"
                                 onClick={() => addToCart(dish)}
                               >
                                 Add to Cart

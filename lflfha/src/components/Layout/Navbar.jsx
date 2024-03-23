@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from "react";
-
 import Link from "next/link";
 import useAuthStore from "@/Store/authStore";
 
 function Navbar() {
   const [navbarOpen, setNavbarOpen] = useState(true);
   const [lastScrollTop, setLastScrollTop] = useState(0);
+  const [options, setOptions] = useState(false);
+
+  const handleOptions = () => {
+    setOptions(!options);
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -53,23 +57,23 @@ function Navbar() {
               href="/LandingPage"
               type="button"
               onClick={logout}
-              className="text-white text-lg bg-[#FF6868] hover:bg-[#f36839c3]  shadow-[#d04b0892] shadow-md font-semibold rounded-3xl px-4 py-2 text-center "
+              className="text-[#FCFCFC] text-lg bg-[#FF6868] hover:bg-[#f36839c3] shadow-[#d04b0892] shadow-md font-medium rounded-3xl px-4 py-2 text-center"
             >
               Signout
             </Link>
           ) : (
-            <div>
+            <div className="flex gap-4">
               <Link
                 href="/Auth/Login"
                 type="button"
-                className="text-white text-lg bg-[#FF6868] hover:bg-[#f36839c3]  shadow-[#d04b0892] shadow-md font-semibold rounded-3xl px-4 py-2 text-center "
+                className="text-[#FCFCFC] text-lg bg-[#FF6868] hover:bg-[#f36839c3] shadow-[#d04b0892] shadow-md font-medium rounded-3xl px-4 py-2 text-center"
               >
                 Login
               </Link>
               <Link
                 href="/Auth/Signup"
                 type="button"
-                className="text-white text-lg bg-[#FF6868] hover:bg-[#f36839c3]  shadow-[#d04b0892] shadow-md font-semibold rounded-3xl px-4 py-2 text-center "
+                className="text-[#FCFCFC] text-lg bg-[#FF6868] hover:bg-[#f36839c3] shadow-[#d04b0892] shadow-md font-medium rounded-3xl px-4 py-2 text-center"
               >
                 SignUp
               </Link>
@@ -77,11 +81,13 @@ function Navbar() {
           )}
 
           <button
+            id="drop-down-on-click"
             data-collapse-toggle="navbar-cta"
             type="button"
-            className="inline-flex items-center p-2 w-10 h-10 justify-center text-lg text-[#FF6868] rounded-lg md:hidden hover:bg-[#d04b082d] "
+            className="inline-flex items-center p-2 w-10 h-10 justify-center text-lg text-[#FF6868] rounded-lg md:hidden hover:bg-[#d04b082d]"
             aria-controls="navbar-cta"
-            aria-expanded="false"
+            aria-expanded="true"
+            onClick={handleOptions}
           >
             <span className="sr-only">Open main menu</span>
             <svg
@@ -101,15 +107,62 @@ function Navbar() {
           </button>
         </div>
 
+        {options && (
+          <div className="md:hidden flex flex-col flex-wrap justify-center items-center w-full ">
+            <ul className=" w-full rounded-xl flex  flex-wrap justify-center items-center font-bold p-4 mt-4 md:space-x-8 rtl:space-x-reverse">
+              <li>
+                <a
+                  href="/LandingPage"
+                  className=" rounded-2xl w-full text-lg block hover:bg-[#ff68685d] py-2 px-3 text-[#180800] hover:text-[#FCFCFC]"
+                >
+                  Home
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/About/About"
+                  className=" rounded-2xl w-full text-lg block hover:bg-[#ff68685d] py-2 px-3 text-[#180800] hover:text-[#FCFCFC]"
+                >
+                  About
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/Profile/Profile"
+                  className=" rounded-2xl w-full text-lg block hover:bg-[#ff68685d] py-2 px-3 text-[#180800] hover:text-[#FCFCFC]"
+                >
+                  Profile
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/Order/Order"
+                  className=" rounded-2xl w-full text-lg block hover:bg-[#ff68685d] py-2 px-3 text-[#180800] hover:text-[#FCFCFC]"
+                >
+                  Order
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/Cart/Cart"
+                  className=" rounded-2xl w-full text-lg block hover:bg-[#ff68685d] py-2 px-3 text-[#180800] hover:text-[#FCFCFC]"
+                >
+                  Cart
+                </a>
+              </li>
+            </ul>
+          </div>
+        )}
+
         <div
           className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1"
           id="navbar-cta"
         >
-          <ul className="flex flex-col font-medium p-4 md:p-0 mt-4 border md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0  ">
+          <ul className="flex flex-col font-medium p-4 md:p-0 mt-4 border md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0">
             <li>
               <a
                 href="/LandingPage"
-                className=" text-lg block py-2 px-3 md:p-0 text-[#180800] rounded md:bg-transparent hover:text-[#FF6868]"
+                className="text-lg block py-2 px-3 md:p-0 text-[#180800] rounded md:bg-transparent hover:text-[#FF6868]"
                 aria-current="page"
               >
                 Home
@@ -126,7 +179,7 @@ function Navbar() {
             <li>
               <a
                 href="/Profile/Profile"
-                className=" text-lg block py-2 px-3 md:p-0 text-[#180800] rounded md:bg-transparent hover:text-[#FF6868]"
+                className="text-lg block py-2 px-3 md:p-0 text-[#180800] rounded md:bg-transparent hover:text-[#FF6868]"
               >
                 Profile
               </a>
@@ -139,11 +192,10 @@ function Navbar() {
                 Order
               </a>
             </li>
-
             <li>
               <a
                 href="/Cart/Cart"
-                className="block text-lg py-2 px-3 md:p-0 text-[#180800] rounded md:bg-transparent hover:text-[#FF6868]"
+                className="text-lg block py-2 px-3 md:p-0 text-[#180800] rounded md:bg-transparent hover:text-[#FF6868]"
               >
                 Cart
               </a>
