@@ -6,6 +6,8 @@ const useAuthStore = create(
     (set, get) => ({
       isAuthenticated: false,
       accessToken: "",
+      userId:"",
+
       signUp: async(formData) => {console.log("signUp",formData)
       try{
         const res = await fetch('http://localhost:3001/user/signup', {
@@ -24,6 +26,7 @@ const useAuthStore = create(
         set({                                       
           isAuthenticated: true,
           accessToken: responseData.accessToken,
+          userId:responseData.userId
         });
     
 window.location.href= "/";
@@ -46,6 +49,7 @@ console.log(err.message);
         set({
           isAuthenticated: true,
           accessToken: responseData.accessToken,
+          userId:responseData.userId
         });
 
         window.location.href= "/";
@@ -70,37 +74,13 @@ console.log(err.message);
           set({
             isAuthenticated: false,
             accessToken: "",
+            userId:""
           });
   
         } catch (err) {
           console.log(err.message);
         }
       },
-
-
-      getUserProfile: async (formData) => {
-        console.log("userProfile",formData)
-        try {
-          const responseData = await fetch('http://localhost:3001/users/:userId', {
-            method: 'GET',
-            headers: {
-              "Content-Type": "application/json",
-            //  "Authorization": `Bearer ${get().accessToken}`,
-            "Authorization": `Bearer ${accessToken}`,
-
-            },
-          })
-          
-          set({
-            isAuthenticated: true,
-            accessToken: responseData.accessToken,
-          });
-  
-        } catch (err) {
-          console.log("hakeema becarful");
-        }
-      },
-
 
       handleAuthenticatedRequest: async ({
         url,

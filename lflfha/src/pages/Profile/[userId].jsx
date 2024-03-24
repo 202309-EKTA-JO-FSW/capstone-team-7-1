@@ -1,11 +1,13 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
-// import useAuthStore from '@/Store/authStore';
+import useAuthStore from '@/Store/authStore';
 
 const UserProfile = () => {
-  // const getUserProfile = useAuthStore((state) => state.getUserProfile)//add...........
   const router = useRouter();
-  const { userId } = router.query;
+    const accessToken = useAuthStore((state) => state.accessToken)
+    const userId = useAuthStore((state) => state.userId)
+
+  const profileId  = router.query.userId || userId  ;
   const [userProfile, setUserProfile] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
   const [formData, setFormData] = useState({
@@ -18,12 +20,8 @@ const UserProfile = () => {
 
 const fetchUserProfile = async () => {
   try {
-    const token = localStorage.getItem('accessToken'); 
-    if (!token) {
-      throw new Error('No access token found');
-    }
-
-    const res = await fetch(`http://localhost:3001/users/${userId}`, {
+    
+    const res = await fetch(`http://localhost:3001/users/${profileId}`, {
       method: 'GET',
       headers: {
         "Content-Type": "application/json",
@@ -31,16 +29,8 @@ const fetchUserProfile = async () => {
       },
     });
 
-    if (!res.ok) {
-      throw new Error(`HTTP error! status: ${res.status}`);
-    }
-
     const data = await res.json();
-    console.log("Fetched user profile data:", data); 
-
     setUserProfile(data); 
-
-    // getUserProfile(formData)  //add.........
 
     setFormData({
       userName: data.userName,
@@ -55,12 +45,9 @@ const fetchUserProfile = async () => {
   }
 };
 
-
-
-
 const updateUserProfile = async () => {
       try {
-        const res = await fetch(`http://localhost:3001/users/${userId}`, {
+        const res = await fetch(`http://localhost:3001/users/${profileId}`, {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json',
@@ -88,10 +75,10 @@ const updateUserProfile = async () => {
     };
   
     useEffect(() => {
-      if (userId) {
+      if (profileId) {
         fetchUserProfile();
       }
-    }, [userId]);
+    }, [profileId]);
   
     const handleChange = (e) => {
       setFormData({ ...formData, [e.target.name]: e.target.value });

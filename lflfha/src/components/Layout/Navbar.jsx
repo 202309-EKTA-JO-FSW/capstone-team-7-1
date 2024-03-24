@@ -1,8 +1,12 @@
 import React, { useState, useEffect, useRef } from "react";
-
 import Link from "next/link";
+import useAuthStore from "@/Store/authStore";
 
 function Navbar() {
+  const isAuthenticated = useAuthStore((state) => state.isAuthenticated)//add...........
+  const userId = useAuthStore((state) => state.userId)//add...........
+console.log({userId})
+
   return (
     <nav className=" border-gray-200 bg-[#FACFC1] drop-shadow-2xl shadow-white w-full">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
@@ -22,12 +26,12 @@ function Navbar() {
               alt="shopping-cart--v1"
             />
           </a>{" "} */}
-          <button
-            type="button"
+          <a
+  href="/Auth/Signup"
             className="text-white bg-[#FF6868] hover:bg-[#f36839c3]  shadow-[#d04b0892] shadow-md font-bold rounded-lg text-sm px-4 py-2 text-center "
           >
             SignUp
-          </button>
+          </a>
           <button
             data-collapse-toggle="navbar-cta"
             type="button"
@@ -75,14 +79,18 @@ function Navbar() {
                 About
               </a>
             </li>
+
+            {isAuthenticated?
             <li>
               <a
-                href="http://localhost:3000/Profile/userId" //add 
+                href={`/Profile/${userId}`} //add 
                 className="block py-2 px-3 md:p-0 text-[#180800] rounded md:bg-transparent hover:text-[#FF6868]"
               >
                 Profile
               </a>
-            </li>
+            </li> :null}
+
+            
             <li>
               <a
                 href="/Order"
