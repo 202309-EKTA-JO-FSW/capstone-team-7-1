@@ -214,6 +214,7 @@ adminController.addDish = async (req, res) => {
 
             category,
             restaurant,
+            image,
         });
 
         res.status(200).json({message: "dish added successfully"});
@@ -266,6 +267,7 @@ adminController.updateDish = async (req, res) => {
             dish.category = newCategory;
         }
         if(restaurant) dish.restaurant = restaurant;
+        if(image) dish.image = image;
 
         await dish.save();
 

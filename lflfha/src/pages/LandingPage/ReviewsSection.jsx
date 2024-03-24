@@ -74,11 +74,8 @@ const ReviewsSection = () => {
       <h1 className="text-3xl font-semibold mb-4">Reviews</h1>
       <div className="flex flex-wrap">
         {reviews.map((review, index) => (
-          <div
-            key={index}
-            className="bg-yellow-200 shadow-md rounded-lg px-3 py-2 m-4 max-w-72"
-          >
-            <h2 className="text-lg font-bold mb-2">{review.restaurant}</h2>
+          <div key={index} className="bg-red-500 shadow-md rounded-lg px-3 py-2 m-4 max-w-72">
+            <h2 className="text-lg font-bold mb-2 text-gray-300">{review.restaurant}</h2>
             <b className="text-lg font-semibold mb-2">{review.user}</b>
             <p className="text-gray-600 mb-2">{review.comment}</p>
             <p className="text-gray-500">Rating: {review.rating}/5</p>
