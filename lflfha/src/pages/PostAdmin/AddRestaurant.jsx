@@ -5,23 +5,25 @@ import { useRouter } from 'next/router'
 const RestaurantActions = () => {
   const router = useRouter()
 
-    const [formData, setFormData] = useState({
-        name: '',
-        restaurantAddress: '',
-        openingHours: '',
-        description: '',
-        phone: '',
-        cuisineType: ''
-    });
+  const [formData, setFormData] = useState({
+    name: "",
+    restaurantAddress: "",
+    openingHours: "",
+    description: "",
+    phone: "",
+    cuisineType: "",
+    logo: "",
+  });
 
-    const [modifiedData, setModifiedData] = useState({
-      id: '',
-      name: '',
-      restaurantAddress: '',
-      openingHours: '',
-      description: '',
-      phone: '',
-      cuisineType: ''
+  const [modifiedData, setModifiedData] = useState({
+    id: "",
+    name: "",
+    restaurantAddress: "",
+    openingHours: "",
+    description: "",
+    phone: "",
+    cuisineType: "",
+    logo: "",
   });
 
   const [restaurantId, setRestaurantId] = useState('');
@@ -30,9 +32,10 @@ const RestaurantActions = () => {
         setFormData({...formData, [e.target.name]: e.target.value});
     };
 
-    const handleModifiedChange = (e) => {
-      setModifiedData({...modifiedData, [e.target.name]: e.target.value});
-    };
+
+  const handleModifiedChange = (e) => {
+    setModifiedData({ ...modifiedData, [e.target.name]: e.target.value });
+  };
 
     const handleIdChange = (e) => {
       setRestaurantId(e.target.value);
@@ -60,11 +63,13 @@ const RestaurantActions = () => {
         }
     }
 
-    const handleModify = async (e) => {
-      e.preventDefault();
-      try {
-        const res = await fetch(`http://localhost:3001/admin/updateRestaurant/${modifiedData.id}`, {
-          method: 'PUT',
+  const handleModify = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await fetch(
+        `http://localhost:3001/admin/updateRestaurant/${modifiedData.id}`,
+        {
+          method: "PUT",
           headers: {
             "Content-Type": "application/json",
           },
@@ -119,6 +124,10 @@ const RestaurantActions = () => {
                 <label>Restaurant Description:</label>
                 <input type="text" name="description" className="ml-2 rounded-md border-2 border-orange-700" value={formData.description} onChange={handleChange} required />
               </div>
+              <div className="m-3 font-bold ">
+                <label>Restaurant Logo:</label>
+                <input type="text" name="logo" className="ml-2 rounded-md border-2 border-orange-700" value={formData.logo} onChange={handleChange} required />
+              </div>
               <div className="m-3 font-bold ">  
                 <label>Restaurant Phone:</label>
                 <input type="text" name="phone" className="ml-2 rounded-md border-2 border-orange-700" value={formData.phone} onChange={handleChange} required />
@@ -156,6 +165,10 @@ const RestaurantActions = () => {
                 <input type="text" name="description" className="ml-2 rounded-md border-2 border-orange-700 border-dashed" value={modifiedData.description} onChange={handleModifiedChange} />
               </div>
               <div className="m-3 font-bold ">
+                <label>Restaurant Logo:</label> 
+                <input type="text" name="logo" className="ml-2 rounded-md border-2 border-orange-700 border-dashed" value={modifiedData.logo} onChange={handleModifiedChange} />
+              </div>
+              <div className="m-3 font-bold ">
                 <label>Restaurant Phone:</label>
                 <input type="text" name="phone" className="ml-2 rounded-md border-2 border-orange-700 border-dashed" value={modifiedData.phone} onChange={handleModifiedChange} />
               </div>
@@ -185,7 +198,8 @@ const RestaurantActions = () => {
           </div>
             {/* <button onClick={() => {router.push("/PostAdmin/AddDish")}}>press here</button> */}
         </div>
-    )
-};
+    );
+}
+    
 
 export default RestaurantActions;

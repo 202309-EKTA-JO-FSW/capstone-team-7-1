@@ -8,6 +8,7 @@ const DishActions = () => {
         image: "",
         description: "",
         price: 0,
+        image: "",
         category: [""],
         ingredients: [""],
     })
@@ -19,6 +20,7 @@ const DishActions = () => {
         image: "",
         description: "",
         price: 0,
+        image: "",
         category: "",
         ingredients: "",
     })
@@ -153,6 +155,10 @@ const DishActions = () => {
                     <input type="number" name="price" className="ml-2 rounded-md border-2 border-orange-700" value={formData.price} onChange={handleChange} required />
                 </div>
                 <div className="m-3 font-bold">
+                    <label>Dish Image:</label>
+                    <input type="text" name="image" className="ml-2 rounded-md border-2 border-orange-700" value={formData.image} onChange={handleChange} required />
+                </div>
+                <div className="m-3 font-bold">
                     <label>Categories:</label>
                     {formData.category.map((categori, index) => (
                         <div key={index}>
@@ -195,6 +201,10 @@ const DishActions = () => {
               <div className="m-3 font-bold ">
                 <label>Price:</label>
                 <input type="number" name="price" className="ml-2 rounded-md border-2 border-orange-700 border-dashed" value={modifiedData.price} onChange={handleModifiedChange} />
+              </div>
+              <div className="m-3 font-bold ">
+                <label>Dish Image:</label>
+                <input type="text" name="image" className="ml-2 rounded-md border-2 border-orange-700 border-dashed" value={modifiedData.image} onChange={handleModifiedChange} />
               </div>
               <div className="m-3 font-bold ">
                 <label>Category:</label>
