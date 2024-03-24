@@ -107,7 +107,7 @@ adminController.signout = async (req, res) => {
 
 adminController.addRestaurant = async (req, res) => {
     try{
-        const { name, restaurantAddress, openingHours, description, phone, cuisineType } = req.body;
+        const { name, restaurantAddress, openingHours, closingHours, logo, rate, description, phone, cuisineType } = req.body;
 
         if( !name || !restaurantAddress || !openingHours || !description || !phone || !cuisineType ){
             return res.status(400).json({message: "some data is missing"})
@@ -120,6 +120,9 @@ adminController.addRestaurant = async (req, res) => {
             description,
             phone,
             cuisineType,
+            closingHours,
+            logo,
+            rate
         });
 
         return res.status(200).json({message: "restaurant added successfully"});
@@ -143,7 +146,7 @@ adminController.getAllRestaurants = async (req, res) => {
 adminController.ubdateRestaurant = async (req, res) => {
     try{
         const { id } = req.params;
-        const { name, restaurantAddress, openingHours, description, phone, cuisineType } = req.body;
+        const { name, restaurantAddress, openingHours, description, phone, cuisineType, logo } = req.body;
 
         if(!id){
             return res.status(400).json({message: "restaurant id is required"});
@@ -164,6 +167,7 @@ adminController.ubdateRestaurant = async (req, res) => {
             const newcusine = restaurant.cuisineType.concat(cuisineType);
             restaurant.cuisineType = newcusine;
         }
+        if(logo) restaurant.logo = logo;
 
         await restaurant.save();
 
@@ -193,7 +197,7 @@ adminController.removeRestaurant = async (req, res) => {
 
 adminController.addDish = async (req, res) => {
     try{
-        const { name,  description, price, ingredients, category, restaurant } = req.body;
+        const { name,  description, price, ingredients, category, restaurant, image } = req.body;
 
         if( !name || !description || !price || !ingredients || !category || !restaurant){
             return res.status(400).json({message: "some data not entered"})
@@ -206,6 +210,7 @@ adminController.addDish = async (req, res) => {
             ingredients,
             category,
             restaurant,
+            image,
         });
 
         res.status(200).json({message: "dish added successfully"});
@@ -229,7 +234,7 @@ adminController.getAllDishes = async (req, res) => {
 adminController.updateDish = async (req, res) => { 
     try{
         const { id } = req.params;
-        const { name,  description, price, ingredients, category, restaurant } = req.body;
+        const { name,  description, price, ingredients, category, restaurant, image } = req.body;
 
         if(!id){
             return res.status(400).json({message: "dish id is required"});
@@ -253,6 +258,7 @@ adminController.updateDish = async (req, res) => {
             dish.category = newCategory;
         }
         if(restaurant) dish.restaurant = restaurant;
+        if(image) dish.image = image;
 
         await dish.save();
 
