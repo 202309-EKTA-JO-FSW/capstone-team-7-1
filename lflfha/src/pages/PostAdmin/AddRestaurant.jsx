@@ -28,10 +28,9 @@ const RestaurantActions = () => {
 
   const [restaurantId, setRestaurantId] = useState('');
 
-    const handleChange = (e) => {
+  const handleChange = (e) => {
         setFormData({...formData, [e.target.name]: e.target.value});
     };
-
 
   const handleModifiedChange = (e) => {
     setModifiedData({ ...modifiedData, [e.target.name]: e.target.value });
@@ -62,6 +61,7 @@ const RestaurantActions = () => {
             console.log(err.message);
         }
     }
+
 
   const handleModify = async (e) => {
     e.preventDefault();
@@ -200,6 +200,8 @@ const RestaurantActions = () => {
         </div>
     );
 }
+
     
 
 export default RestaurantActions;
+
