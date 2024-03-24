@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import Cards from "@/components/Common/Cards";
 import axios from "axios";
 import Button from "@/components/Common/Button";
+import Link from "next/link";
 
 const PopulerRestaurantSection = () => {
   const [popularRestaurants, setPopularRestaurants] = useState([]);
@@ -45,15 +46,22 @@ const PopulerRestaurantSection = () => {
       </div>
       <div className="popular-restaurants flex flex-row flex-wrap justify-center gap-4 mt-5">
         {popularRestaurants.map((restaurant, index) => (
-          <Cards
-            key={index}
-            image={restaurant.logo}
-            title={restaurant.name}
-            rating={restaurant.rate}
-          />
+          <Link
+            href={`/SingleRestaurant/${restaurant._id}`} // Using dynamic routing for restaurant details
+            key={restaurant._id}
+          >
+            <Cards
+              image={restaurant.logo}
+              title={restaurant.name}
+              rating={restaurant.rate}
+            />
+          </Link>
         ))}
       </div>
-      <Button text="Browse Restaurants" destination="/restaurants" />
+      <Button
+        text="Browse Restaurants"
+        destination="/GetAllRestaurants/AllRestaurants"
+      />
     </section>
   );
 };

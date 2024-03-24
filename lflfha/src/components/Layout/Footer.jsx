@@ -2,37 +2,41 @@ import React from "react";
 import Link from "next/link";
 
 const Footer = () => {
-  const teamMembers = [
-    {
-      name: "Lunar Salameh",
-      github: "https://github.com/LunarSalameh",
-      linkedin: "https://www.linkedin.com/in/LunarSalameh",
-    },
-    {
-      name: "Hakiema ismail",
-      github: "https://github.com/hakimahalzaidanin",
-      linkedin: "https://www.linkedin.com/in/hakimah-al-zaidanin-31917a2b6",
-    },
-    {
-      name: "Abdullah Alawad ",
-      github: "https://github.com/Abdullah-Alawad",
-      linkedin: "https://www.linkedin.com/in/abdullah-alawad-0989b7269",
-    },
-    {
-      name: "Ammar kolko",
-      github: "https://github.com/Abdullah-Alawad",
-      linkedin: "https://www.linkedin.com/in/ammar-kolko-39755674/",
-    },
-  ];
+  // const teamMembers = [
+  //   {
+  //     name: "Lunar Salameh",
+  //     github: "https://github.com/LunarSalameh",
+  //     linkedin: "https://www.linkedin.com/in/LunarSalameh",
+  //   },
+  //   {
+  //     name: "Hakiema ismail",
+  //     github: "https://github.com/hakimahalzaidanin",
+  //     linkedin: "https://www.linkedin.com/in/hakimah-al-zaidanin-31917a2b6",
+  //   },
+  //   {
+  //     name: "Abdullah Alawad ",
+  //     github: "https://github.com/Abdullah-Alawad",
+  //     linkedin: "https://www.linkedin.com/in/abdullah-alawad-0989b7269",
+  //   },
+  //   {
+  //     name: "Ammar kolko",
+  //     github: "https://github.com/Abdullah-Alawad",
+  //     linkedin: "https://www.linkedin.com/in/ammar-kolko-39755674/",
+  //   },
+  // ];
 
   return (
-    <footer className="mt-auto ">
-      <div className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
+    <footer className="mt-auto w-full">
+      <div className=" mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
         <div className="lg:flex lg:items-start lg:gap-8 mt-12">
           <div className="mt-8 grid grid-cols-2 gap-8 lg:mt-0 lg:grid-cols-5 lg:gap-y-16">
             <div className="col-span-2">
-              <Link href={`/Home`}>
-                <img src="/Logo.png" alt="Logo" className="w-4/6"></img>
+              <Link href="LandingPage">
+                <img
+                  src="/Logo.png"
+                  alt="Logo"
+                  className="lg:w-4/6 md:w-1/3 sm:w-2/4 w-2/4"
+                ></img>
               </Link>
             </div>
 
@@ -43,7 +47,7 @@ const Footer = () => {
               <ul className="mt-6 space-y-4 text-sm">
                 <li>
                   <a
-                    href="/about"
+                    href="/Cart/Cart"
                     className="text-[#555555] font-medium transition hover:opacity-75"
                   >
                     Cart
@@ -51,7 +55,7 @@ const Footer = () => {
                 </li>
                 <li>
                   <a
-                    href="/restaurants"
+                    href="/GetAllRestaurants/AllRestaurants"
                     className="text-[#555555] font-medium transition hover:opacity-75"
                   >
                     restaurants
@@ -59,7 +63,7 @@ const Footer = () => {
                 </li>
                 <li>
                   <a
-                    href="/orders"
+                    href="/Order/Order"
                     className="text-[#555555] font-medium transition hover:opacity-75"
                   >
                     orders
@@ -75,7 +79,7 @@ const Footer = () => {
               <ul className="mt-6 space-y-4 text-sm">
                 <li>
                   <a
-                    href="/"
+                    href="/LandingPage"
                     className="text-[#555555] font-medium transition hover:opacity-75"
                   >
                     Home
@@ -84,7 +88,7 @@ const Footer = () => {
 
                 <li>
                   <a
-                    href="/about"
+                    href="/About/About"
                     className="text-[#555555] font-medium transition hover:opacity-75"
                   >
                     About Us
@@ -93,7 +97,7 @@ const Footer = () => {
 
                 <li>
                   <a
-                    href="/contact"
+                    href="/Contact/Contact"
                     className="text-[#555555] font-medium transition hover:opacity-75"
                   >
                     Contact

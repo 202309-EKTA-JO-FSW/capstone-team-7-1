@@ -1,9 +1,11 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import LandingPage from "./LandingPage/FullLandingPage";
+import LandingPage from "./LandingPage";
 import AllRestaurants from "./GetAllRestaurants/AllRestaurants";
 import NavBar from "@/components/Layout/Navbar";
 import Footer from "@/components/Layout/Footer";
+import useAuthStore from "@/Store/authStore";
+
 const Hello = () => {
   // const [testResult, setTestResult] = useState("");
 
@@ -14,12 +16,14 @@ const Hello = () => {
   //       setTestResult(data);
   //     });
   // }, []);
-
-  return <main className="font-Inter">
-    <NavBar/>
+  
+  return <main className="font-Inter scroll-smooth">
+    
+    {/* <NavBar/> */}
     <LandingPage />
+
     {/* <AllRestaurants/> */}
-    <Footer/>
+    {/* <Footer/> */}
   </main>;
 };
 

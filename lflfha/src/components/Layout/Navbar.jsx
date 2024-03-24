@@ -1,35 +1,93 @@
-import React, { useState, useEffect, useRef } from "react";
-
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import useAuthStore from "@/Store/authStore";
 
 function Navbar() {
+  const [navbarOpen, setNavbarOpen] = useState(true);
+  const [lastScrollTop, setLastScrollTop] = useState(0);
+  const [options, setOptions] = useState(false);
+
+  const handleOptions = () => {
+    setOptions(!options);
+  };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollTop =
+        window.pageYOffset || document.documentElement.scrollTop;
+
+      if (currentScrollTop > lastScrollTop) {
+        // Scrolling down
+        setNavbarOpen(false);
+      } else {
+        // Scrolling up
+        setNavbarOpen(true);
+      }
+
+      setLastScrollTop(currentScrollTop <= 0 ? 0 : currentScrollTop);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [lastScrollTop]);
+
+  const logout = useAuthStore((state) => state.logout); //add
+  const isAuthenticated = useAuthStore((state) => state.isAuthenticated); //add
+
   return (
-    <nav className=" border-gray-200 bg-[#FACFC1] drop-shadow-2xl shadow-white w-full">
+    <nav
+      className={`fixed top-0 shadow-xl left-0 z-50 backdrop-blur-xl bg-opacity-50 w-full transition-opacity duration-550 ${
+        navbarOpen ? "opacity-100" : "opacity-0"
+      }`}
+    >
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <a href="/">
-          <img src="/Logo.png" className="h-16" alt="Flowbite Logo" />
+          <img
+            src="/Logo.png"
+            className="lg:h-16 sm:h-12 h-12 md:h-14"
+            alt="Logo"
+          />
         </a>
-        <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
-          {/* <a href="/Cart">
-            {" "}
-            <img
-              className="h-9 w-8 mr-5 "
-              src="https://img.icons8.com/ios-glyphs/30/shopping-cart--v1.png"
-              alt="shopping-cart--v1"
-            />
-          </a>{" "} */}
+        <div className="flex md:order-2 gap-4 space-x-3 md:space-x-0 rtl:space-x-reverse">
+          {isAuthenticated ? (
+            <Link
+              href="/LandingPage"
+              type="button"
+              onClick={logout}
+              className="text-[#FCFCFC] text-lg bg-[#FF6868] hover:bg-[#f36839c3] shadow-[#d04b0892] shadow-md font-medium rounded-3xl px-4 py-2 text-center"
+            >
+              Signout
+            </Link>
+          ) : (
+            <div className="flex gap-4">
+              <Link
+                href="/Auth/Login"
+                type="button"
+                className="text-[#FCFCFC] text-lg bg-[#FF6868] hover:bg-[#f36839c3] shadow-[#d04b0892] shadow-md font-medium rounded-3xl px-4 py-2 text-center"
+              >
+                Login
+              </Link>
+              <Link
+                href="/Auth/Signup"
+                type="button"
+                className="text-[#FCFCFC] text-lg bg-[#FF6868] hover:bg-[#f36839c3] shadow-[#d04b0892] shadow-md font-medium rounded-3xl px-4 py-2 text-center"
+              >
+                SignUp
+              </Link>
+            </div>
+          )}
+
           <button
-            type="button"
-            className="text-white bg-[#FF6868] hover:bg-[#f36839c3]  shadow-[#d04b0892] shadow-md font-bold rounded-lg text-sm px-4 py-2 text-center "
-          >
-            Login
-          </button>
-          <button
+            id="drop-down-on-click"
             data-collapse-toggle="navbar-cta"
             type="button"
-            className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-[#FF6868] rounded-lg md:hidden hover:bg-[#d04b082d] "
+            className="inline-flex items-center p-2 w-10 h-10 justify-center text-lg text-[#FF6868] rounded-lg md:hidden hover:bg-[#d04b082d]"
             aria-controls="navbar-cta"
-            aria-expanded="false"
+            aria-expanded="true"
+            onClick={handleOptions}
           >
             <span className="sr-only">Open main menu</span>
             <svg
@@ -40,24 +98,71 @@ function Navbar() {
             >
               <path
                 stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
                 d="M1 1h15M1 7h15M1 13h15"
               />
             </svg>
           </button>
         </div>
 
+        {options && (
+          <div className="md:hidden flex flex-col flex-wrap justify-center items-center w-full ">
+            <ul className=" w-full rounded-xl flex  flex-wrap justify-center items-center font-bold p-4 mt-4 md:space-x-8 rtl:space-x-reverse">
+              <li>
+                <a
+                  href="/LandingPage"
+                  className=" rounded-2xl w-full text-lg block hover:bg-[#ff68685d] py-2 px-3 text-[#180800] hover:text-[#FCFCFC]"
+                >
+                  Home
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/About/About"
+                  className=" rounded-2xl w-full text-lg block hover:bg-[#ff68685d] py-2 px-3 text-[#180800] hover:text-[#FCFCFC]"
+                >
+                  About
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/Profile/Profile"
+                  className=" rounded-2xl w-full text-lg block hover:bg-[#ff68685d] py-2 px-3 text-[#180800] hover:text-[#FCFCFC]"
+                >
+                  Profile
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/Order/Order"
+                  className=" rounded-2xl w-full text-lg block hover:bg-[#ff68685d] py-2 px-3 text-[#180800] hover:text-[#FCFCFC]"
+                >
+                  Order
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/Cart/Cart"
+                  className=" rounded-2xl w-full text-lg block hover:bg-[#ff68685d] py-2 px-3 text-[#180800] hover:text-[#FCFCFC]"
+                >
+                  Cart
+                </a>
+              </li>
+            </ul>
+          </div>
+        )}
+
         <div
           className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1"
           id="navbar-cta"
         >
-          <ul className="flex flex-col font-medium p-4 md:p-0 mt-4 border md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0  ">
+          <ul className="flex flex-col font-medium p-4 md:p-0 mt-4 border md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0">
             <li>
               <a
-                href="/"
-                className="block py-2 px-3 md:p-0 text-[#180800] rounded md:bg-transparent hover:text-[#FF6868]"
+                href="/LandingPage"
+                className="text-lg block py-2 px-3 md:p-0 text-[#180800] rounded md:bg-transparent hover:text-[#FF6868]"
                 aria-current="page"
               >
                 Home
@@ -65,33 +170,32 @@ function Navbar() {
             </li>
             <li>
               <a
-                href="/about"
-                className="block py-2 px-3 md:p-0 text-[#180800] rounded md:bg-transparent hover:text-[#FF6868]"
+                href="/About/About"
+                className="text-lg block py-2 px-3 md:p-0 text-[#180800] rounded md:bg-transparent hover:text-[#FF6868]"
               >
                 About
               </a>
             </li>
             <li>
               <a
-                href="/profile"
-                className="block py-2 px-3 md:p-0 text-[#180800] rounded md:bg-transparent hover:text-[#FF6868]"
+                href="/Profile/Profile"
+                className="text-lg block py-2 px-3 md:p-0 text-[#180800] rounded md:bg-transparent hover:text-[#FF6868]"
               >
                 Profile
               </a>
             </li>
             <li>
               <a
-                href="/Order"
-                className="block py-2 px-3 md:p-0 text-[#180800] rounded md:bg-transparent hover:text-[#FF6868]"
+                href="/Order/Order"
+                className="text-lg block py-2 px-3 md:p-0 text-[#180800] rounded md:bg-transparent hover:text-[#FF6868]"
               >
                 Order
               </a>
             </li>
-
             <li>
               <a
-                href="/Order"
-                className="block py-2 px-3 md:p-0 text-[#180800] rounded md:bg-transparent hover:text-[#FF6868]"
+                href="/Cart/Cart"
+                className="text-lg block py-2 px-3 md:p-0 text-[#180800] rounded md:bg-transparent hover:text-[#FF6868]"
               >
                 Cart
               </a>
