@@ -80,7 +80,9 @@ console.log({userId})
               </a>
             </li>
 
-            {isAuthenticated?
+
+
+            {isAuthenticated?//add from here
             <li>
               <a
                 href={`/Profile/${userId}`} //add 
@@ -90,7 +92,9 @@ console.log({userId})
               </a>
             </li> :null}
 
-            
+
+
+
             <li>
               <a
                 href="/Order"
