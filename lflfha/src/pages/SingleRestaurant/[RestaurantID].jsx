@@ -3,6 +3,9 @@ import axios from "axios";
 import { useRouter } from "next/router";
 import NavBar from "@/components/Layout/Navbar";
 import Footer from "@/components/Layout/Footer";
+import Popup from "reactjs-popup";
+import "reactjs-popup/dist/index.css";
+import SingleDish from "../SingleDish/SingleDish";
 
 export default function SingleRestaurant() {
   const router = useRouter();
@@ -177,7 +180,6 @@ export default function SingleRestaurant() {
                 </a>
               ))}
             </div>
-            {/* Show Menu */}
             {/* Dishes Display */}
             <div className="w-3/4 rounded-2xl shadow-xl p-3">
               {Array.from(
@@ -222,16 +224,41 @@ export default function SingleRestaurant() {
                             <p className="text-gray-800 font-bold mt-2">
                               {dish.price} JDs
                             </p>
-                            <div className="mt-4">
+                            <div className="mt-4 flex gap-4 items-center">
+                              <Popup
+                                trigger={
+                                  <button className="bg-[#F36839] hover:bg-[#f36839c3] text-[#FCFCFC] shadow-[#d04b0892] shadow-lg font-bold py-2 px-3 rounded-xl">
+                                    Details
+                                  </button>
+                                }
+                                modal
+                                nested
+                              >
+                                {(close) => (
+                                  <div className="modal p-4 shadow-xl shadow-slate-500 flex-col flex items-center justify-center">
+                                    <SingleDish dishID={dish._id} />
+                                    <div>
+                                      <button
+                                        className="w-64 bg-[#F36839] hover:bg-[#f36839c3] text-[#FCFCFC] shadow-[#d04b0892] shadow-lg font-bold py-2 px-3 rounded-xl"
+                                        onClick={() => close()}
+                                      >
+                                        Close
+                                      </button>
+                                    </div>
+                                  </div>
+                                )}
+                              </Popup>
+
                               <button
                                 className="bg-[#F36839] hover:bg-[#f36839c3] text-[#FCFCFC] shadow-[#d04b0892] shadow-lg font-bold py-2 px-3  rounded-xl"
                                 onClick={() => addToCart(dish)}
                               >
-                                Add to Cart
+                                Add to Cart :
+                                <span className="">
+                                  {" "}
+                                  {getQuantity(dish.id)}
+                                </span>
                               </button>
-                              <span className="ml-4">
-                                Quantity: {getQuantity(dish.id)}
-                              </span>
                             </div>
                           </div>
                         </div>
