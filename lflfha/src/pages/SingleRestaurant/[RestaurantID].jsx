@@ -16,9 +16,9 @@ export default function SingleRestaurant() {
   const [openSectionIndex, setOpenSectionIndex] = useState(null);
   const [cart, setCart] = useState({});
 
-  const addToCart = (dish) => {
+  const addToCart = (dishId) => {
     const newCart = { ...cart };
-    newCart[dish.id] = (newCart[dish.id] || 0) + 1;
+    newCart[dishId] = (newCart[dishId] || 0) + 1;
     setCart(newCart);
   };
 
@@ -248,15 +248,14 @@ export default function SingleRestaurant() {
                                   </div>
                                 )}
                               </Popup>
-
                               <button
                                 className="bg-[#F36839] hover:bg-[#f36839c3] text-[#FCFCFC] shadow-[#d04b0892] shadow-lg font-bold py-2 px-3  rounded-xl"
-                                onClick={() => addToCart(dish)}
+                                onClick={() => addToCart(dish._id)}
                               >
                                 Add to Cart :
                                 <span className="">
                                   {" "}
-                                  {getQuantity(dish.id)}
+                                  {getQuantity(dish._id)}
                                 </span>
                               </button>
                             </div>
