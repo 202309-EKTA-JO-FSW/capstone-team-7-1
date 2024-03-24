@@ -736,7 +736,7 @@ video {
   --tw-text-opacity: 1;
   color: rgb(255 104 104 / var(--tw-text-opacity));
 }
-.text-white {
+.text-[#FCFCFC] {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }

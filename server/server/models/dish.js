@@ -25,7 +25,7 @@ const dishSchema = new mongoose.Schema({
         type: [String],
         required: true
     },
-    ingredients: {
+    ingrediants: {
         type: [String],
         required: true
     }

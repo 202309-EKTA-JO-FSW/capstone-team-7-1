@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { Link } from "next/link";
-import { useRouter } from 'next/router'
+import { useRouter } from "next/router";
 
 const RestaurantActions = () => {
-  const router = useRouter()
+  const router = useRouter();
 
   const [formData, setFormData] = useState({
     name: "",
@@ -26,7 +26,7 @@ const RestaurantActions = () => {
     logo: "",
   });
 
-  const [restaurantId, setRestaurantId] = useState('');
+    const [restaurantId, setRestaurantId] = useState("");
 
   const handleChange = (e) => {
         setFormData({...formData, [e.target.name]: e.target.value});
@@ -38,7 +38,7 @@ const RestaurantActions = () => {
 
     const handleIdChange = (e) => {
       setRestaurantId(e.target.value);
-    }
+    };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -73,35 +73,37 @@ const RestaurantActions = () => {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify(modifiedData)
-        });
-        if (!res.ok) {
-          const errMsg = await res.text();
-          throw new Error(errMsg);
+          body: JSON.stringify(modifiedData),
         }
-        const responseData = await res.json();
-        window.alert('Restaurant Updated Successfully');
-    } 
-    catch(err) {
-        console.log(err.message);
+      );
+      if (!res.ok) {
+        const errMsg = await res.text();
+        throw new Error(errMsg);
+      }
+      const responseData = await res.json();
+      window.alert("Restaurant Updated Successfully");
+    } catch (err) {
+      console.log(err.message);
     }
-  }
+  };
 
   const handleDelete = async () => {
-    try{
-      const res = await fetch(`http://localhost:3001/admin/removeRestaurant/${restaurantId}`, {
-        method: 'DELETE',
-      });
-      if(!res.ok){
+    try {
+      const res = await fetch(
+        `http://localhost:3001/admin/removeRestaurant/${restaurantId}`,
+        {
+          method: "DELETE",
+        }
+      );
+      if (!res.ok) {
         const errMsg = await response.text();
         throw new Error(errMsg);
       }
-      window.alert('Restaurant removed Successfully');
-    }
-    catch (err){
+      window.alert("Restaurant removed Successfully");
+    } catch (err) {
       console.log(err.message);
     }
-  }
+  };
 
     return(
         <div className="mx-10 my-7 font-serif flex justify-between">

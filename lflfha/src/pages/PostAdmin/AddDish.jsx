@@ -25,96 +25,97 @@ const DishActions = () => {
         ingredients: "",
     })
 
-    const [dishId, setDishId] = useState("");
+  const [dishId, setDishId] = useState("");
 
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData(prevState => ({
-            ...prevState,
-            [name]: value
-        }));
-    };
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+  };
 
-    const handleCategoryChange = (e, index) => {
-        const { value } = e.target;
-        const updatedCategories = [...formData.category];
-        updatedCategories[index] = value;
-        setFormData(prevState => ({
-            ...prevState,
-            category: updatedCategories
-        }));
-    };
+  const handleCategoryChange = (e, index) => {
+    const { value } = e.target;
+    const updatedCategories = [...formData.category];
+    updatedCategories[index] = value;
+    setFormData((prevState) => ({
+      ...prevState,
+      category: updatedCategories,
+    }));
+  };
 
-    const handleIdChange = (e) => {
-        setDishId(e.target.value);
-      }
+  const handleIdChange = (e) => {
+    setDishId(e.target.value);
+  };
 
-    const handleIngredientChange = (e, index) => {
-        const { value } = e.target;
-        const updatedIngredients = [...formData.ingredients];
-        updatedIngredients[index] = value;
-        setFormData(prevState => ({
-            ...prevState,
-            ingredients: updatedIngredients
-        }));
-    };
+  const handleIngredientChange = (e, index) => {
+    const { value } = e.target;
+    const updatedIngredients = [...formData.ingredients];
+    updatedIngredients[index] = value;
+    setFormData((prevState) => ({
+      ...prevState,
+      ingredients: updatedIngredients,
+    }));
+  };
 
-    const addField = (type) => {
-        const updatedData = { ...formData };
-        if (type === 'category') {
-            updatedData.category.push('');
-        } else if (type === 'ingredients'){
-            updatedData.ingredients.push('');
-        }
-        setFormData(updatedData);
-    };
-
-    const handleModifiedChange = (e) => {
-        setModifiedData({...modifiedData, [e.target.name]: e.target.value});
-      };
-
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        try{
-            const res = await fetch('http://localhost:3001/admin/addDish', {
-                method: 'POST',
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(formData)
-            });
-            if(!res.ok){
-                const errMsg = await res.text();
-                throw new Error(errMsg);
-            }
-            window.alert('Dish Added Successfully');
-        }
-        catch(err){
-            console.log(err.message);
-        }
+  const addField = (type) => {
+    const updatedData = { ...formData };
+    if (type === "category") {
+      updatedData.category.push("");
+    } else if (type === "ingredients") {
+      updatedData.ingredients.push("");
     }
+    setFormData(updatedData);
+  };
 
-    const handleModify = async (e) => {
-        e.preventDefault();
-        try {
-          const res = await fetch(`http://localhost:3001/admin/updateDish/${modifiedData.id}`, {
-            method: 'PUT',
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(modifiedData)
-          });
-          if (!res.ok) {
-            const errMsg = await res.text();
-            throw new Error(errMsg);
-          }
-          const responseData = await res.json();
-          window.alert('Dish Updated Successfully');
-      } 
-      catch(err) {
-          console.log(err.message);
+  const handleModifiedChange = (e) => {
+    setModifiedData({ ...modifiedData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await fetch("http://localhost:3001/admin/addDish", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+      if (!res.ok) {
+        const errMsg = await res.text();
+        throw new Error(errMsg);
       }
+      window.alert("Dish Added Successfully");
+    } catch (err) {
+      console.log(err.message);
     }
+  };
+
+  const handleModify = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await fetch(
+        `http://localhost:3001/admin/updateDish/${modifiedData.id}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(modifiedData),
+        }
+      );
+      if (!res.ok) {
+        const errMsg = await res.text();
+        throw new Error(errMsg);
+      }
+      const responseData = await res.json();
+      window.alert("Dish Updated Successfully");
+    } catch (err) {
+      console.log(err.message);
+    }
+  };
 
     const handleDelete = async () => {
         try{
