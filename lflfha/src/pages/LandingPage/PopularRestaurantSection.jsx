@@ -1,4 +1,3 @@
-// PopulerRestaurantSection.jsx
 import React, { useState, useEffect } from "react";
 import Cards from "@/components/Common/Cards";
 import axios from "axios";
@@ -10,29 +9,21 @@ const PopulerRestaurantSection = () => {
   const [allRestaurants, setAllRestaurants] = useState([]);
 
   useEffect(() => {
-    fetchALLRestaurant("", "", "");
+    fetchALLRestaurant();
   }, []);
 
-  const fetchALLRestaurant = async (name, logo, rate) => {
+  const fetchALLRestaurant = async () => {
     try {
       const response = await axios.get(`http://localhost:3001/restaurants`, {
         headers: {
           "Content-Type": "application/json",
         },
       });
-      setAllRestaurants(response.data);
-      setPopularRestaurants(response.data.slice(0, 4));
+      const sortedRestaurants = response.data.sort((a, b) => b.rate - a.rate); // Sort restaurants by rate in descending order
+      setAllRestaurants(sortedRestaurants);
+      setPopularRestaurants(sortedRestaurants.slice(0, 4)); 
     } catch (error) {
       console.error("Error fetching popular restaurants:", error);
-    }
-  };
-
-  const handleFilter = (rate) => {
-    if (rate >= 3) {
-      const filterRestaurants = allRestaurants.filter((restaurant) => {
-        return restaurant.rate >= rate;
-      });
-      setPopularRestaurants(filterRestaurants);
     }
   };
 
@@ -47,7 +38,7 @@ const PopulerRestaurantSection = () => {
       <div className="popular-restaurants flex flex-row flex-wrap justify-center gap-4 mt-5">
         {popularRestaurants.map((restaurant, index) => (
           <Link
-            href={`/SingleRestaurant/${restaurant._id}`} // Using dynamic routing for restaurant details
+            href={`/SingleRestaurant/${restaurant._id}`} 
             key={restaurant._id}
           >
             <Cards

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import useAuthStore from "@/Store/authStore";
-
+import Link from "next/link";
 const UserProfile = () => {
   const router = useRouter();
   const accessToken = useAuthStore((state) => state.accessToken);
@@ -88,14 +88,14 @@ const UserProfile = () => {
   };
 
   if (!formData) {
-    <p>Loading...</p>;
+    <p>Loading ...</p>;
     console.log({ formData });
   } else {
     console.log({ formData });
   }
 
   return (
-    <div className="max-w-4xl mx-auto p-10 bg-orange-100 shadow-md rounded-lg">
+    <div className="max-w-4xl p-10 bg-orange-100 shadow-xl mx-auto my-16 rounded-2xl">
       <h1 className="text-3xl font-bold text-gray-700 mb-6">User Profile</h1>
 
       {isEditing ? (
@@ -164,21 +164,21 @@ const UserProfile = () => {
           <p className="text-lg">
             <strong>Phone:</strong> {formData.phone}
           </p>
-          <button
-            onClick={() => setIsEditing(true)}
-            className=" px-4 py-2 text-white bg-orange-500 rounded-lg hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-opacity-50"
-          >
-            Edit Profile
-          </button>
+          <div className=" flex flex-row flex-wrap justify-center items-start gap-5">
+            <button
+              onClick={() => setIsEditing(true)}
+              className=" px-4 py-2 text-white bg-orange-500 rounded-lg hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-opacity-50"
+            >
+              Edit Profile
+            </button>
 
-          <button>
-            <a
+            <button
               href="/"
               className=" px-4 py-2 text-white bg-orange-500 rounded-lg hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-opacity-50"
             >
               Back Home
-            </a>
-          </button>
+            </button>
+          </div>
         </div>
       )}
     </div>

@@ -22,7 +22,8 @@ function AllRestaurants() {
           "Content-Type": "application/json",
         },
       });
-      setAllRestaurants(response.data);
+      const sortedRestaurants = response.data.sort((a, b) => b.rate - a.rate);
+      setAllRestaurants(sortedRestaurants);
     } catch (error) {
       console.error("Error fetching popular restaurants:", error);
     }
