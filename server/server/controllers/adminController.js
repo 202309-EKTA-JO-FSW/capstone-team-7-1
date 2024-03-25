@@ -209,12 +209,11 @@ adminController.addDish = async (req, res) => {
         await dishModel.create({
             name,
             description,
-            price,image,
+            price,
+            image,
             ingrediants,
-
             category,
             restaurant,
-            image,
         });
 
         res.status(200).json({message: "dish added successfully"});
@@ -260,7 +259,7 @@ adminController.updateDish = async (req, res) => {
 
         if(ingrediants){
             const newIngrediants = dish.ingrediants.concat(ingrediants);
-
+            dish.ingrediants = newIngrediants;
         }
         if(category){
             const newCategory = dish.category.concat(category);
