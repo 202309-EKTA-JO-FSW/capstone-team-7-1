@@ -52,11 +52,10 @@ const browsingByCategorySection = () => {
           <div className="px-6 py-4 text-center">
             <div className="font-bold text-xl mb-5 uppercase">Drinks</div>
             <Link href="/GetAllRestaurants/AllRestaurants">
-
-            <button className="text-[#FF6868] text-base uppercase">
-              Explore <p>Restaurants {"->"}</p>
+              <button className="text-[#FF6868] text-base uppercase">
+                Explore <p>Restaurants {"->"}</p>
               </button>
-              </Link>
+            </Link>
           </div>
         </div>
         <div className="max-w-sm rounded-xl overflow-hidden shadow-lg flex flex-col justify-center items-center">
