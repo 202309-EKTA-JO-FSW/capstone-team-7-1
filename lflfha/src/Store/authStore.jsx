@@ -6,6 +6,8 @@ const useAuthStore = create(
     (set, get) => ({
       isAuthenticated: false,
       accessToken: "",
+      userId: "",
+
       signUp: async (formData) => {
         console.log("signUp", formData);
         try {
@@ -25,6 +27,7 @@ const useAuthStore = create(
           set({
             isAuthenticated: true,
             accessToken: responseData.accessToken,
+            userId: responseData.userId,
           });
 
           window.location.href = "/";
@@ -51,6 +54,7 @@ const useAuthStore = create(
           set({
             isAuthenticated: true,
             accessToken: responseData.accessToken,
+            userId: responseData.userId,
           });
 
           window.location.href = "/";
@@ -76,6 +80,7 @@ const useAuthStore = create(
           set({
             isAuthenticated: false,
             accessToken: "",
+            userId: "",
           });
         } catch (err) {
           console.log(err.message);

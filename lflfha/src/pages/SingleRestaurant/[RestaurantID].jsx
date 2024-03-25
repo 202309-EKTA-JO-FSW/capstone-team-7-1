@@ -232,7 +232,7 @@ export default function SingleRestaurant() {
                                   </button>
                                 }
                                 contentStyle={{
-                                  maxHeight: "60vh",
+                                  maxHeight: "90vh",
                                   overflowY: "auto",
                                 }}
                                 modal

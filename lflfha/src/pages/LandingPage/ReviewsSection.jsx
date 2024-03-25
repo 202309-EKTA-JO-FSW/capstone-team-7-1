@@ -74,7 +74,7 @@ const ReviewsSection = () => {
   return (
     <div className=" flex flex-row flex-wrap justify-center items-start gap-4 p-4 w-full pt-16 bg-[#FCFCFC]">
       <div className="flex flex-col justify-center items-center flex-wrap border-r-2 ">
-        <h1 className=" font-semibold uppercase text-[#FF6868] text-lg">
+        <h1 className=" font-semibold uppercase text-[#FF6868] text-lg mb-6 text-l">
           Why Us ?
         </h1>
         <p className="text-4xl font-bold text-[#180800] text-center">
@@ -149,7 +149,7 @@ const ReviewsSection = () => {
             .map((review, index) => (
               <div
                 key={index}
-                className="bg-gray-50 shadow-xl rounded-lg px-3 py-2 m-4 max-w-72"
+                className=" shadow-xl bg-gray-50 rounded-lg px-3 py-2 m-4 min-w-64"
               >
                 <h2 className="text-lg font-bold mb-2">{review.restaurant}</h2>
                 <b className="text-lg font-semibold mb-2">{review.user}</b>
