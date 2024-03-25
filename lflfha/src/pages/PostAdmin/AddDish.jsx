@@ -10,7 +10,7 @@ const DishActions = () => {
         price: 0,
         image: "",
         category: [""],
-        ingredients: [""],
+        ingrediants: [""],
     })
 
     const [modifiedData, setModifiedData] = useState({
@@ -22,7 +22,7 @@ const DishActions = () => {
         price: 0,
         image: "",
         category: "",
-        ingredients: "",
+        ingrediants: "",
     })
 
   const [dishId, setDishId] = useState("");
@@ -51,11 +51,11 @@ const DishActions = () => {
 
   const handleIngredientChange = (e, index) => {
     const { value } = e.target;
-    const updatedIngredients = [...formData.ingredients];
-    updatedIngredients[index] = value;
+    const updatedIngrediants = [...formData.ingrediants];
+    updatedIngrediants[index] = value;
     setFormData((prevState) => ({
       ...prevState,
-      ingredients: updatedIngredients,
+      ingrediants: updatedIngrediants,
     }));
   };
 
@@ -63,8 +63,8 @@ const DishActions = () => {
     const updatedData = { ...formData };
     if (type === "category") {
       updatedData.category.push("");
-    } else if (type === "ingredients") {
-      updatedData.ingredients.push("");
+    } else {
+      updatedData.ingrediants.push("");
     }
     setFormData(updatedData);
   };
@@ -170,7 +170,7 @@ const DishActions = () => {
                 </div>
                 <div className="m-3 font-bold">
                     <label>Ingredients:</label>
-                    {formData.ingredients.map((ingredient, index) => (
+                    {formData.ingrediants.map((ingredient, index) => (
                         <div key={index}>
                             <input type="text" className="ml-2 mt-2 rounded-md border-2 border-orange-700" value={ingredient} onChange={(e) => handleIngredientChange(e, index)} required />
                         </div>
@@ -213,7 +213,7 @@ const DishActions = () => {
               </div>
               <div className="m-3 font-bold ">
                 <label>Ingredients:</label>
-                <input type="text" name="ingredients" className="ml-2 rounded-md border-2 border-orange-700 border-dashed" value={modifiedData.ingredients} onChange={handleModifiedChange} />
+                <input type="text" name="ingrediants" className="ml-2 rounded-md border-2 border-orange-700 border-dashed" value={modifiedData.ingredients} onChange={handleModifiedChange} />
               </div>
               <button type="submit" className="  border-2 border-yellow-500 font-bold text-white ml-3 py-2 px-20 rounded-2xl bg-orange-600 hover:bg-yellow-600">Update Restaurant</button>
             </form>

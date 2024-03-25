@@ -6,6 +6,7 @@ import Footer from "@/components/Layout/Footer";
 import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
 import SingleDish from "../SingleDish/SingleDish";
+import Link from "next/link"; 
 
 export default function SingleRestaurant() {
   const router = useRouter();
@@ -20,6 +21,7 @@ export default function SingleRestaurant() {
     const newCart = { ...cart };
     newCart[dishId] = (newCart[dishId] || 0) + 1;
     setCart(newCart);
+    console.log(cart)
   };
 
   const getQuantity = (dishId) => {
@@ -47,7 +49,7 @@ export default function SingleRestaurant() {
 
   const fetchDishDetails = async () => {
     try {
-      const response = await axios.get(`http://localhost:3001/dishes`);
+      const response = await axios.get(`http://localhost:3001/admin/dishes`);
       setDishDetails(response.data);
     } catch (error) {
       console.error("Error fetching Dish details:", error);
@@ -166,7 +168,7 @@ export default function SingleRestaurant() {
                 new Set(
                   dishDetails
                     .filter(
-                      (dish) => dish.restaurant.toString() === RestaurantID
+                      (dish) => dish.restaurant === RestaurantID
                     )
                     .flatMap((dish) => dish.category)
                 )
@@ -186,7 +188,7 @@ export default function SingleRestaurant() {
                 new Set(
                   dishDetails
                     .filter(
-                      (dish) => dish.restaurant.toString() === RestaurantID
+                      (dish) => dish.restaurant === RestaurantID
                     )
                     .flatMap((dish) => dish.category)
                 )
@@ -201,7 +203,7 @@ export default function SingleRestaurant() {
                     {dishDetails
                       .filter(
                         (dish) =>
-                          dish.restaurant.toString() === RestaurantID &&
+                          dish.restaurant === RestaurantID &&
                           dish.category.includes(category)
                       )
                       .map((dish, dishIndex) => (
@@ -268,6 +270,9 @@ export default function SingleRestaurant() {
             </div>
           </div>
         )}
+        <button className="bg-[#F36839] hover:bg-[#f36839c3] text-[#FCFCFC] shadow-[#d04b0892] shadow-lg font-bold py-3 px-4 rounded-xl mx-3 my-10">
+          <Link href={`/Cart/Cart?Cart=${JSON.stringify(cart)}`}>Show Cart</Link>
+        </button>
       </div>
       <Footer />
     </div>
