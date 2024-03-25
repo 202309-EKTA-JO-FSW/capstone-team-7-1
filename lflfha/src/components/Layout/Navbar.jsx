@@ -137,17 +137,17 @@ function Navbar() {
                 </a>
               </li>
               {isAuthenticated ? ( //add from here
-                <li>
+                <li className=" flex flex-row flex-wrap justify-center items-center">
                   <Link
                     href={`/Profile/${userId}`} //add
-                    className="block py-2 px-3 md:p-0 text-[#180800] rounded md:bg-transparent hover:text-[#FF6868]"
+                    className="rounded-2xl text-lg block hover:bg-[#ff68685d] py-2 px-3 text-[#180800] hover:text-[#FCFCFC]"
                   >
                     Profile
                   </Link>
                   <li>
                     <Link
                       href="/Order/Order"
-                      className=" rounded-2xl w-full text-lg block hover:bg-[#ff68685d] py-2 px-3 text-[#180800] hover:text-[#FCFCFC]"
+                      className=" rounded-2xl  text-lg block hover:bg-[#ff68685d] py-2 px-3 text-[#180800] hover:text-[#FCFCFC]"
                     >
                       Order
                     </Link>
@@ -155,7 +155,7 @@ function Navbar() {
                   <li>
                     <Link
                       href="/Cart/Cart"
-                      className=" rounded-2xl w-full text-lg block hover:bg-[#ff68685d] py-2 px-3 text-[#180800] hover:text-[#FCFCFC]"
+                      className=" rounded-2xl text-lg block hover:bg-[#ff68685d] py-2 px-3 text-[#180800] hover:text-[#FCFCFC]"
                     >
                       Cart
                     </Link>

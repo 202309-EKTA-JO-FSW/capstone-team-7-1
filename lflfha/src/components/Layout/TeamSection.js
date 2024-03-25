@@ -26,9 +26,9 @@ const TeamSection = () => {
     {
       name: 'Ammar Kolko',
       role: 'Full-Stack Developer',
-      image: '',
-      linkedin: '#',
-      github: '#',
+      image: 'https://avatars.githubusercontent.com/u/82543366?v=4',
+      linkedin: 'linkedin.com/in/ammar-kolko-39755674',
+      github: 'https://github.com/Ammar-coder87',
     },
   ];
 
