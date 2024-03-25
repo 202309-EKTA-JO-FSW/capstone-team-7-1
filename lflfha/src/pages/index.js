@@ -6,24 +6,15 @@ import NavBar from "@/components/Layout/Navbar";
 import Footer from "@/components/Layout/Footer";
 import useAuthStore from "@/Store/authStore";
 
-const Hello = () => {
-  // const [testResult, setTestResult] = useState("");
+export const metadata = {
+  title: "LFLFHA",
+  description: "Ordering Delivery Service Website",
+};
 
-  // useEffect(() => {
-  //   fetch("http://localhost:3001/test")
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       setTestResult(data);
-  //     });
-  // }, []);
+const Hello = () => {
   
   return <main className="font-Inter scroll-smooth">
-    
-    {/* <NavBar/> */}
     <LandingPage />
-
-    {/* <AllRestaurants/> */}
-    {/* <Footer/> */}
   </main>;
 };
 

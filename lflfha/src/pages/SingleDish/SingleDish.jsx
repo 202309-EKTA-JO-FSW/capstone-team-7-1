@@ -31,7 +31,7 @@ const SingleDish = ({ dishID }) => {
           <img
             src={dish.image}
             alt={dish.name}
-            className="object-cover w-96 pb-8"
+            className="object-cover w-80 pb-8"
           />
 
           <div className="font-semibold flex flex-col">

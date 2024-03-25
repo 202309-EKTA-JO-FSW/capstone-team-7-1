@@ -58,7 +58,7 @@ validateCriteria
     };
 
       const accessToken = jwt.sign(content, secretKey, {expiresIn: "1h"});
-        res.status(200).json({message: 'User created successfully',accessToken: accessToken});
+        res.status(200).json({message: 'User created successfully',accessToken: accessToken,userId:content.id});
         //res.redirect()
 
          
@@ -89,7 +89,7 @@ userController.signin = async (req, res) => {
   }
 
       const accessToken = jwt.sign(content, secretKey, {expiresIn: "1h"});
-        res.status(200).json({accessToken: accessToken});
+        res.status(200).json({accessToken: accessToken,userId:content.id});
         //res.redirect()
     }
 

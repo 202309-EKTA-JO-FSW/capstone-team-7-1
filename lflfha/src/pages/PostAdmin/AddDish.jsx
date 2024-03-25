@@ -1,6 +1,17 @@
 import { useState } from "react";
 
 const DishActions = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    restaurant: "",
+    image: "",
+    description: "",
+    price: 0,
+    image: "",
+    category: [""],
+    ingrediants: [""],
+  });
+
 
     const [formData, setFormData] = useState({
         name: "",
@@ -51,6 +62,7 @@ const DishActions = () => {
 
   const handleIngredientChange = (e, index) => {
     const { value } = e.target;
+
     const updatedIngrediants = [...formData.ingrediants];
     updatedIngrediants[index] = value;
     setFormData((prevState) => ({
@@ -63,7 +75,10 @@ const DishActions = () => {
     const updatedData = { ...formData };
     if (type === "category") {
       updatedData.category.push("");
+
+=======
     } else {
+
       updatedData.ingrediants.push("");
     }
     setFormData(updatedData);
@@ -117,22 +132,24 @@ const DishActions = () => {
     }
   };
 
-    const handleDelete = async () => {
-        try{
-          const res = await fetch(`http://localhost:3001/admin/removeDish/${dishId}`, {
-            method: 'DELETE',
-          });
-          if(!res.ok){
-            const errMsg = await response.text();
-            throw new Error(errMsg);
-          }
-          window.alert('Dish removed Successfully');
+  const handleDelete = async () => {
+    try {
+      const res = await fetch(
+        `http://localhost:3001/admin/removeDish/${dishId}`,
+        {
+          method: "DELETE",
         }
-        catch (err){
-          console.log(err.message);
-        }
+      );
+      if (!res.ok) {
+        const errMsg = await response.text();
+        throw new Error(errMsg);
       }
-    
+      window.alert("Dish removed Successfully");
+    } catch (err) {
+      console.log(err.message);
+    }
+  };
+
 
     return(
         <div className="mx-10 my-7 font-serif flex justify-between">
@@ -180,59 +197,202 @@ const DishActions = () => {
                 <button type="submit" className=" border-2 border-yellow-500 font-bold text-white ml-3 py-2 px-20 rounded-2xl bg-orange-600 hover:bg-yellow-600">Add Dish</button>
             </form>
           </div>
-          <div>
-            <div className="font-bold	text-2xl flex justify-center border-2 border-yellow-200 rounded-3xl bg-orange-800 text-white py-2">Modify Restaurant</div>
-            <form onSubmit={handleModify} className="mx-5 my-5">
-              <div  className="m-3 font-bold ">
-                <label>Dish id:</label>
-                <input type="text" name="id" className="ml-2 rounded-md border-2 border-orange-700" value={modifiedData.id} onChange={handleModifiedChange} required />
+          <div className="m-3 font-bold">
+            <label>restaurant id:</label>
+            <input
+              type="text"
+              name="restaurant"
+              className="ml-2 rounded-md border-2 border-orange-700"
+              value={formData.restaurant}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="m-3 font-bold">
+            <label>Description:</label>
+            <input
+              type="text"
+              name="description"
+              className="ml-2 rounded-md border-2 border-orange-700"
+              value={formData.description}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="m-3 font-bold">
+            <label>Price:</label>
+            <input
+              type="number"
+              name="price"
+              className="ml-2 rounded-md border-2 border-orange-700"
+              value={formData.price}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="m-3 font-bold">
+            <label>Dish Image:</label>
+            <input
+              type="text"
+              name="image"
+              className="ml-2 rounded-md border-2 border-orange-700"
+              value={formData.image}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="m-3 font-bold">
+            <label>Categories:</label>
+            {formData.category.map((categori, index) => (
+              <div key={index}>
+                <input
+                  type="text"
+                  className="ml-2 mt-2 rounded-md border-2 border-orange-700"
+                  value={categori}
+                  onChange={(e) => handleCategoryChange(e, index)}
+                  required
+                />
               </div>
-              <div className="m-3 font-bold ">
-                <label>Dish Name:</label>
-                <input type="text" name="name" className="ml-2 rounded-md border-2 border-orange-700 border-dashed" value={modifiedData.name} onChange={handleModifiedChange} />
-              </div>
-              <div className="m-3 font-bold ">
-                <label>Restaurant id:</label>
-                <input type="text" name="restaurant" className="ml-2 rounded-md border-2 border-orange-700 border-dashed" value={modifiedData.restaurant} onChange={handleModifiedChange} />
-              </div>
-              <div className="m-3 font-bold ">
-                <label>description:</label>
-                <input type="text" name="description" className="ml-2 rounded-md border-2 border-orange-700 border-dashed" value={modifiedData.description} onChange={handleModifiedChange} />
-              </div>
-              <div className="m-3 font-bold ">
-                <label>Price:</label>
-                <input type="number" name="price" className="ml-2 rounded-md border-2 border-orange-700 border-dashed" value={modifiedData.price} onChange={handleModifiedChange} />
-              </div>
-              <div className="m-3 font-bold ">
-                <label>Dish Image:</label>
-                <input type="text" name="image" className="ml-2 rounded-md border-2 border-orange-700 border-dashed" value={modifiedData.image} onChange={handleModifiedChange} />
-              </div>
-              <div className="m-3 font-bold ">
-                <label>Category:</label>
-                <input type="text" name="category" className="ml-2 rounded-md border-2 border-orange-700 border-dashed" value={modifiedData.category} onChange={handleModifiedChange} />
-              </div>
+
+
               <div className="m-3 font-bold ">
                 <label>Ingredients:</label>
                 <input type="text" name="ingrediants" className="ml-2 rounded-md border-2 border-orange-700 border-dashed" value={modifiedData.ingredients} onChange={handleModifiedChange} />
+
               </div>
-              <button type="submit" className="  border-2 border-yellow-500 font-bold text-white ml-3 py-2 px-20 rounded-2xl bg-orange-600 hover:bg-yellow-600">Update Restaurant</button>
-            </form>
+            ))}
+            <button
+              type="button"
+              onClick={() => addField("ingrediants")}
+              className="ml-2 mt-2 bg-orange-600 hover:bg-yellow-600 text-white font-bold py-1 px-2 rounded"
+            >
+              Add Ingredient
+            </button>
           </div>
-          <div>
-            <div className="font-bold	text-2xl flex justify-center border-2 border-yellow-200 rounded-3xl bg-orange-800 text-white py-2">Remove Dish</div>
-            <div className="m-3 font-bold ">
-                <label className="ml-5">Dish id:</label>
-              <input
-                type="text"
-                value={dishId}
-                onChange={handleIdChange}
-                className="ml-2  rounded-md border-2 border-orange-700"
-              />
-            </div>
-            <button onClick={handleDelete} className="  border-2 border-yellow-500 font-bold text-white ml-3 py-2 px-20 rounded-2xl bg-orange-600 hover:bg-yellow-600">Delete Restaurant</button>
-          </div>
+          <button
+            type="submit"
+            className=" border-2 border-yellow-500 font-bold text-white ml-3 py-2 px-20 rounded-2xl bg-orange-600 hover:bg-yellow-600"
+          >
+            Add Dish
+          </button>
+        </form>
+      </div>
+      <div>
+        <div className="font-bold	text-2xl flex justify-center border-2 border-yellow-200 rounded-3xl bg-orange-800 text-white py-2">
+          Modify Restaurant
         </div>
-    )
-}
+        <form onSubmit={handleModify} className="mx-5 my-5">
+          <div className="m-3 font-bold ">
+            <label>Dish id:</label>
+            <input
+              type="text"
+              name="id"
+              className="ml-2 rounded-md border-2 border-orange-700"
+              value={modifiedData.id}
+              onChange={handleModifiedChange}
+              required
+            />
+          </div>
+          <div className="m-3 font-bold ">
+            <label>Dish Name:</label>
+            <input
+              type="text"
+              name="name"
+              className="ml-2 rounded-md border-2 border-orange-700 border-dashed"
+              value={modifiedData.name}
+              onChange={handleModifiedChange}
+            />
+          </div>
+          <div className="m-3 font-bold ">
+            <label>Restaurant id:</label>
+            <input
+              type="text"
+              name="restaurant"
+              className="ml-2 rounded-md border-2 border-orange-700 border-dashed"
+              value={modifiedData.restaurant}
+              onChange={handleModifiedChange}
+            />
+          </div>
+          <div className="m-3 font-bold ">
+            <label>description:</label>
+            <input
+              type="text"
+              name="description"
+              className="ml-2 rounded-md border-2 border-orange-700 border-dashed"
+              value={modifiedData.description}
+              onChange={handleModifiedChange}
+            />
+          </div>
+          <div className="m-3 font-bold ">
+            <label>Price:</label>
+            <input
+              type="number"
+              name="price"
+              className="ml-2 rounded-md border-2 border-orange-700 border-dashed"
+              value={modifiedData.price}
+              onChange={handleModifiedChange}
+            />
+          </div>
+          <div className="m-3 font-bold ">
+            <label>Dish Image:</label>
+            <input
+              type="text"
+              name="image"
+              className="ml-2 rounded-md border-2 border-orange-700 border-dashed"
+              value={modifiedData.image}
+              onChange={handleModifiedChange}
+            />
+          </div>
+          <div className="m-3 font-bold ">
+            <label>Category:</label>
+            <input
+              type="text"
+              name="category"
+              className="ml-2 rounded-md border-2 border-orange-700 border-dashed"
+              value={modifiedData.category}
+              onChange={handleModifiedChange}
+            />
+          </div>
+          <div className="m-3 font-bold ">
+            <label>ingrediants:</label>
+            <input
+              type="text"
+              name="ingrediants"
+              className="ml-2 rounded-md border-2 border-orange-700 border-dashed"
+              value={modifiedData.ingrediants}
+              onChange={handleModifiedChange}
+            />
+          </div>
+          <button
+            type="submit"
+            className="  border-2 border-yellow-500 font-bold text-white ml-3 py-2 px-20 rounded-2xl bg-orange-600 hover:bg-yellow-600"
+          >
+            Update Restaurant
+          </button>
+        </form>
+      </div>
+      <div>
+        <div className="font-bold	text-2xl flex justify-center border-2 border-yellow-200 rounded-3xl bg-orange-800 text-white py-2">
+          Remove Dish
+        </div>
+        <div className="m-3 font-bold ">
+          <label className="ml-5">Dish id:</label>
+          <input
+            type="text"
+            value={dishId}
+            onChange={handleIdChange}
+            className="ml-2  rounded-md border-2 border-orange-700"
+          />
+        </div>
+        <button
+          onClick={handleDelete}
+          className="  border-2 border-yellow-500 font-bold text-white ml-3 py-2 px-20 rounded-2xl bg-orange-600 hover:bg-yellow-600"
+        >
+          Delete Restaurant
+        </button>
+      </div>
+    </div>
+  );
+};
 
 export default DishActions;

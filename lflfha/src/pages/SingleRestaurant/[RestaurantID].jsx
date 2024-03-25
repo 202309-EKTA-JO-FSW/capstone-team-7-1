@@ -233,6 +233,10 @@ export default function SingleRestaurant() {
                                     Details
                                   </button>
                                 }
+                                contentStyle={{
+                                  maxHeight: "90vh",
+                                  overflowY: "auto",
+                                }}
                                 modal
                                 nested
                               >

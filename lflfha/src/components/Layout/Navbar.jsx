@@ -34,6 +34,8 @@ function Navbar() {
     };
   }, [lastScrollTop]);
 
+  const userId = useAuthStore((state) => state.userId); //add...........
+  console.log({ userId });
   const logout = useAuthStore((state) => state.logout); //add
   const isAuthenticated = useAuthStore((state) => state.isAuthenticated); //add
 
@@ -113,7 +115,7 @@ function Navbar() {
               <li>
                 <a
                   href="/LandingPage"
-                  className=" rounded-2xl w-full text-lg block hover:bg-[#ff68685d] py-2 px-3 text-[#180800] hover:text-[#FCFCFC]"
+                  className="rounded-2xl w-full text-lg block hover:bg-[#ff68685d] py-2 px-3 text-[#180800] hover:text-[#FCFCFC]"
                 >
                   Home
                 </a>
@@ -128,28 +130,38 @@ function Navbar() {
               </li>
               <li>
                 <a
-                  href="/Profile/Profile"
+                  href="/Contact/Contact"
                   className=" rounded-2xl w-full text-lg block hover:bg-[#ff68685d] py-2 px-3 text-[#180800] hover:text-[#FCFCFC]"
                 >
-                  Profile
+                  Contact
                 </a>
               </li>
-              <li>
-                <a
-                  href="/Order/Order"
-                  className=" rounded-2xl w-full text-lg block hover:bg-[#ff68685d] py-2 px-3 text-[#180800] hover:text-[#FCFCFC]"
-                >
-                  Order
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/Cart/Cart"
-                  className=" rounded-2xl w-full text-lg block hover:bg-[#ff68685d] py-2 px-3 text-[#180800] hover:text-[#FCFCFC]"
-                >
-                  Cart
-                </a>
-              </li>
+              {isAuthenticated ? ( //add from here
+                <li>
+                  <Link
+                    href={`/Profile/${userId}`} //add
+                    className="block py-2 px-3 md:p-0 text-[#180800] rounded md:bg-transparent hover:text-[#FF6868]"
+                  >
+                    Profile
+                  </Link>
+                  <li>
+                    <Link
+                      href="/Order/Order"
+                      className=" rounded-2xl w-full text-lg block hover:bg-[#ff68685d] py-2 px-3 text-[#180800] hover:text-[#FCFCFC]"
+                    >
+                      Order
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/Cart/Cart"
+                      className=" rounded-2xl w-full text-lg block hover:bg-[#ff68685d] py-2 px-3 text-[#180800] hover:text-[#FCFCFC]"
+                    >
+                      Cart
+                    </Link>
+                  </li>
+                </li>
+              ) : null}
             </ul>
           </div>
         )}
@@ -162,7 +174,7 @@ function Navbar() {
             <li>
               <a
                 href="/LandingPage"
-                className="text-lg block py-2 px-3 md:p-0 text-[#180800] rounded md:bg-transparent hover:text-[#FF6868]"
+                className=" rounded-2xl w-full text-lg block hover:text-[#FF6868] py-2 px-3 text-[#180800] "
                 aria-current="page"
               >
                 Home
@@ -171,35 +183,47 @@ function Navbar() {
             <li>
               <a
                 href="/About/About"
-                className="text-lg block py-2 px-3 md:p-0 text-[#180800] rounded md:bg-transparent hover:text-[#FF6868]"
+                className=" rounded-2xl w-full text-lg block hover:text-[#FF6868] py-2 px-3 text-[#180800] "
               >
                 About
               </a>
             </li>
             <li>
               <a
-                href="/Profile/Profile"
-                className="text-lg block py-2 px-3 md:p-0 text-[#180800] rounded md:bg-transparent hover:text-[#FF6868]"
+                href="/Contact/Contact"
+                className=" rounded-2xl w-full text-lg block hover:text-[#FF6868] py-2 px-3 text-[#180800] "
               >
-                Profile
+                Contact
               </a>
             </li>
-            <li>
-              <a
-                href="/Order/Order"
-                className="text-lg block py-2 px-3 md:p-0 text-[#180800] rounded md:bg-transparent hover:text-[#FF6868]"
-              >
-                Order
-              </a>
-            </li>
-            <li>
-              <a
-                href="/Cart/Cart"
-                className="text-lg block py-2 px-3 md:p-0 text-[#180800] rounded md:bg-transparent hover:text-[#FF6868]"
-              >
-                Cart
-              </a>
-            </li>
+            {isAuthenticated ? (
+              <li className="flex flex-row justify-between items-center gap-7">
+                <li>
+                  <Link
+                    href={`/Profile/${userId}`}
+                    className=" rounded-2xl w-full text-lg block hover:text-[#FF6868] py-2 px-3 text-[#180800] "
+                  >
+                    Profile
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/Order/Order"
+                    className=" rounded-2xl w-full text-lg block hover:text-[#FF6868] py-2 px-3 text-[#180800] "
+                  >
+                    Order
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/Cart/Cart"
+                    className=" rounded-2xl w-full text-lg block hover:text-[#FF6868] py-2 px-3 text-[#180800] "
+                  >
+                    Cart
+                  </Link>
+                </li>
+              </li>
+            ) : null}
           </ul>
         </div>
       </div>
